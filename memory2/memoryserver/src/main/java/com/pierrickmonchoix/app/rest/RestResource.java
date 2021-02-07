@@ -18,7 +18,7 @@ public class RestResource {
     @Path("/meteo")
     @GET
     public Message getHelloWorld() {
-        Message message = new Message("hey !", 42);
+        Message message = new Message("hey !!!!!", 42);
         return message;
     }
 }

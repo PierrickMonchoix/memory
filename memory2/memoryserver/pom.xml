@@ -51,28 +51,11 @@
         <artifactId>jaxb-api</artifactId>
         <version>${jaxb.version}</version>
       </dependency>
+
     </dependencies>
   </dependencyManagement>
 
   <dependencies>
-
-    <!-- REST -->
-    <dependency>
-      <groupId>org.glassfish.jersey.containers</groupId>
-      <artifactId>jersey-container-grizzly2-http</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.sun.xml.bind</groupId>
-      <artifactId>jaxb-impl</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.sun.istack</groupId>
-      <artifactId>istack-commons-runtime</artifactId>
-    </dependency>		
-    <dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-json-jackson</artifactId>
-		</dependency>
 
     <dependency>
       <groupId>junit</groupId>
@@ -94,10 +77,22 @@
       <groupId>com.sun.istack</groupId>
       <artifactId>istack-commons-runtime</artifactId>
     </dependency>
-
-
-
-    <!-- maybe useless -->
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-grizzly2-http</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.istack</groupId>
+      <artifactId>istack-commons-runtime</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.inject</groupId>
       <artifactId>jersey-hk2</artifactId>
@@ -106,6 +101,8 @@
       <groupId>javax.xml.bind</groupId>
       <artifactId>jaxb-api</artifactId>
     </dependency>
+
+
 
   </dependencies>
 
@@ -154,8 +151,9 @@
       </plugins>
     </pluginManagement>
 
-    <!-- REST -->
+   
     <plugins>
+     <!-- REST -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
@@ -170,7 +168,11 @@
           </execution>
         </executions>
       </plugin>
+
+
+
     </plugins>
+
   </build>
 
 
