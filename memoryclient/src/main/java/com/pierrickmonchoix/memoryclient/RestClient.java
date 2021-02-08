@@ -8,7 +8,7 @@ import javax.ws.rs.core.MediaType;
  * Hello world!
  *
  */
-public class App 
+public class RestClient 
 {
 
     private static final String REST_URI = "http://localhost:9992/rest/hello";
