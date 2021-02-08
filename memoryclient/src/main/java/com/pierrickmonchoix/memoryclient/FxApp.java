@@ -1,5 +1,7 @@
 package com.pierrickmonchoix.memoryclient;
 
+import org.apache.log4j.Logger;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,23 +18,30 @@ import javafx.stage.Stage;
  */
  
 public class FxApp extends Application {
+
+    private static Logger logger = Logger.getLogger(FxApp.class);
+
     public static void main() {
-        System.out.println("######                 HEYYYE");
+        
         launch();
-        System.out.println("######                 HEYYY 2");  // ,e fait rien
+   
     }
     
     @Override
     public void start(Stage primaryStage) {
-        System.out.println("######                 HEYYY fx");  // work
+        logger.info("starting JFX ...");
+        Thread thread = new Thread(new RestClient());
+
+
         primaryStage.setTitle("Hello World!");
         Button btn = new Button();
-        btn.setText("Say 'Hello World' from client");
+        btn.setText("Get REST");
         btn.setOnAction(new EventHandler<ActionEvent>() {
  
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+                logger.info("appui");
+                thread.start();
             }
         });
         
