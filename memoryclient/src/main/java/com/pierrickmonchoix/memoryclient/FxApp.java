@@ -21,6 +21,8 @@ public class FxApp extends Application {
 
     private static Logger logger = Logger.getLogger(FxApp.class);
 
+    TestClientWebSocketTyrus clientWs;
+
     public static void main() {
         
         launch();
@@ -30,7 +32,7 @@ public class FxApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         logger.info("starting JFX ...");
-        Thread thread = new Thread(new RestClient());
+        
 
 
         primaryStage.setTitle("Hello World!");
@@ -41,7 +43,6 @@ public class FxApp extends Application {
             @Override
             public void handle(ActionEvent event) {
                 logger.info("appui");
-                thread.start();
             }
         });
         

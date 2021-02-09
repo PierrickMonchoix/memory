@@ -1,0 +1,37 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "run fx client",   // nom de la commande (toto work)
+            "type": "shell",   // exectuter cette command edans le shell
+            "command": "mvn clean javafx:run",   // la commande a  a executer
+            "options": {
+                "cwd": "memoryclient"  // change directory (racine = workspace folder)
+            },
+            "group": "build",  // permet de lancer la commande avec "build task" (ctrl t pour moi)
+            "problemMatcher": []  // lance direct le task.json
+        },
+        {
+            "label": "run rest server",
+            "type": "shell",
+            "command": "mvn exec:java -Dexec.mainClass=com.pierrickmonchoix.memoryserver.rest.RestLauncher",
+            "options": {
+                "cwd": "memoryserver"
+            },
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "run rest client",
+            "type": "shell",
+            "command": "mvn exec:java -Dexec.mainClass=com.pierrickmonchoix.memoryclient.App",
+            "options": {
+                "cwd": "memoryclient"
+            },
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}
