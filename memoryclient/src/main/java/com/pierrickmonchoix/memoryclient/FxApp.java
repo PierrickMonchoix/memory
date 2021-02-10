@@ -1,5 +1,11 @@
 package com.pierrickmonchoix.memoryclient;
 
+import com.pierrickmonchoix.memoryclient.graphicComponent.Presentation;
+import com.pierrickmonchoix.memoryclient.graphicComponent.checkBox.PresentationCheckBox;
+import com.pierrickmonchoix.memoryclient.graphicComponent.checkBox.VueCheckBox;
+import com.pierrickmonchoix.memoryclient.graphicComponent.login.PresentationLogin;
+import com.pierrickmonchoix.memoryclient.graphicComponent.login.VueLogin;
+
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
@@ -65,10 +71,22 @@ public class FxApp extends Application {
             }
         });
 
+/*         PresentationCheckBox presentationCheckBox = new PresentationCheckBox("hey check", false);
+        VueCheckBox vueCheckBox = new VueCheckBox(presentationCheckBox);
+        presentationCheckBox.setVue(vueCheckBox); */
+
+
+        PresentationLogin presentationLogin = new PresentationLogin("lecheck",false);
+        VueLogin vueLogin = new VueLogin(presentationLogin);
+        presentationLogin.setVue(vueLogin); 
+
+
+
         
         VBox root = new VBox();
         root.getChildren().add(btnConnexion);
         root.getChildren().add(btnMessage);
+        root.getChildren().add(vueLogin);
         primaryStage.setScene(new Scene(root, 300, 250));
         primaryStage.show();
     }

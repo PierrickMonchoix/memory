@@ -1,5 +1,13 @@
+/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponent/Presentation.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocketMessage/WebsocketMessageDecoder.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocketMessage/WebsocketMessage.java
-/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/WebsocketClient.java
+/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponent/checkBox/VueCheckBox.java
+/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponent/login/VueLogin.java
+/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponent/textField/PresentationTextField.java
+/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponent/textField/VueTextField.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/FxApp.java
+/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponent/checkBox/PresentationCheckBox.java
+/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponent/IVue.java
+/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/WebsocketClient.java
+/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponent/login/PresentationLogin.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/conception_logicielle/TPmemory/memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocketMessage/WebsocketMessageEncoder.java
