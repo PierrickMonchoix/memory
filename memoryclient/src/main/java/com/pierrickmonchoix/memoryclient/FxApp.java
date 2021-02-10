@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -65,7 +66,7 @@ public class FxApp extends Application {
         });
 
         
-        StackPane root = new StackPane();
+        VBox root = new VBox();
         root.getChildren().add(btnConnexion);
         root.getChildren().add(btnMessage);
         primaryStage.setScene(new Scene(root, 300, 250));
