@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -45,13 +46,15 @@ public class FxApp extends Application {
         System.out.println("starting JFX ...");
 
         String nomInField = "samuel";
+        clientWs = WebsocketClient.getInstance(nomInField);
+        clientWs.sendMessage();
 
         
 
 
         primaryStage.setTitle("Hello World!");
 
-        Button btnConnexion = new Button();
+      /*   Button btnConnexion = new Button();
         btnConnexion.setText("Connexion as " + nomInField);
         btnConnexion.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -69,7 +72,7 @@ public class FxApp extends Application {
                 System.out.println("appui message");
                 clientWs.sendMessage();
             }
-        });
+        }); */
 
 /*         PresentationCheckBox presentationCheckBox = new PresentationCheckBox("hey check", false);
         VueCheckBox vueCheckBox = new VueCheckBox(presentationCheckBox);
@@ -81,11 +84,12 @@ public class FxApp extends Application {
         presentationLogin.setVue(vueLogin); 
 
 
-
+        
         
         VBox root = new VBox();
-        root.getChildren().add(btnConnexion);
-        root.getChildren().add(btnMessage);
+        root.setAlignment(Pos.CENTER);
+       // root.getChildren().add(btnConnexion);
+       // root.getChildren().add(btnMessage);
         root.getChildren().add(vueLogin);
         primaryStage.setScene(new Scene(root, 300, 250));
         primaryStage.show();

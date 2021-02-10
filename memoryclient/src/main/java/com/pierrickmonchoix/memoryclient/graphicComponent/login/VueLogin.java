@@ -25,6 +25,7 @@ public class VueLogin extends VBox implements IVue {
         
 
         setAlignment(Pos.TOP_CENTER);
+        
 
         getChildren().addAll(vueTextField);
         getChildren().addAll(vueCheckBox);
