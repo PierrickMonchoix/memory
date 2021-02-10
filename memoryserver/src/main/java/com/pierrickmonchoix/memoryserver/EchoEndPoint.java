@@ -4,15 +4,31 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.websocket.OnMessage;
+import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
+
+import org.apache.log4j.Logger;
 
 @ServerEndpoint("/echo")
 public class EchoEndPoint {
+
+  private static Logger logger = Logger.getLogger(EchoEndPoint.class);
+
+
+
+
   @OnMessage
-  public String echo(String message) {
+  public void echo(String message, Session session) {
     System.out.println(message);
-    return ThreadSafeFormatter.getDateFormatter().format(new Date()) + " "
-      +  message;
+    try{
+    session.getBasicRemote().sendText("msg bien recu par le server : " + message);
+    }
+    catch(Exception e){
+      logger.error("echo");
+      logger.error(e);
+    }
+    /* return ThreadSafeFormatter.getDateFormatter().format(new Date()) + " "
+      +  message; */
   }
 }
 

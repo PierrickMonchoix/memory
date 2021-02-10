@@ -32,6 +32,8 @@ public class FxApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         logger.info("starting JFX ...");
+
+        TestClientWebSocketTyrus.initConnexion();
         
 
 
@@ -43,6 +45,7 @@ public class FxApp extends Application {
             @Override
             public void handle(ActionEvent event) {
                 logger.info("appui");
+                TestClientWebSocketTyrus.sendMessage();
             }
         });
         

@@ -19,7 +19,7 @@ public class TestServerWebSocketTyrus {
       LOGGER.log(Level.INFO, "Lancement du serveur");
       server.start();
       BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-      System.out.print("Appuyer sur Entree pour arreter le serveur.");
+      System.out.println("Appuyer sur Entree pour arreter le serveur.");
       reader.readLine();
     } catch (IOException | DeploymentException e) {
       throw new RuntimeException(e);
