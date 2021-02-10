@@ -1,5 +1,6 @@
 package com.pierrickmonchoix.memoryclient;
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import javafx.application.Application;
@@ -19,9 +20,9 @@ import javafx.stage.Stage;
  
 public class FxApp extends Application {
 
-    private static Logger logger = Logger.getLogger(FxApp.class);
+    //private static Logger logger = Logger.getLogger(FxApp.class);
 
-    TestClientWebSocketTyrus clientWs;
+    WebsocketClient clientWs;
 
     public static void main() {
         
@@ -31,26 +32,42 @@ public class FxApp extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        logger.info("starting JFX ...");
 
-        TestClientWebSocketTyrus.initConnexion();
+        BasicConfigurator.configure();
+
+        System.out.println("starting JFX ...");
+
+        String nomInField = "samuel";
+
         
 
 
         primaryStage.setTitle("Hello World!");
-        Button btn = new Button();
-        btn.setText("Get REST");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
- 
+
+        Button btnConnexion = new Button();
+        btnConnexion.setText("Connexion as " + nomInField);
+        btnConnexion.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                logger.info("appui");
-                TestClientWebSocketTyrus.sendMessage();
+                System.out.println("appui connexion");
+                clientWs = WebsocketClient.getInstance(nomInField);
             }
         });
+
+        Button btnMessage = new Button();
+        btnMessage.setText("Send message");
+        btnMessage.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("appui message");
+                clientWs.sendMessage();
+            }
+        });
+
         
         StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        root.getChildren().add(btnConnexion);
+        root.getChildren().add(btnMessage);
         primaryStage.setScene(new Scene(root, 300, 250));
         primaryStage.show();
     }

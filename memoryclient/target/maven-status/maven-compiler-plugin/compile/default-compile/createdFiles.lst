@@ -1,4 +1,7 @@
 com/pierrickmonchoix/memoryclient/FxApp$1.class
-com/pierrickmonchoix/memoryclient/TestClientWebSocketTyrus.class
-com/pierrickmonchoix/memoryclient/Message.class
+com/pierrickmonchoix/memoryclient/WebsocketClient.class
+com/pierrickmonchoix/memoryclient/websocketMessage/WebsocketMessageDecoder.class
 com/pierrickmonchoix/memoryclient/FxApp.class
+com/pierrickmonchoix/memoryclient/websocketMessage/WebsocketMessageEncoder.class
+com/pierrickmonchoix/memoryclient/FxApp$2.class
+com/pierrickmonchoix/memoryclient/websocketMessage/WebsocketMessage.class
