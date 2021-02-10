@@ -76,7 +76,7 @@ public class FxApp extends Application {
         presentationCheckBox.setVue(vueCheckBox); */
 
 
-        PresentationLogin presentationLogin = new PresentationLogin("lecheck",false);
+        PresentationLogin presentationLogin = new PresentationLogin("Ton mail","Première connexion?",false);
         VueLogin vueLogin = new VueLogin(presentationLogin);
         presentationLogin.setVue(vueLogin); 
 

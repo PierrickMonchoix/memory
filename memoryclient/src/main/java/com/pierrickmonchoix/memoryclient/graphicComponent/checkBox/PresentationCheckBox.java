@@ -5,7 +5,7 @@ import com.pierrickmonchoix.memoryclient.graphicComponent.Presentation;
 public class PresentationCheckBox extends Presentation {
 
 
-    private String text;
+    private final String text;
     private final boolean defaultCheck;
 
 
@@ -24,7 +24,7 @@ public class PresentationCheckBox extends Presentation {
 
     public boolean isChecked(){
         VueCheckBox vueCheckBox = (VueCheckBox)vue;
-        return vueCheckBox.isChecked();
+        return vueCheckBox.isCheckedInput();
     }
 
 

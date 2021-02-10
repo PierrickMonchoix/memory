@@ -4,31 +4,48 @@ import com.pierrickmonchoix.memoryclient.graphicComponent.IVue;
 
 import javafx.scene.control.CheckBox;
 
-public class VueCheckBox extends CheckBox implements IVue{
+/*
+l'extends et l'implement de IVue :
+*/
+public class VueCheckBox extends CheckBox implements IVue {
 
-    private PresentationCheckBox presentationCheckBox;
+    /*
+     * sa presentation :
+     */
+    private final PresentationCheckBox presentationCheckBox;
 
     public VueCheckBox(PresentationCheckBox presentationCheckBox) {
+        /*
+         * le super :
+         */
         super();
+        /*
+         * l'initialisation de sa présentation :
+         */
         this.presentationCheckBox = presentationCheckBox;
+        /*
+         * les valeurs par défaut :
+         */
         setSelected(presentationCheckBox.isDefaultChecked());
-
+        /*
+         * l'update d'initialisation :
+         */
         update();
     }
 
-
+    /*
+     * l'update :
+     */
     @Override
     public void update() {
         this.setText(presentationCheckBox.getText());
     }
 
-    public boolean isChecked(){
+    /*
+     * les accesseurs :
+     */
+    public boolean isCheckedInput() {
         return isSelected();
     }
 
-
-
-
-    
-    
 }

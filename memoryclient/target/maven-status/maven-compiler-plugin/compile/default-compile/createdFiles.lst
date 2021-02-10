@@ -12,4 +12,6 @@ com/pierrickmonchoix/memoryclient/websocketMessage/WebsocketMessageDecoder.class
 com/pierrickmonchoix/memoryclient/graphicComponent/login/PresentationLogin.class
 com/pierrickmonchoix/memoryclient/graphicComponent/login/VueLogin.class
 com/pierrickmonchoix/memoryclient/websocketMessage/WebsocketMessage.class
+com/pierrickmonchoix/memoryclient/graphicComponent/button/PresentationButton.class
 com/pierrickmonchoix/memoryclient/graphicComponent/textField/VueTextField.class
+com/pierrickmonchoix/memoryclient/graphicComponent/button/VueButton.class
