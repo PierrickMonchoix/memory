@@ -1,10 +1,12 @@
 package com.pierrickmonchoix.memoryclient;
 
+import com.pierrickmonchoix.memoryclient.graphicComponent.IComponantListener;
 import com.pierrickmonchoix.memoryclient.graphicComponent.Presentation;
 import com.pierrickmonchoix.memoryclient.graphicComponent.button.PresentationButton;
 import com.pierrickmonchoix.memoryclient.graphicComponent.button.VueButton;
 import com.pierrickmonchoix.memoryclient.graphicComponent.checkBox.PresentationCheckBox;
 import com.pierrickmonchoix.memoryclient.graphicComponent.checkBox.VueCheckBox;
+import com.pierrickmonchoix.memoryclient.graphicComponent.login.ModelLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponent.login.PresentationLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponent.login.VueLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponent.rootLogin.PresentationRootLogin;
@@ -52,13 +54,22 @@ public class FxApp extends Application {
 
         primaryStage.setTitle("Memory");
 
-        PresentationRootLogin presentationRootLogin = new PresentationRootLogin("mon pseudo", "first here?", true);
+  /*       PresentationRootLogin presentationRootLogin = new PresentationRootLogin("mon pseudo", "first here?", true);
         VueRootLogin vueRootLogin = new VueRootLogin(presentationRootLogin);
-        presentationRootLogin.setVue(vueRootLogin);
+        presentationRootLogin.setVue(vueRootLogin); */
 
-        primaryStage.setScene(new Scene(vueRootLogin, 300, 250));
+        PresentationLogin presentationLogin = new PresentationLogin("mon pseudooo", "first here?", false);
+        VueLogin vueLogin = new VueLogin(presentationLogin);
+        presentationLogin.setVue(vueLogin);
+        ModelLogin modelLogin = new ModelLogin(presentationLogin);
+
+        
+
+        primaryStage.setScene(new Scene(vueLogin, 300, 250));
 
         primaryStage.show();
 
     }
+
+
 }

@@ -1,10 +1,7 @@
 package com.pierrickmonchoix.memoryclient;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URI;
-import java.net.URISyntaxException;
+
 
 import javax.websocket.ClientEndpoint;
 import javax.websocket.OnMessage;

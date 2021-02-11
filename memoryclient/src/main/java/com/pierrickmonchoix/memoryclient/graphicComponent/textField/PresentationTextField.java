@@ -14,6 +14,11 @@ public class PresentationTextField extends Presentation {
         return defaultText;
     }
 
+    public String getText(){
+        VueTextField vueTextField = (VueTextField)vue;
+        return vueTextField.getTextInput();
+    }
+
     
     
 }

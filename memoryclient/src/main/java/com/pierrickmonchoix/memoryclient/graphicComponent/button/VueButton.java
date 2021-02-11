@@ -2,6 +2,8 @@ package com.pierrickmonchoix.memoryclient.graphicComponent.button;
 
 import com.pierrickmonchoix.memoryclient.graphicComponent.IVue;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
 
@@ -9,16 +11,32 @@ public class VueButton extends Button implements IVue{
 
     private final PresentationButton presentationButton;
 
+    
+
     public VueButton(PresentationButton presentationButton) {
         super();
         this.presentationButton = presentationButton;
         update();
+
+        /*
+            Ajout des notifiers
+        */
+        setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                presentationButton.alertPressed();
+            }
+        });
     }
+
+    
 
     @Override
     public void update() {
         setText(presentationButton.getText());
     }
+
+
+
 
 
     
