@@ -7,8 +7,8 @@ import com.pierrickmonchoix.memoryclient.graphicComponent.checkBox.PresentationC
 import com.pierrickmonchoix.memoryclient.graphicComponent.checkBox.VueCheckBox;
 import com.pierrickmonchoix.memoryclient.graphicComponent.login.PresentationLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponent.login.VueLogin;
-import com.pierrickmonchoix.memoryclient.graphicComponent.scene.PresentationScene;
-import com.pierrickmonchoix.memoryclient.graphicComponent.scene.VueScene;
+import com.pierrickmonchoix.memoryclient.graphicComponent.rootLogin.PresentationRootLogin;
+import com.pierrickmonchoix.memoryclient.graphicComponent.rootLogin.VueRootLogin;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
@@ -23,25 +23,22 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
-
-
 /**
  * mvn clean javafx:run pour run cette classe
  */
- 
+
 public class FxApp extends Application {
 
-    //private static Logger logger = Logger.getLogger(FxApp.class);
+    // private static Logger logger = Logger.getLogger(FxApp.class);
 
     WebsocketClient clientWs;
 
     public static void main() {
-        
+
         launch();
-   
+
     }
-    
+
     @Override
     public void start(Stage primaryStage) {
 
@@ -49,28 +46,17 @@ public class FxApp extends Application {
 
         String nomInField = "samuel";
         // long si ne marche pas
-/*         clientWs = WebsocketClient.getInstance(nomInField);
-        clientWs.sendMessage(); */
+        /*
+         * clientWs = WebsocketClient.getInstance(nomInField); clientWs.sendMessage();
+         */
 
         primaryStage.setTitle("Memory");
 
+        PresentationRootLogin presentationRootLogin = new PresentationRootLogin("mon pseudo", "first here?", true);
+        VueRootLogin vueRootLogin = new VueRootLogin(presentationRootLogin);
+        presentationRootLogin.setVue(vueRootLogin);
 
-
-
-        PresentationLogin presentationLogin = new PresentationLogin("Ton mail","Première connexion!?",false);
-        VueLogin vueLogin = new VueLogin(presentationLogin);
-        presentationLogin.setVue(vueLogin); 
-
-
-        PresentationScene presentationScene = new PresentationScene();
-        VueScene vueScene = new VueScene(presentationScene);
-        presentationScene.setVue(vueScene);
-        presentationScene.setMainPresentation(presentationLogin);
-        presentationScene.updateVue();
-
-
-        primaryStage.setScene(vueScene);
-
+        primaryStage.setScene(new Scene(vueRootLogin, 300, 250));
 
         primaryStage.show();
 

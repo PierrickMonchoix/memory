@@ -9,10 +9,11 @@ public class VueTextField extends TextField implements IVue{
     private final PresentationTextField presentationTextField;
 
     public VueTextField(PresentationTextField presentationTextField) {
-        super(presentationTextField.getDefaultText());
-        this.presentationTextField = presentationTextField;
+        super();
 
+        this.presentationTextField = presentationTextField;
         setText(this.presentationTextField.getDefaultText());
+
         
         update();
     }
