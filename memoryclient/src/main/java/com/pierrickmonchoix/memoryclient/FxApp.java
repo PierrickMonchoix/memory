@@ -1,28 +1,11 @@
 package com.pierrickmonchoix.memoryclient;
 
-import com.pierrickmonchoix.memoryclient.graphicComponent.IComponantListener;
-import com.pierrickmonchoix.memoryclient.graphicComponent.Presentation;
-import com.pierrickmonchoix.memoryclient.graphicComponent.button.PresentationButton;
-import com.pierrickmonchoix.memoryclient.graphicComponent.button.VueButton;
-import com.pierrickmonchoix.memoryclient.graphicComponent.checkBox.PresentationCheckBox;
-import com.pierrickmonchoix.memoryclient.graphicComponent.checkBox.VueCheckBox;
-import com.pierrickmonchoix.memoryclient.graphicComponent.login.ModelLogin;
-import com.pierrickmonchoix.memoryclient.graphicComponent.login.PresentationLogin;
-import com.pierrickmonchoix.memoryclient.graphicComponent.login.VueLogin;
-import com.pierrickmonchoix.memoryclient.graphicComponent.rootLogin.PresentationRootLogin;
-import com.pierrickmonchoix.memoryclient.graphicComponent.rootLogin.VueRootLogin;
-
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.PresentationLogin;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.VueLogin;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
