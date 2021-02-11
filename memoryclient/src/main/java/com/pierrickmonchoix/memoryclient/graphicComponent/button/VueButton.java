@@ -16,6 +16,9 @@ public class VueButton extends Button implements IVue{
     public VueButton(PresentationButton presentationButton) {
         super();
         this.presentationButton = presentationButton;
+
+        
+        setStyle("-fx-background-color: green;");
         update();
 
         /*
@@ -28,11 +31,21 @@ public class VueButton extends Button implements IVue{
         });
     }
 
+
+
     
 
     @Override
     public void update() {
         setText(presentationButton.getText());
+        if(  presentationButton.getColor() != null){
+            String colorStyle = "-fx-background-color: "+ presentationButton.getColor() +";";
+            setStyle(colorStyle);
+            
+        }
+        else{
+            setStyle(null);
+        }
     }
 
 

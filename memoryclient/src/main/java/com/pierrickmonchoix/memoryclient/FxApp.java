@@ -58,10 +58,11 @@ public class FxApp extends Application {
         VueRootLogin vueRootLogin = new VueRootLogin(presentationRootLogin);
         presentationRootLogin.setVue(vueRootLogin); */
 
-        PresentationLogin presentationLogin = new PresentationLogin("mon pseudooo", "first here?", false);
+        PresentationLogin presentationLogin = new PresentationLogin("mon pseudooo", "first heree?", false);
         VueLogin vueLogin = new VueLogin(presentationLogin);
         presentationLogin.setVue(vueLogin);
         ModelLogin modelLogin = new ModelLogin(presentationLogin);
+
 
         
 

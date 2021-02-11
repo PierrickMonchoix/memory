@@ -52,10 +52,12 @@ public class PresentationLogin extends Presentation implements IComponantListene
             if(isNewUser()){
                 System.out.println("nouveau");
                 getPresentationButton().setText("Sign up");
+                getPresentationButton().setColor("#3F7");  // #3F7 = #33FF77
             }
             else{
                 System.out.println("ancien");
                 getPresentationButton().setText("Sign in");
+                getPresentationButton().setColor(null);
             }
         }
     }

@@ -11,13 +11,17 @@ public class PresentationButton extends PresentationNotifier {
 
     
     public String text;
+    public String color;
+
 
     public PresentationButton(String text) {
         super(EComponantEvent.BUTTON_PRESSED);
         this.text = text;
-
-        
     }
+
+
+
+
 
 
     public String getText() {
@@ -35,6 +39,15 @@ public class PresentationButton extends PresentationNotifier {
 
     public void alertPressed(){ 
         notifyListeners();
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+        updateVue();
     }
 
 
