@@ -2,8 +2,10 @@ com/pierrickmonchoix/memoryclient/WebsocketClient.class
 com/pierrickmonchoix/memoryclient/graphicComponent/IVue.class
 com/pierrickmonchoix/memoryclient/graphicComponent/checkBox/VueCheckBox.class
 com/pierrickmonchoix/memoryclient/FxApp.class
+com/pierrickmonchoix/memoryclient/graphicComponent/scene/VueScene.class
 com/pierrickmonchoix/memoryclient/websocketMessage/WebsocketMessageEncoder.class
 com/pierrickmonchoix/memoryclient/graphicComponent/textField/PresentationTextField.class
+com/pierrickmonchoix/memoryclient/graphicComponent/scene/PresentationScene.class
 com/pierrickmonchoix/memoryclient/graphicComponent/checkBox/PresentationCheckBox.class
 com/pierrickmonchoix/memoryclient/graphicComponent/Presentation.class
 com/pierrickmonchoix/memoryclient/websocketMessage/WebsocketMessageDecoder.class

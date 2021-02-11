@@ -17,13 +17,10 @@ public class PresentationLogin extends Presentation {
     public PresentationLogin( String defaultPseudo ,  String textCheckBox , boolean defaultCheck) {
         
         presentationCheckBox = new PresentationCheckBox(textCheckBox,defaultCheck);
-        presentationCheckBox.setVue(new VueCheckBox(presentationCheckBox));
 
         presentationTextField = new PresentationTextField(defaultPseudo);
-        presentationTextField.setVue(new VueTextField(presentationTextField));
 
         presentationButton = new PresentationButton("Login");
-        presentationButton.setVue(new VueButton(presentationButton));
         
     }
 

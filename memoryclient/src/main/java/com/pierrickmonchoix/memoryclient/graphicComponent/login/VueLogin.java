@@ -19,9 +19,14 @@ public class VueLogin extends VBox implements IVue {
     public VueLogin(PresentationLogin presentationLogin) {
         this.presentationLogin = presentationLogin;
 
-        vueCheckBox = (VueCheckBox)presentationLogin.getPresentationCheckBox().getVue();   // presentation chz"ekbox
-        vueTextField = (VueTextField)presentationLogin.getPresentationTextField().getVue();
-        vueButton = (VueButton)presentationLogin.getPresentationButton().getVue();
+        vueCheckBox = new VueCheckBox(presentationLogin.getPresentationCheckBox());
+        presentationLogin.getPresentationCheckBox().setVue(vueCheckBox);
+
+        vueTextField = new VueTextField(presentationLogin.getPresentationTextField());
+        presentationLogin.getPresentationTextField().setVue(vueTextField);
+
+        vueButton = new VueButton(presentationLogin.getPresentationButton());
+        presentationLogin.getPresentationButton().setVue(vueButton);
         
 
         setAlignment(Pos.TOP_CENTER);

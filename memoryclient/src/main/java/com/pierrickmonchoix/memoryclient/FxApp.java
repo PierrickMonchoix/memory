@@ -1,10 +1,14 @@
 package com.pierrickmonchoix.memoryclient;
 
 import com.pierrickmonchoix.memoryclient.graphicComponent.Presentation;
+import com.pierrickmonchoix.memoryclient.graphicComponent.button.PresentationButton;
+import com.pierrickmonchoix.memoryclient.graphicComponent.button.VueButton;
 import com.pierrickmonchoix.memoryclient.graphicComponent.checkBox.PresentationCheckBox;
 import com.pierrickmonchoix.memoryclient.graphicComponent.checkBox.VueCheckBox;
 import com.pierrickmonchoix.memoryclient.graphicComponent.login.PresentationLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponent.login.VueLogin;
+import com.pierrickmonchoix.memoryclient.graphicComponent.scene.PresentationScene;
+import com.pierrickmonchoix.memoryclient.graphicComponent.scene.VueScene;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
@@ -41,57 +45,34 @@ public class FxApp extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        BasicConfigurator.configure();
-
         System.out.println("starting JFX ...");
 
         String nomInField = "samuel";
-        clientWs = WebsocketClient.getInstance(nomInField);
-        clientWs.sendMessage();
+        // long si ne marche pas
+/*         clientWs = WebsocketClient.getInstance(nomInField);
+        clientWs.sendMessage(); */
 
-        
-
-
-        primaryStage.setTitle("Hello World!");
-
-      /*   Button btnConnexion = new Button();
-        btnConnexion.setText("Connexion as " + nomInField);
-        btnConnexion.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("appui connexion");
-                clientWs = WebsocketClient.getInstance(nomInField);
-            }
-        });
-
-        Button btnMessage = new Button();
-        btnMessage.setText("Send message");
-        btnMessage.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("appui message");
-                clientWs.sendMessage();
-            }
-        }); */
-
-/*         PresentationCheckBox presentationCheckBox = new PresentationCheckBox("hey check", false);
-        VueCheckBox vueCheckBox = new VueCheckBox(presentationCheckBox);
-        presentationCheckBox.setVue(vueCheckBox); */
+        primaryStage.setTitle("Memory");
 
 
-        PresentationLogin presentationLogin = new PresentationLogin("Ton mail","Première connexion?",false);
+
+
+        PresentationLogin presentationLogin = new PresentationLogin("Ton mail","Première connexion!?",false);
         VueLogin vueLogin = new VueLogin(presentationLogin);
         presentationLogin.setVue(vueLogin); 
 
 
-        
-        
-        VBox root = new VBox();
-        root.setAlignment(Pos.CENTER);
-       // root.getChildren().add(btnConnexion);
-       // root.getChildren().add(btnMessage);
-        root.getChildren().add(vueLogin);
-        primaryStage.setScene(new Scene(root, 300, 250));
+        PresentationScene presentationScene = new PresentationScene();
+        VueScene vueScene = new VueScene(presentationScene);
+        presentationScene.setVue(vueScene);
+        presentationScene.setMainPresentation(presentationLogin);
+        presentationScene.updateVue();
+
+
+        primaryStage.setScene(vueScene);
+
+
         primaryStage.show();
+
     }
 }

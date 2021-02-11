@@ -18,9 +18,4 @@ public class PresentationButton extends Presentation {
         this.text = text;
     }
 
-    
-
-    
-
-
 }
