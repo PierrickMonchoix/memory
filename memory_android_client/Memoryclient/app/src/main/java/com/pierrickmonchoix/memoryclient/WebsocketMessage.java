@@ -1,4 +1,5 @@
-package com.pierrickmonchoix.memoryserver.websocketMessage;
+package com.pierrickmonchoix.memoryclient;
+
 
 import com.google.gson.Gson;
 
@@ -8,8 +9,8 @@ import com.google.gson.Gson;
  */
 public class WebsocketMessage {
 
-	private String pseudo;
-	private String contenu;
+    private String pseudo;
+    private String contenu;
     private int type;
 
     private static Gson gson = new Gson();
@@ -52,7 +53,7 @@ public class WebsocketMessage {
     }
 
 
-    
-    
-	
+
+
+
 }
