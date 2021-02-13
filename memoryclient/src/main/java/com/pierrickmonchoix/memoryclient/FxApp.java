@@ -20,7 +20,7 @@ public class FxApp extends Application {
 
     // private static Logger logger = Logger.getLogger(FxApp.class);
 
-    WebsocketClient clientWs;
+   // WebsocketClient clientWs;
 
     public static void main() {
 
@@ -39,8 +39,8 @@ public class FxApp extends Application {
          * clientWs = WebsocketClient.getInstance(nomInField); clientWs.sendMessage();
          */
 
-        clientWs = WebsocketClient.getInstance(nomInField); 
-        clientWs.sendMessage();
+/*         clientWs = WebsocketClient.getInstance(nomInField); 
+        clientWs.sendMessage(); */
 
         primaryStage.setTitle("Memory");
 
