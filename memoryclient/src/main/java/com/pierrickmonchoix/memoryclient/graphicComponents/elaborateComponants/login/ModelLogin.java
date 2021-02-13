@@ -15,7 +15,7 @@ public class ModelLogin implements IComponantListener {
     public ModelLogin(PresentationLogin presentationLogin) {
         this.presentationLogin = presentationLogin;
 
-        presentationLogin.getPresentationButton().addListener(this);
+        presentationLogin.addButtonListener(this);
 
         listListeners = new ArrayList<ILoginListener>();
 
@@ -35,8 +35,11 @@ public class ModelLogin implements IComponantListener {
         if(typeEvent == EComponantBasicEvent.BUTTON_PRESSED){
             if( ! getUsername().equals("") ){   // si le nom d'utilisateur est bien remplit!
                 notifyListenersOfSignInOrUp();
-                
-                if(isNewUser()){
+
+                /*
+                    LOGS:
+                */
+                if(isNewUser()){  // se connecrte a WS et envoie reponse a textResult
                     System.out.println("Tentative de premiere connexion en tant que : " + getUsername()) ;
                 }
                 else{

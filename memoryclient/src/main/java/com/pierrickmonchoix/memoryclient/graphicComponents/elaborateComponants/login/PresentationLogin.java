@@ -46,6 +46,10 @@ public class PresentationLogin extends Presentation implements IComponantListene
         return getPresentationCheckBox().isChecked();
     }
 
+    public void addButtonListener(IComponantListener listener){
+        presentationButton.addListener(listener);
+    }
+
     @Override
     public void whenNotified(EComponantBasicEvent typeEvent) {
         if (typeEvent == EComponantBasicEvent.CHECK_BOX_CHECKED){

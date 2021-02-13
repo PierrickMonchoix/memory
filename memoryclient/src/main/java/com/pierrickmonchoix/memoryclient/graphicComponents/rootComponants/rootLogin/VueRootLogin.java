@@ -2,26 +2,32 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootL
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.VueLogin;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult.VueLoginTextResult;
 
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 
 public class VueRootLogin extends VBox implements IVue {
     
-    private final PresentationRootLogin presentationRootLogin;
-
     private final VueLogin vueLogin;
 
+    private final VueLoginTextResult vueLoginTextResult;
+
     public VueRootLogin(PresentationRootLogin presentationRootLogin) {
-        this.presentationRootLogin = presentationRootLogin;
 
         vueLogin = new VueLogin(presentationRootLogin.getPresentationLogin());
         presentationRootLogin.getPresentationLogin().setVue(vueLogin);
 
+        vueLoginTextResult = new VueLoginTextResult(presentationRootLogin.getPresentationLoginTextResult());
+        presentationRootLogin.getPresentationLoginTextResult().setVue(vueLoginTextResult);;
+
         setAlignment(Pos.TOP_CENTER);
+
+
         
 
         getChildren().addAll(vueLogin);
+        getChildren().addAll(vueLoginTextResult);
 
         update();
     }

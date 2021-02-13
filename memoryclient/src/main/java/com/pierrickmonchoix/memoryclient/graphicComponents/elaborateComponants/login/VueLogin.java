@@ -10,14 +10,12 @@ import javafx.scene.layout.VBox;
 
 public class VueLogin extends VBox implements IVue {
     
-    private final PresentationLogin presentationLogin;
 
     private final VueCheckBox vueCheckBox;
     private final VueTextField vueTextField;
     private final VueButton vueButton;
 
     public VueLogin(PresentationLogin presentationLogin) {
-        this.presentationLogin = presentationLogin;
 
         vueCheckBox = new VueCheckBox(presentationLogin.getPresentationCheckBox());
         presentationLogin.getPresentationCheckBox().setVue(vueCheckBox);
