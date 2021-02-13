@@ -2,6 +2,7 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootL
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult.ModelLoginTextResult;
+import com.pierrickmonchoix.memoryclient.websocketClient.WebsocketClient;
 
 public class ModelRootLogin {
 
@@ -11,12 +12,12 @@ public class ModelRootLogin {
 
     private final PresentationRootLogin presentationRootLogin;
 
-    public ModelRootLogin(PresentationRootLogin presentationRootLogin) {
+    public ModelRootLogin(PresentationRootLogin presentationRootLogin , WebsocketClient websocketClient) {
         this.presentationRootLogin = presentationRootLogin;
 
         modelLogin = new ModelLogin(presentationRootLogin.getPresentationLogin());
 
-        modelLoginTextResult = new ModelLoginTextResult( presentationRootLogin.getPresentationLoginTextResult() , modelLogin);
+        modelLoginTextResult = new ModelLoginTextResult( presentationRootLogin.getPresentationLoginTextResult() , modelLogin , websocketClient);
 
     }
 

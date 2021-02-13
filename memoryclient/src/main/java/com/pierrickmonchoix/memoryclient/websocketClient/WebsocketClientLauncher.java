@@ -18,7 +18,16 @@ public class WebsocketClientLauncher {
 	
 
 	public static void main(String[] args) {
-		try {
+
+        WebsocketClient websocketClient = WebsocketClient.getInstance();
+        websocketClient.connectToEndpoint();
+        
+        websocketClient.sendMessage();
+
+        while(true){
+
+        }
+		/* try {
 			ClientManager client = ClientManager.createClient();
 			Session currentSession = client.connectToServer(new WebsocketClientEndpoint(),
 					new URI("ws://localhost:8026/chatwebsocket/chat/mickaelbaron"));
@@ -32,6 +41,6 @@ public class WebsocketClientLauncher {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} */
 	}
 }

@@ -3,6 +3,7 @@ package com.pierrickmonchoix.memoryclient;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         Button button = new Button(this);
 
         LinearLayout linearLayout = findViewById(R.id.monlinear);
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         linearLayout.addView(vueRootLogin);
+
+        Log.i("tag","helllooo");
 
     }
 }

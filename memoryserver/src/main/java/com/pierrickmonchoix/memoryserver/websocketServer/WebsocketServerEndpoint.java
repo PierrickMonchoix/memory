@@ -31,9 +31,14 @@ public class WebsocketServerEndpoint {
 	@OnMessage
 	public void onMessage(WebsocketMessage message, Session session) {
 
-		System.out.println("### le server recoit et envoie  : ");
+		System.out.println("### le server recoit : ");
 
         System.out.println(message);
+
+        System.out.println("### le server recoit : ");
+        message.setContenu("ce message a ete envoye par le server hey");
+        System.out.println(message);
+
 
         try {
             session.getBasicRemote().sendObject(message);
