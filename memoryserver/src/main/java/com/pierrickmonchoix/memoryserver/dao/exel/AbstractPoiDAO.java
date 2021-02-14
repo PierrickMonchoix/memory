@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryserver.dao.IDao;
 
@@ -12,6 +13,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public abstract class AbstractPoiDAO<T> implements IDao<T> {
+
+    private static Logger logger = Logger.getLogger(AbstractPoiDAO.class.getName());
 
 	//private static final String FILE__NAME = System.getProperty("user.home") + "/memorydata/BDD.xlsx";
 	private static final String FILE__NAME = System.getProperty("user.dir") + "/memoryserver/database/BDD.xlsx";
@@ -41,6 +44,7 @@ public abstract class AbstractPoiDAO<T> implements IDao<T> {
 	protected static void removeRow(Sheet sheet, int rowIndex) {
 	    int lastRowNum = sheet.getLastRowNum();
 	    if (rowIndex >= 0 && rowIndex < lastRowNum) {
+            logger.info("shift occurs");
 	        sheet.shiftRows(rowIndex + 1, lastRowNum, -1);   // remonte le tablea du bas d'une case (si on removeRow ca fait un trou)
 	    }
 	    if (rowIndex == lastRowNum) {
@@ -49,6 +53,14 @@ public abstract class AbstractPoiDAO<T> implements IDao<T> {
 	            sheet.removeRow(removingRow);
 	        }
 	    }
+	}
+
+    protected static void resetTable(Sheet sheet) {
+	    int lastRowNum = sheet.getLastRowNum();
+	    for(int i = 0 ; i <= lastRowNum ; i++){
+            logger.info("remove row0");
+            removeRow(sheet, 1);
+        }
 	}
 	
 }

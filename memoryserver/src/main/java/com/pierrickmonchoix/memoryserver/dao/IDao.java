@@ -11,6 +11,8 @@ public interface IDao<T> {
 	void create(T elem);
 	void update(T elem);
 	void delete(T elem);
+    public void resetAllTable();
+    
 
     public boolean isExisting(T elem);
 	

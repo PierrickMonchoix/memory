@@ -15,7 +15,9 @@ public class FactoryDao {
 
     private static IDao<PersonneEntity> personneDAO = new PersonnePoiDAO();
 
- 
+    public static void resetDatabase(){
+        personneDAO.resetAllTable();
+    }
 
 
 

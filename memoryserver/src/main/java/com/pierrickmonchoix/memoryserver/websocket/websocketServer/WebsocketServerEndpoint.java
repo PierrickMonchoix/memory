@@ -35,19 +35,20 @@ public class WebsocketServerEndpoint {
         logger.info("le server recoit : " + message);
 
         logger.info("update list server");
+        WebsocketServerHelper.receiveMessage( message, session);
 
-        WebsocketServerHelper.updateListSessions(message.getPseudo(), session);
+/*         WebsocketServerHelper.updateListSessions(message.getPseudo(), session);
 
         message.setContenu("mess envoye par server");
 
-        WebsocketServerHelper.sendMessageToClient("jack", message);
+        WebsocketServerHelper.sendMessageToClient("jack", message); */
 
     }
 
     @OnClose
     public void onClose(Session session) {
         System.out.println("ChatEndpoint.onClose()");
-
+        WebsocketServerHelper.removeSession(session);
     }
 
 }

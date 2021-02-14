@@ -2,5 +2,5 @@ package com.pierrickmonchoix.memoryserver.websocket.websocketMessage;
 
 public enum EMessageType {
 
-    LOGIN, TEST;    
+    SIGN_IN, SIGN_UP;    
 }
