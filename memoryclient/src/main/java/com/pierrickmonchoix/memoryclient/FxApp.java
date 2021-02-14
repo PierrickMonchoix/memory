@@ -1,18 +1,12 @@
 package com.pierrickmonchoix.memoryclient;
 
-import javax.websocket.WebSocketContainer;
-
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.PresentationLogin;
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.VueLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.ModelRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.PresentationRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.VueRootLogin;
-import com.pierrickmonchoix.memoryclient.websocketClient.WebsocketClient;
+import com.pierrickmonchoix.memoryclient.websocket.websocketClient.WebsocketClient;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -67,7 +61,7 @@ public class FxApp extends Application {
         PresentationRootLogin presentationRootLogin = new PresentationRootLogin("bernard", "first co?", true);
         VueRootLogin vueRootLogin = new VueRootLogin(presentationRootLogin);
         presentationRootLogin.setVue(vueRootLogin);
-        ModelRootLogin modelRootLogin = new ModelRootLogin(presentationRootLogin , websocketClient);
+        ModelRootLogin modelRootLogin = new ModelRootLogin(presentationRootLogin);
 
         
 

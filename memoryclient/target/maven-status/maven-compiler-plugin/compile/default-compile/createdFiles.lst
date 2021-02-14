@@ -2,7 +2,6 @@ com/pierrickmonchoix/memoryclient/websocketClient/WebsocketClient.class
 com/pierrickmonchoix/memoryclient/FxApp.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/checkBox/VueCheckBox$1.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/PresentationLogin.class
-com/pierrickmonchoix/memoryclient/websocketClient/IWebsocketClientListener.class
 com/pierrickmonchoix/memoryclient/websocketMessage/WebsocketMessageEncoder.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/VueLogin.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textField/VueTextField.class
@@ -25,8 +24,10 @@ com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/loginTex
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/loginTextResult/ModelLoginTextResult.class
 com/pierrickmonchoix/memoryclient/websocketMessage/WebsocketMessageDecoder.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/checkBox/VueCheckBox.class
+com/pierrickmonchoix/memoryclient/websocketClient/WebsocketHelper.class
 com/pierrickmonchoix/memoryclient/graphicComponents/Presentation.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/ModelLogin.class
+com/pierrickmonchoix/memoryclient/websocketClient/IWebsocketListener.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textOutput/PresentationTextOutput.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/PresentationNotifier.class
 com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootLogin/VueRootLogin.class

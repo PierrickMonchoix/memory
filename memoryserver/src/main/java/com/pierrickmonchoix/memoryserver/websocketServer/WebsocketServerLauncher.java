@@ -12,12 +12,12 @@ public class WebsocketServerLauncher {
 
 	public static void main(String[] args) {
         
-		Server server = new Server("localhost", 8026, "/chatwebsocket", null, WebsocketServerEndpoint.class);
+		Server server = new Server("localhost", 8026, "/memory", null, WebsocketServerEndpoint.class);
 
 		try {
 			server.start();
 
-			System.out.println("Tyrus app started available at ws://localhost:8026/chatwebsocket"
+			System.out.println("Tyrus app started available at ws://localhost:8026/memory"
 					+ "\nHit enter to stop it...");
 
 			System.in.read();

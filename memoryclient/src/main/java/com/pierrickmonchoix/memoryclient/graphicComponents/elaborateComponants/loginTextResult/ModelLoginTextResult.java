@@ -2,27 +2,27 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ILoginListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
-import com.pierrickmonchoix.memoryclient.websocketClient.IWebsocketClientListener;
-import com.pierrickmonchoix.memoryclient.websocketClient.WebsocketClient;
-import com.pierrickmonchoix.memoryclient.websocketMessage.WebsocketMessage;
+import com.pierrickmonchoix.memoryclient.websocket.WebsocketHelper;
+import com.pierrickmonchoix.memoryclient.websocket.websocketClient.IWebsocketListener;
+import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
+import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
-public class ModelLoginTextResult implements ILoginListener, IWebsocketClientListener { // implements IWebsocketListener
+public class ModelLoginTextResult implements ILoginListener, IWebsocketListener { // implements IWebsocketListener
 
     private PresentationLoginTextResult presentationLoginTextResult;
     private ModelLogin modelLogin; // connait model login
 
-    private WebsocketClient websocketClient;
+   
 
     private String text;
 
-    public ModelLoginTextResult(PresentationLoginTextResult presentationLoginTextResult, ModelLogin modelLogin , WebsocketClient websocketClient) {
+    public ModelLoginTextResult(PresentationLoginTextResult presentationLoginTextResult, ModelLogin modelLogin) {
         this.presentationLoginTextResult = presentationLoginTextResult;
         this.modelLogin = modelLogin;
 
-        this.websocketClient = websocketClient;
 
 
-        websocketClient.addListener(this);
+        WebsocketHelper.addListener(this);
         modelLogin.addListener(this);
     }
 
@@ -36,7 +36,7 @@ public class ModelLoginTextResult implements ILoginListener, IWebsocketClientLis
                 text = "Tentative de connexion habituelle en tant que : " + modelLogin.getUsername() + "\n";
                 presentationLoginTextResult.setText(text); // on ajoutera la reponse WS
             }
-            websocketClient.sendMessage();
+            WebsocketHelper.sendMessageToServer(EMessageType.LOGIN,"yolo");
         }
     }
 

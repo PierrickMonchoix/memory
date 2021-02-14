@@ -10,22 +10,21 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
-import com.pierrickmonchoix.memoryserver.websocketMessage.WebsocketMessage;
-import com.pierrickmonchoix.memoryserver.websocketMessage.WebsocketMessageDecoder;
-import com.pierrickmonchoix.memoryserver.websocketMessage.WebsocketMessageEncoder;
+import com.pierrickmonchoix.memoryserver.websocketServer.websocketMessage.WebsocketMessage;
+import com.pierrickmonchoix.memoryserver.websocketServer.websocketMessage.WebsocketMessageDecoder;
+import com.pierrickmonchoix.memoryserver.websocketServer.websocketMessage.WebsocketMessageEncoder;
 
 
 /**
- * @author Mickael BARON (baron.mickael@gmail.com)
+ * grace aux encodeurd/decoders, la classe recoit des json et renvoie des json automatiquement (avec andoird on doit le faire a la main a priori)
  */
-@ServerEndpoint(value = "/chat/{username}" , encoders = WebsocketMessageEncoder.class, decoders = WebsocketMessageDecoder.class)
+@ServerEndpoint(value = "/websocket" , encoders = WebsocketMessageEncoder.class, decoders = WebsocketMessageDecoder.class)
 public class WebsocketServerEndpoint {
 
 	@OnOpen
-	public void onOpen(Session session, @PathParam("chatroom") String chatRoom, @PathParam("username") String userName)
+	public void onOpen(Session session)
 			throws IOException {
 		System.out.println("ChatEndpoint.onOpen()");
-
 	}
 
 	@OnMessage
