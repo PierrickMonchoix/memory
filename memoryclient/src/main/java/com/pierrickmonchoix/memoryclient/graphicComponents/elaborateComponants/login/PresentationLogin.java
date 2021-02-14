@@ -51,7 +51,7 @@ public class PresentationLogin extends Presentation implements IComponantListene
     }
 
     @Override
-    public void whenNotified(EComponantBasicEvent typeEvent) {
+    public void whenNotifiedByComponant(EComponantBasicEvent typeEvent) {
         if (typeEvent == EComponantBasicEvent.CHECK_BOX_CHECKED){
             if(isNewUser()){
                 System.out.println("nouveau");

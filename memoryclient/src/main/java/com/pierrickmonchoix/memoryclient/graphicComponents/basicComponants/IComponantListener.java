@@ -4,6 +4,6 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.EComp
 
 public interface IComponantListener {
 
-    public void whenNotified(EComponantBasicEvent typeEvent);
+    public void whenNotifiedByComponant(EComponantBasicEvent typeEvent);
 
 }

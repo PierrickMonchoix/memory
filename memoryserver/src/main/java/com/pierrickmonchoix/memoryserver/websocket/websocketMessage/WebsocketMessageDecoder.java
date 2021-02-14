@@ -1,4 +1,4 @@
-package com.pierrickmonchoix.memoryserver.websocketServer.websocketMessage;
+package com.pierrickmonchoix.memoryserver.websocket.websocketMessage;
 
 import javax.websocket.DecodeException;
 import javax.websocket.Decoder;

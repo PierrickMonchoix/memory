@@ -37,7 +37,7 @@ public class WebsocketClient {
 
         try {
             currentSession = client.connectToServer(websocketClientEndpoint,
-                    new URI("ws://192.168.1.41:8026/memory/chat/mickaelbaron"));
+                    new URI("ws://localhost:8026/memory/websocket"));
         } catch (DeploymentException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

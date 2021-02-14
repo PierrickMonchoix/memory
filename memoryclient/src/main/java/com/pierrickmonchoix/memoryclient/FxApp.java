@@ -1,5 +1,7 @@
 package com.pierrickmonchoix.memoryclient;
 
+import java.util.logging.Logger;
+
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.ModelRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.PresentationRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.VueRootLogin;
@@ -17,6 +19,8 @@ public class FxApp extends Application {
 
     private WebsocketClient websocketClient;
 
+
+    private static Logger logger = Logger.getLogger(FxApp.class.getName());
     // private static Logger logger = Logger.getLogger(FxApp.class);
 
    // WebsocketClient clientWs;
@@ -33,6 +37,7 @@ public class FxApp extends Application {
         System.out.println("starting JFX ...");
 
         String nomInField = "samuel";
+        logger.info("go jfc");
         // long si ne marche pas
         /*
          * clientWs = WebsocketClient.getInstance(nomInField); clientWs.sendMessage();

@@ -24,7 +24,7 @@ public abstract class PresentationNotifier extends Presentation {
 
     public void notifyListeners(){
         for(IComponantListener listener : listListeners){
-            listener.whenNotified(eventType);
+            listener.whenNotifiedByComponant(eventType);
         }
     }
     

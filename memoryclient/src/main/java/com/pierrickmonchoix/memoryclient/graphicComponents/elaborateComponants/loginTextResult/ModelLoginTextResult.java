@@ -1,5 +1,7 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult;
 
+import java.util.logging.Logger;
+
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ILoginListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketHelper;
@@ -7,10 +9,14 @@ import com.pierrickmonchoix.memoryclient.websocket.websocketClient.IWebsocketLis
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
+import javafx.application.Platform;
+
 public class ModelLoginTextResult implements ILoginListener, IWebsocketListener { // implements IWebsocketListener
 
     private PresentationLoginTextResult presentationLoginTextResult;
     private ModelLogin modelLogin; // connait model login
+
+    private static Logger logger = Logger.getLogger(ModelLoginTextResult.class.getName());
 
    
 
@@ -42,8 +48,15 @@ public class ModelLoginTextResult implements ILoginListener, IWebsocketListener 
 
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage websocketMessage) {
+        logger.info("jai ete notifié par ws");
         text = text + websocketMessage.getContenu();
-        presentationLoginTextResult.setText(text); // on a ajouté la reponse WS
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                presentationLoginTextResult.setText(text); // on a ajouté la reponse WS
+            }
+        });
+        
     }
 
     // when notify by ws

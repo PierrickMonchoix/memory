@@ -1,6 +1,8 @@
 package com.pierrickmonchoix.memoryclient.websocket;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryclient.websocket.websocketClient.IWebsocketListener;
 import com.pierrickmonchoix.memoryclient.websocket.websocketClient.WebsocketClient;
@@ -8,6 +10,8 @@ import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
 public class WebsocketHelper {
+
+    private static Logger logger = Logger.getLogger(WebsocketHelper.class.getName());
 
     private static String pseudo;
 
@@ -22,6 +26,7 @@ public class WebsocketHelper {
     public static void initialize() {
         websocketClient = WebsocketClient.getInstance();
         pseudo = "unknown";
+        listListeners = new ArrayList<IWebsocketListener>();
     }
 
     public static void sendMessageToServer(EMessageType type , String contenu) {
@@ -30,7 +35,9 @@ public class WebsocketHelper {
     }
 
     public static void notifyListenersOfMessage(WebsocketMessage websocketMessage) {
+        logger.info("notification des ws listeners");
         for (IWebsocketListener listener : listListeners) {
+            logger.info("on a notifié un ws listeners");
             listener.whenReceiveWebsocketMessage(websocketMessage);
         }
     }

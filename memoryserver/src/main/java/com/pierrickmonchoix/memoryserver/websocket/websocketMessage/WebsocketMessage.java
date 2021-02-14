@@ -1,4 +1,4 @@
-package com.pierrickmonchoix.memoryserver.websocketServer.websocketMessage;
+package com.pierrickmonchoix.memoryserver.websocket.websocketMessage;
 
 import com.google.gson.Gson;
 
