@@ -3,11 +3,11 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.
 import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textOutput.PresentationTextOutput;
 
-public class PresentationLoginTextResult extends Presentation{
+public class PresentationLoginResult extends Presentation{
 
     private final PresentationTextOutput presentationTextOutput;
 
-    public PresentationLoginTextResult(String text) {
+    public PresentationLoginResult(String text) {
 
         presentationTextOutput = new PresentationTextOutput(text);
         

@@ -2,6 +2,9 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.text
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
 
+/**
+ * Text input (Utilisateur > Application)
+ */
 public class PresentationTextField extends Presentation {
 
     private final String defaultText;

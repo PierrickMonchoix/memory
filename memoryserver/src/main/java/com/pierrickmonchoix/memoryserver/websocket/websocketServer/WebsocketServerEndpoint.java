@@ -16,6 +16,9 @@ import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMes
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessageEncoder;
 
 /**
+ * Decrit ce que dois faire le serveur lors de la reception de msg , open et close de sessions.
+ * Il communique UNIQUEMENT avec 'WebsocketServerHelper'
+ * 
  * grace aux encodeurd/decoders, la classe recoit des json et renvoie des json
  * automatiquement (avec andoird on doit le faire a la main a priori)
  */

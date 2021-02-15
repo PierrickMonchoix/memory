@@ -7,6 +7,12 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.butto
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.checkBox.PresentationCheckBox;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textField.PresentationTextField;
 
+/**
+ * Le login doit avoir un bouton vert si son checkbox est coché ("je suis nouveau") : SignUp
+ * et blanc sinon : SignIn
+ * Pour l'instant, aucun mot de passe n'est demandé
+ * 
+ */
 public class PresentationLogin extends Presentation implements IComponantListener {
 
     private final PresentationCheckBox presentationCheckBox;
@@ -19,7 +25,7 @@ public class PresentationLogin extends Presentation implements IComponantListene
 
         presentationTextField = new PresentationTextField(defaultPseudo);
 
-        presentationButton = new PresentationButton("Login");
+        presentationButton = new PresentationButton("");
 
         presentationCheckBox.addListener(this);
 

@@ -1,25 +1,31 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult.ModelLoginTextResult;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult.ModelLoginResult;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketHelper;
 
+/**
+ * Composé d'un login qui enoie au serveur un msg de tentative de connexion.
+ * le serveur répond au loginTextResult si c'est ok ou non
+ */
 public class ModelRootLogin {
 
-    private final ModelLogin modelLogin;
 
-    private final ModelLoginTextResult modelLoginTextResult;
-
-    private final PresentationRootLogin presentationRootLogin;
 
     public ModelRootLogin(PresentationRootLogin presentationRootLogin) {
-        this.presentationRootLogin = presentationRootLogin;
 
         WebsocketHelper.initialize();
 
-        modelLogin = new ModelLogin(presentationRootLogin.getPresentationLogin());
+        /*
+        lancement des modles filles
+        */
+        ModelLogin modelLogin = new ModelLogin(presentationRootLogin.getPresentationLogin());
 
-        modelLoginTextResult = new ModelLoginTextResult( presentationRootLogin.getPresentationLoginTextResult() , modelLogin);
+        /*
+        ici, un warning justifié car l'objet ne paret pas utilisé,
+        mais c'est lui, à la construction, qui lance une partie du business.
+        */
+        ModelLoginResult modelLoginTextResult = new ModelLoginResult( presentationRootLogin.getPresentationLoginTextResult() , modelLogin);
 
     }
 

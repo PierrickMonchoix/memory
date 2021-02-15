@@ -2,19 +2,19 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootL
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.PresentationLogin;
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult.PresentationLoginTextResult;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult.PresentationLoginResult;
 
 public class PresentationRootLogin extends Presentation{
 
     private final PresentationLogin presentationLogin;
 
-    private final PresentationLoginTextResult presentationLoginTextResult;
+    private final PresentationLoginResult presentationLoginTextResult;
 
     public PresentationRootLogin(String defaultPseudo ,  String textCheckBox , boolean defaultCheck) {
 
         presentationLogin = new PresentationLogin(  defaultPseudo ,   textCheckBox ,  defaultCheck);
 
-        presentationLoginTextResult = new PresentationLoginTextResult("hellooo");
+        presentationLoginTextResult = new PresentationLoginResult("hellooo");
 
 
     }
@@ -23,7 +23,7 @@ public class PresentationRootLogin extends Presentation{
         return presentationLogin;
     }
 
-    public PresentationLoginTextResult getPresentationLoginTextResult() {
+    public PresentationLoginResult getPresentationLoginTextResult() {
         return presentationLoginTextResult;
     }
 

@@ -3,8 +3,9 @@ package com.pierrickmonchoix.memoryserver.websocket.websocketMessage;
 import com.google.gson.Gson;
 
 /**
- * Message envoyé par les clients
- * @author michaelrichard
+ * Un message websocket composé d'un pseudo (pou savoir ace qui on parle)
+ *  d'un type (pour savoir le sujet dont on parle)
+ *  le contenu (ce qu'on envoie comme info) (un nombre, une info binaire ...)
  */
 public class WebsocketMessage {
 

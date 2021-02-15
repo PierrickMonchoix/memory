@@ -18,7 +18,8 @@ import javafx.application.Platform;
 
 
 /**
- * need helper
+ * Client web socket muni d'un pattern singleton.
+ * Ce client est UNIQUEMENT utilisé par 'WebsocketHelper' 
  */
 public class WebsocketClient {
 

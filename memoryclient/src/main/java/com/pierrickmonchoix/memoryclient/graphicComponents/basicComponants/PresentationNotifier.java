@@ -5,6 +5,10 @@ import java.util.List;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
 
+
+/**
+ * Des présentation qui peuvent alerter des listeners d'un event particulier (appui sur un bouton)
+ */
 public abstract class PresentationNotifier extends Presentation {
 
     private final List<IComponantListener> listListeners;

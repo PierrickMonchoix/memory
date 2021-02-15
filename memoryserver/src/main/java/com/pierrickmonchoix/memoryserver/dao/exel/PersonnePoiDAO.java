@@ -6,13 +6,17 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import com.pierrickmonchoix.memoryserver.dao.entity.PersonneEntity;
+import com.pierrickmonchoix.memoryserver.dao.entitys.PersonneEntity;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+
+/**
+ * Permet de mofifier et des get les valeurs de la table exel "Perso"
+ */
 public class PersonnePoiDAO extends AbstractPoiDAO<PersonneEntity> {
 
     private static Logger LOGGER = Logger.getLogger(PersonnePoiDAO.class.getName());

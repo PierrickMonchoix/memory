@@ -1,12 +1,9 @@
 package com.pierrickmonchoix.memoryserver.websocket.websocketServer;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.glassfish.tyrus.server.Server;
 
 /**
- * @author Mickael BARON (baron.mickael@gmail.com)
+ * Permet de lancer le serveur ws
  */
 public class WebsocketServerLauncher {
 
@@ -27,4 +24,5 @@ public class WebsocketServerLauncher {
 			server.stop();
 		}
 	}
+
 }

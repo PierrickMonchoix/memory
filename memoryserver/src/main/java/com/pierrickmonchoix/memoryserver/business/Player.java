@@ -1,10 +1,11 @@
 package com.pierrickmonchoix.memoryserver.business;
 
+/**
+ * un player est une personne qui a reussi a passer le lgoin, connexion réussie.
+ */
 public class Player {
 
     private String pseudo;
-
-    
 
     public String getPseudo() {
         return pseudo;
@@ -17,9 +18,6 @@ public class Player {
     public Player(String pseudo) {
         this.pseudo = pseudo;
     }
-
-
-    
 
     @Override
     public int hashCode() {
@@ -51,9 +49,4 @@ public class Player {
         return "Player [pseudo=" + pseudo + "]";
     }
 
-    
-
-    
-
-    
 }

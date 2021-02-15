@@ -1,14 +1,13 @@
-package com.pierrickmonchoix.memoryserver.dao.entity;
+package com.pierrickmonchoix.memoryserver.dao.entitys;
 
+/**
+ * une entité stoquée d'une Personne
+ */
 public class PersonneEntity {
 
     private int id;
     private String pseudo;
 
-    
-
-
-  
     public int getId() {
         return id;
     }
@@ -49,11 +48,5 @@ public class PersonneEntity {
             return false;
         return true;
     }
-
-
-    
-   
-    
-    
 
 }

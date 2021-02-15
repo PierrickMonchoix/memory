@@ -6,23 +6,28 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.l
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketHelper;
 import com.pierrickmonchoix.memoryclient.websocket.websocketClient.IWebsocketListener;
-import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
 import javafx.application.Platform;
 
-public class ModelLoginTextResult implements ILoginListener, IWebsocketListener { // implements IWebsocketListener
 
-    private PresentationLoginTextResult presentationLoginTextResult;
+/**
+ * Recoit le resultat du serveur :  si la connexion est accépté ou non.
+ *  i.e si le signIn marche car il y avais bien ce pseudo en stock ou inversement pour le signUp
+ * Il affiche ce resultat par le bais d'un TextviewOutput
+ */
+public class ModelLoginResult implements ILoginListener, IWebsocketListener { // implements IWebsocketListener
+
+    private PresentationLoginResult presentationLoginTextResult;
     private ModelLogin modelLogin; // connait model login
 
-    private static Logger logger = Logger.getLogger(ModelLoginTextResult.class.getName());
+    private static Logger logger = Logger.getLogger(ModelLoginResult.class.getName());
 
    
 
     private String text;
 
-    public ModelLoginTextResult(PresentationLoginTextResult presentationLoginTextResult, ModelLogin modelLogin) {
+    public ModelLoginResult(PresentationLoginResult presentationLoginTextResult, ModelLogin modelLogin) {
         this.presentationLoginTextResult = presentationLoginTextResult;
         this.modelLogin = modelLogin;
 
@@ -38,11 +43,9 @@ public class ModelLoginTextResult implements ILoginListener, IWebsocketListener 
             if (modelLogin.isNewUser()) { // se connecrte a WS et envoie reponse a textResult
                 text = "Tentative de premiere connexion en tant que : " + modelLogin.getUsername() + "\n";
                 presentationLoginTextResult.setText(text); // on ajoutera la reponse WS
-                WebsocketHelper.sendMessageToServer(EMessageType.SIGN_UP,modelLogin.getUsername());
             } else {
                 text = "Tentative de connexion habituelle en tant que : " + modelLogin.getUsername() + "\n";
                 presentationLoginTextResult.setText(text); // on ajoutera la reponse WS
-                WebsocketHelper.sendMessageToServer(EMessageType.SIGN_IN,modelLogin.getUsername());
             }
             
         }

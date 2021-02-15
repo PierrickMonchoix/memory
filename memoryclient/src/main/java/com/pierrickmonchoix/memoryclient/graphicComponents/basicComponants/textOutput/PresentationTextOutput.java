@@ -2,6 +2,9 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.text
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
 
+/**
+ * Text output (Application > Utilisateur)
+ */
 public class PresentationTextOutput extends Presentation {
 
     private String text;

@@ -8,11 +8,14 @@ import java.util.logging.Logger;
 import javax.websocket.EncodeException;
 import javax.websocket.Session;
 
-import com.pierrickmonchoix.memoryserver.business.ConnectedPlayersManager;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessageTreater;
 import com.pierrickmonchoix.memoryserver.websocket.websocketServer.WebsocketServerLauncher;
 
+/**
+ * set d'intermediaire entre le serveur websocket etla partie business.
+ * permet d'envoyer des msg a des client, en recevoir et de lancer le serveur
+ */
 public class WebsocketServerHelper {
 
     private static List<Session> listSessions;
@@ -76,7 +79,7 @@ public class WebsocketServerHelper {
     }
 
     public static void removeSession(Session s) {
-        listSessions.removeIf((session -> (session.getId().equals(s.getId()) )));
+        listSessions.removeIf((session -> (session.getId().equals(s.getId()))));
     }
 
     public static Session getSession(String pseudo) {

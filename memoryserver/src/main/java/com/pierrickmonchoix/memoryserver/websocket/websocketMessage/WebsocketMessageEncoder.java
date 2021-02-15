@@ -6,26 +6,24 @@ import javax.websocket.EndpointConfig;
 
 import com.google.gson.Gson;
 
-public class WebsocketMessageEncoder implements Encoder.Text<WebsocketMessage>{
+public class WebsocketMessageEncoder implements Encoder.Text<WebsocketMessage> {
 
-	private static Gson gson = new Gson();
-	
-	@Override
-	public void init(EndpointConfig config) {
-		// TODO Auto-generated method stub
-	}
+    private static Gson gson = new Gson();
 
-	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
+    @Override
+    public void init(EndpointConfig config) {
+    }
 
-	/**
-	 * Création d'un objet Json pour l'envoie
-	 */
-	@Override
-	public String encode(WebsocketMessage mess) throws EncodeException {
-		return gson.toJson(mess);		
-	}
+    @Override
+    public void destroy() {
+    }
+
+    /**
+     * Création d'un objet Json pour l'envoie
+     */
+    @Override
+    public String encode(WebsocketMessage mess) throws EncodeException {
+        return gson.toJson(mess);
+    }
 
 }

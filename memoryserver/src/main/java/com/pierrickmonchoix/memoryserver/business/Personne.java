@@ -1,5 +1,9 @@
 package com.pierrickmonchoix.memoryserver.business;
 
+/**
+ * une personne est un joueur qui n'a pas encore passé le login, il n'est pas
+ * cnore connecté
+ */
 public class Personne {
 
     private String pseudo;
@@ -41,12 +45,9 @@ public class Personne {
         return true;
     }
 
-	@Override
-	public String toString() {
-		return "Personne [pseudo=" + pseudo + "]";
-	}
+    @Override
+    public String toString() {
+        return "Personne [pseudo=" + pseudo + "]";
+    }
 
-    
-     
-    
 }

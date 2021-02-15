@@ -13,7 +13,7 @@ import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMes
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessageEncoder;
 
 /**
- * @author Mickael BARON (baron.mickael@gmail.com)
+ * Décrit ce que doit faire le client websocket
  */
 @ClientEndpoint(encoders = WebsocketMessageEncoder.class, decoders = WebsocketMessageDecoder.class)
 public class WebsocketClientEndpoint {

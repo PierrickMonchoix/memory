@@ -4,11 +4,10 @@ import java.util.logging.Logger;
 
 import javax.websocket.Session;
 
-import com.pierrickmonchoix.memoryserver.business.ConnectedPlayersManager;
+import com.pierrickmonchoix.memoryserver.business.PlayersManager;
 import com.pierrickmonchoix.memoryserver.business.Personne;
 import com.pierrickmonchoix.memoryserver.dao.FactoryDao;
 import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
-import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 
 public class WebsocketMessageTreater {
 
@@ -35,7 +34,7 @@ public class WebsocketMessageTreater {
             message.setContenu("ok_existing_pseudo");
 
             WebsocketServerHelper.givePseudoToSession(session, pseudo);
-            ConnectedPlayersManager.addNewPlayerWithPseudo(pseudo);
+            PlayersManager.addNewPlayerWithPseudo(pseudo);
         } else {
             message.setContenu("error_not_existing_pseudo");
         }
@@ -53,7 +52,7 @@ public class WebsocketMessageTreater {
             message.setContenu("ok_not_existing_pseudo");
 
             WebsocketServerHelper.givePseudoToSession(session, pseudo);
-            ConnectedPlayersManager.addNewPlayerWithPseudo(pseudo);
+            PlayersManager.addNewPlayerWithPseudo(pseudo);
             FactoryDao.createPersonne(new Personne(pseudo));
         }
         WebsocketServerHelper.sendMessageToClient(session, message);

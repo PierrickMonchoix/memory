@@ -5,11 +5,11 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textO
 
 import javafx.scene.layout.VBox;
 
-public class VueLoginTextResult extends VBox implements IVue {
+public class VueLoginResult extends VBox implements IVue {
 
     private final VueTextOutput vueTextOutput;
 
-    public VueLoginTextResult(PresentationLoginTextResult presentationLoginTextResult) {
+    public VueLoginResult(PresentationLoginResult presentationLoginTextResult) {
 
         vueTextOutput = new VueTextOutput(presentationLoginTextResult.getPresentationTextOutput());
         presentationLoginTextResult.getPresentationTextOutput().setVue(vueTextOutput);

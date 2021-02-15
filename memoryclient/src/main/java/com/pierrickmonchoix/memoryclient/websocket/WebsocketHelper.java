@@ -9,10 +9,17 @@ import com.pierrickmonchoix.memoryclient.websocket.websocketClient.WebsocketClie
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
+/**
+ * La classe "statique" qui fait le lien entre le business et le serveur. On
+ * peut grace a cette classe envoyer des messages au serveur et en rececoir.
+ */
 public class WebsocketHelper {
 
     private static Logger logger = Logger.getLogger(WebsocketHelper.class.getName());
 
+    /**
+     * le pseudo du joueur est mémorisé ici
+     */
     private static String pseudo;
 
     private static WebsocketClient websocketClient;
@@ -23,14 +30,21 @@ public class WebsocketHelper {
         // static class
     }
 
+    /**
+     * inititialise la classe
+     */
     public static void initialize() {
         websocketClient = WebsocketClient.getInstance();
         pseudo = "unknown";
         listListeners = new ArrayList<IWebsocketListener>();
     }
 
-    public static void sendMessageToServer(EMessageType type , String contenu) {
-        WebsocketMessage websocketMessage = new WebsocketMessage(pseudo,type,contenu);
+    public static void setPseudo(String pseudo) {
+        WebsocketHelper.pseudo = pseudo;
+    }
+
+    public static void sendMessageToServer(EMessageType type, String contenu) {
+        WebsocketMessage websocketMessage = new WebsocketMessage(pseudo, type, contenu);
         websocketClient.sendMessage(websocketMessage);
     }
 
@@ -42,21 +56,14 @@ public class WebsocketHelper {
         }
     }
 
-
-    public static void setPseudo(String pseudo) {
-        WebsocketHelper.pseudo = pseudo;
-    }
-
-    public static void addListener(IWebsocketListener listener){
+    public static void addListener(IWebsocketListener listener) {
         listListeners.add(listener);
     }
 
-    public static void notifyListenersOfWebsocketMessage(WebsocketMessage websocketMessage){
+    public static void notifyListenersOfWebsocketMessage(WebsocketMessage websocketMessage) {
         for (IWebsocketListener listener : listListeners) {
             listener.whenReceiveWebsocketMessage(websocketMessage);
         }
     }
-
-
 
 }

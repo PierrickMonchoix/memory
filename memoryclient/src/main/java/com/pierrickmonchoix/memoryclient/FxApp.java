@@ -12,9 +12,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * mvn clean javafx:run pour run cette classe
+ *
+ * C'est la classe qui lance le client JavaFX.
+ *  mvn clean javafx:run pour run cette classe
  */
-
 public class FxApp extends Application {
 
     private WebsocketClient websocketClient;
@@ -36,8 +37,6 @@ public class FxApp extends Application {
 
         System.out.println("starting JFX ...");
 
-        String nomInField = "samuel";
-        logger.info("go jfc");
         // long si ne marche pas
         /*
          * clientWs = WebsocketClient.getInstance(nomInField); clientWs.sendMessage();
