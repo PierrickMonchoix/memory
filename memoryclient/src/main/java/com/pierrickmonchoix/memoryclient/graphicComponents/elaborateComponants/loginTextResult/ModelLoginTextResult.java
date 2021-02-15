@@ -38,11 +38,13 @@ public class ModelLoginTextResult implements ILoginListener, IWebsocketListener 
             if (modelLogin.isNewUser()) { // se connecrte a WS et envoie reponse a textResult
                 text = "Tentative de premiere connexion en tant que : " + modelLogin.getUsername() + "\n";
                 presentationLoginTextResult.setText(text); // on ajoutera la reponse WS
+                WebsocketHelper.sendMessageToServer(EMessageType.SIGN_UP,modelLogin.getUsername());
             } else {
                 text = "Tentative de connexion habituelle en tant que : " + modelLogin.getUsername() + "\n";
                 presentationLoginTextResult.setText(text); // on ajoutera la reponse WS
+                WebsocketHelper.sendMessageToServer(EMessageType.SIGN_IN,modelLogin.getUsername());
             }
-            WebsocketHelper.sendMessageToServer(EMessageType.LOGIN,"yolo");
+            
         }
     }
 

@@ -23,6 +23,7 @@ public class PresentationLogin extends Presentation implements IComponantListene
 
         presentationCheckBox.addListener(this);
 
+
     }
 
     public PresentationCheckBox getPresentationCheckBox() {
@@ -53,16 +54,20 @@ public class PresentationLogin extends Presentation implements IComponantListene
     @Override
     public void whenNotifiedByComponant(EComponantBasicEvent typeEvent) {
         if (typeEvent == EComponantBasicEvent.CHECK_BOX_CHECKED){
-            if(isNewUser()){
-                System.out.println("nouveau");
-                getPresentationButton().setText("Sign up");
-                getPresentationButton().setColor("#3F7");  // #3F7 = #33FF77
-            }
-            else{
-                System.out.println("ancien");
-                getPresentationButton().setText("Sign in");
-                getPresentationButton().setColor(null);
-            }
+            updatePresentation();
+        }
+    }
+
+    public void updatePresentation(){  
+        if(isNewUser()){
+            System.out.println("nouveau");
+            getPresentationButton().setText("Sign up");
+            getPresentationButton().setColor("#3F7");  // #3F7 = #33FF77
+        }
+        else{
+            System.out.println("ancien");
+            getPresentationButton().setText("Sign in");
+            getPresentationButton().setColor(null);
         }
     }
     

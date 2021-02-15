@@ -36,7 +36,7 @@ public class ModelLogin implements IComponantListener{
     public void whenNotifiedByComponant(EComponantBasicEvent typeEvent) {
         if (typeEvent == EComponantBasicEvent.BUTTON_PRESSED) {
             if (!getUsername().equals("")) { // si le nom d'utilisateur est bien remplit!
-                WebsocketHelper.setPseudo(getUsername());
+              //  WebsocketHelper.setPseudo(getUsername());
                 notifyListenersOfSignInOrUp();
 
                 /*

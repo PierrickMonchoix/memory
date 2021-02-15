@@ -34,6 +34,8 @@ public class VueLogin extends VBox implements IVue {
         getChildren().addAll(vueCheckBox);
         getChildren().addAll(vueButton);
 
+        
+        presentationLogin.updatePresentation();
         update();
     }
 

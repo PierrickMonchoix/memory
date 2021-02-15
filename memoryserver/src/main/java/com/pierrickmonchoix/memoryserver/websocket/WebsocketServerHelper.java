@@ -39,7 +39,7 @@ public class WebsocketServerHelper {
         for (Session session : listSessions) {
             logger.info("on peut envoyer un msg a : " + session.getUserProperties().get(PSEUDO));
             if (session.getUserProperties().get(PSEUDO).equals(pseudo)) {
-                sendMessageToClient(session,websocketMessage);
+                sendMessageToClient(session, websocketMessage);
             }
         }
     }
@@ -53,8 +53,6 @@ public class WebsocketServerHelper {
             e.printStackTrace();
         }
     }
-
-
 
     public static void sendMessageToSeveralClients(List<String> listPseudos, WebsocketMessage websocketMessage) {
         for (String pseudo : listPseudos) {
@@ -78,25 +76,7 @@ public class WebsocketServerHelper {
     }
 
     public static void removeSession(Session s) {
-        boolean deleted = false;
-        for (Session session : listSessions) {
-            if (session.getId().equals(s.getId())) {
-                deleted = true;
-                try {
-
-                    listSessions.remove(session);
-                } catch (Exception e) {
-                    logger.warning("echec de la suppression de la la session");
-                    throw e;
-                }
-            }
-        }
-        if (deleted) {
-            logger.info("on a bien deleted la sessions");
-            listSessions.add(s);
-        } else {
-            logger.warning("echec de la suppression de la la session");
-        }
+        listSessions.removeIf((session -> (session.getId().equals(s.getId()) )));
     }
 
     public static Session getSession(String pseudo) {

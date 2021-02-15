@@ -1,5 +1,7 @@
 package com.pierrickmonchoix.memoryserver.websocket.websocketMessage;
 
+import java.util.logging.Logger;
+
 import javax.websocket.Session;
 
 import com.pierrickmonchoix.memoryserver.business.ConnectedPlayersManager;
@@ -10,13 +12,17 @@ import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType
 
 public class WebsocketMessageTreater {
 
+    private static Logger logger = Logger.getLogger(WebsocketMessageTreater.class.getName());
+
     public static void treatMessage(WebsocketMessage message, Session session) {
         switch (message.getType()) {
             case SIGN_IN:
+                logger.info("message sign in detected");
                 treatSignInMessage(message, session);
                 break;
             default:
             case SIGN_UP:
+                logger.info("message sign up detected");
                 treatSignUpMessage(message, session);
                 break;
         }
@@ -40,8 +46,10 @@ public class WebsocketMessageTreater {
         String pseudo = message.getContenu();
         boolean isInDatabase = FactoryDao.isExisting(new Personne(pseudo));
         if (isInDatabase) {
-            message.setContenu("error_existing_pseudo");
+            logger.info("nok : il y a deja une personne avec le pseudo : " + pseudo + " dans la DB");
+            message.setContenu("nok_existing_pseudo");
         } else {
+            logger.info("ok : il n'y a pas encore de personne avec le pseudo : " + pseudo + " dans la DB");
             message.setContenu("ok_not_existing_pseudo");
 
             WebsocketServerHelper.givePseudoToSession(session, pseudo);

@@ -3,13 +3,23 @@ package com.pierrickmonchoix.memoryserver.business;
 import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryserver.dao.FactoryDao;
+import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
+import com.pierrickmonchoix.memoryserver.websocket.websocketServer.WebsocketServerLauncher;
 
 
 public class App {
     private static Logger logger = Logger.getLogger(App.class.getName());
 
     public static void main(String[] args) {
-        logger.info("debut apptest");
+
+        //FactoryDao.resetDatabase();
+
+
+
+        WebsocketServerHelper.launchWebsocketServer();
+
+
+/*         logger.info("debut apptest");
 
         
 
@@ -29,7 +39,7 @@ public class App {
         System.out.println( FactoryDao.isExisting(new Personne("yo 2")) );
         System.out.println( FactoryDao.isExisting(new Personne("mikasa")) );
         System.out.println( FactoryDao.isExisting(new Personne("armin")) );
-        System.out.println( FactoryDao.isExisting(new Personne("jolijesu")) );  
+        System.out.println( FactoryDao.isExisting(new Personne("jolijesu")) );  */ 
  
     }
     

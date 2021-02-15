@@ -3,7 +3,7 @@ package com.pierrickmonchoix.memoryserver.websocket.websocketServer;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import javax.websocket.EncodeException;
+
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
@@ -27,6 +27,7 @@ public class WebsocketServerEndpoint {
     @OnOpen
     public void onOpen(Session session) throws IOException {
         System.out.println("ChatEndpoint.onOpen()");
+        WebsocketServerHelper.updateListSessions(session);
     }
 
     @OnMessage
@@ -34,8 +35,7 @@ public class WebsocketServerEndpoint {
 
         logger.info("le server recoit : " + message);
 
-        logger.info("update list server");
-        WebsocketServerHelper.receiveMessage( message, session);
+        WebsocketServerHelper.receiveMessage( message, session );
 
 /*         WebsocketServerHelper.updateListSessions(message.getPseudo(), session);
 

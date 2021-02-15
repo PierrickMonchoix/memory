@@ -17,8 +17,6 @@ public class VueButton extends Button implements IVue{
         super();
         this.presentationButton = presentationButton;
 
-        
-        setStyle("-fx-background-color: green;");
         update();
 
         /*

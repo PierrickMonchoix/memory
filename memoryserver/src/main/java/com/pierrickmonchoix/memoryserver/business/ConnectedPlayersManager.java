@@ -2,6 +2,7 @@ package com.pierrickmonchoix.memoryserver.business;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.websocket.Session;
 
@@ -11,28 +12,13 @@ import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMes
 
 public class ConnectedPlayersManager {
 
+    private static Logger logger = Logger.getLogger(ConnectedPlayersManager.class.getName());
+
     private static List<Player> listPlayers = new ArrayList<Player>();  // joueurs connectes
 
     public static void addNewPlayerWithPseudo(String pseudo){
         listPlayers.add(new Player(pseudo));
-    }
-
-    public static void treatUnknownMessage(WebsocketMessage message, Session session){
-        switch (message.getType()) {
-            case SIGN_IN:
-            String pseudo = message.getContenu();
-                boolean isInDatabase = FactoryDao.isExisting( new Personne( pseudo ) );
-                if(isInDatabase){
-                    listJoueurs.add(new Joueur(pseudo));
-                    WebsocketServerHelper.givePseudoToSession(session , message.getPseudo());
-                    WebsocketMessage.
-                }
-                
-                break;
-        
-            default:
-                break;
-        }
+        logger.info("la liste des joueurs a un new membre: \n" + listPlayers);
     }
 
 }
