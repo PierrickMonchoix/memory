@@ -1,28 +1,39 @@
-package com.pierrickmonchoix.memoryserver.websocket.websocketMessage;
+package com.pierrickmonchoix.memoryserver.websocket;
 
 import java.util.logging.Logger;
 
 import javax.websocket.Session;
 
-import com.pierrickmonchoix.memoryserver.business.PlayersManager;
 import com.pierrickmonchoix.memoryserver.business.Personne;
+import com.pierrickmonchoix.memoryserver.business.PlayersManager;
 import com.pierrickmonchoix.memoryserver.dao.FactoryDao;
-import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
+import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
 
-public class WebsocketMessageTreater {
+/**
+ * Traite tous les massages entrants (client > serveur)
+ */
+public class LoginWebsocketMessageTreater {
 
-    private static Logger logger = Logger.getLogger(WebsocketMessageTreater.class.getName());
+    private static Logger logger = Logger.getLogger(LoginWebsocketMessageTreater.class.getName());
 
     public static void treatMessage(WebsocketMessage message, Session session) {
         switch (message.getType()) {
-            case SIGN_IN:
-                logger.info("message sign in detected");
-                treatSignInMessage(message, session);
+            case SIGN_IN: // message n'a pas encore de pseudo
+                if (message.getPseudo().equals("unknown")) {
+                    logger.info("message sign in detected");
+                    treatSignInMessage(message, session);
+                } else {
+                    logger.warning("pseudo incorect : " + message.getPseudo() + " aucun message transmit au client");
+                }
                 break;
             default:
-            case SIGN_UP:
-                logger.info("message sign up detected");
-                treatSignUpMessage(message, session);
+            case SIGN_UP: // message n'a pas encore de pseudo
+                if (message.getPseudo().equals("unknown")) {
+                    logger.info("message sign up detected");
+                    treatSignUpMessage(message, session);
+                } else {
+                    logger.warning("pseudo incorect : " + message.getPseudo() + " aucun message transmit au client");
+                }
                 break;
         }
     }

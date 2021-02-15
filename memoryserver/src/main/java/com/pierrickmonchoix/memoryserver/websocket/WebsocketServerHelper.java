@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 import javax.websocket.EncodeException;
 import javax.websocket.Session;
 
+import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
-import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessageTreater;
 import com.pierrickmonchoix.memoryserver.websocket.websocketServer.WebsocketServerLauncher;
 
 /**
@@ -34,7 +34,12 @@ public class WebsocketServerHelper {
     }
 
     public static void receiveMessage(WebsocketMessage message, Session session) {
-        WebsocketMessageTreater.treatMessage(message, session);
+        if( (message.getType() == EMessageType.SIGN_IN) || (message.getType() == EMessageType.SIGN_UP) ){
+            //cas particulier: il faut attribuer un pseudo a la session : no NEED en fait !!!!!!
+            LoginWebsocketMessageTreater.treatMessage(message, session);
+            //TODO: reflechir a dessus la
+        }
+        
     }
 
     public static void sendMessageToClient(String pseudo, WebsocketMessage websocketMessage) {

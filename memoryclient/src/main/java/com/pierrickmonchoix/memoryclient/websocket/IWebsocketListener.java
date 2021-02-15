@@ -1,4 +1,4 @@
-package com.pierrickmonchoix.memoryclient.websocket.websocketClient;
+package com.pierrickmonchoix.memoryclient.websocket;
 
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 

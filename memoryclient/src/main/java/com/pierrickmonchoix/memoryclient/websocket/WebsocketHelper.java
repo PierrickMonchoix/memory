@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.pierrickmonchoix.memoryclient.websocket.websocketClient.IWebsocketListener;
 import com.pierrickmonchoix.memoryclient.websocket.websocketClient.WebsocketClient;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;

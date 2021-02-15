@@ -10,6 +10,7 @@ import javax.websocket.DeploymentException;
 import javax.websocket.EncodeException;
 import javax.websocket.Session;
 
+import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
 import org.glassfish.tyrus.client.ClientManager;

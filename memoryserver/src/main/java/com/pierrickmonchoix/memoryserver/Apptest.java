@@ -10,7 +10,6 @@ public class Apptest {
     private static Logger logger = Logger.getLogger(Apptest.class.getName());
 
     public static void main(String[] args) {
-
         // FactoryDao.resetDatabase();
 
         //WebsocketServerHelper.launchWebsocketServer();

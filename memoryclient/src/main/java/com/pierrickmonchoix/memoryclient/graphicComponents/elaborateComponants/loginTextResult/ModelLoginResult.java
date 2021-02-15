@@ -4,8 +4,8 @@ import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ILoginListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
+import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketHelper;
-import com.pierrickmonchoix.memoryclient.websocket.websocketClient.IWebsocketListener;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
 import javafx.application.Platform;
