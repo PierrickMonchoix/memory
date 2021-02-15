@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ILoginListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
 import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
-import com.pierrickmonchoix.memoryclient.websocket.WebsocketHelper;
+import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
 import javafx.application.Platform;
@@ -33,7 +33,7 @@ public class ModelLoginResult implements ILoginListener, IWebsocketListener { //
 
 
 
-        WebsocketHelper.addListener(this);
+        WebsocketClientHelper.addListener(this);
         modelLogin.addListener(this);
     }
 

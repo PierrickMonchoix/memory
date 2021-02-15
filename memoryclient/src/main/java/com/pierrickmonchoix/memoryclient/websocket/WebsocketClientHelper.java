@@ -12,9 +12,9 @@ import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMes
  * La classe "statique" qui fait le lien entre le business et le serveur. On
  * peut grace a cette classe envoyer des messages au serveur et en rececoir.
  */
-public class WebsocketHelper {
+public class WebsocketClientHelper {
 
-    private static Logger logger = Logger.getLogger(WebsocketHelper.class.getName());
+    private static Logger logger = Logger.getLogger(WebsocketClientHelper.class.getName());
 
     /**
      * le pseudo du joueur est mémorisé ici
@@ -25,7 +25,7 @@ public class WebsocketHelper {
 
     private static List<IWebsocketListener> listListeners;
 
-    private WebsocketHelper() {
+    private WebsocketClientHelper() {
         // static class
     }
 
@@ -39,7 +39,7 @@ public class WebsocketHelper {
     }
 
     public static void setPseudo(String pseudo) {
-        WebsocketHelper.pseudo = pseudo;
+        WebsocketClientHelper.pseudo = pseudo;
     }
 
     public static void sendMessageToServer(EMessageType type, String contenu) {
@@ -59,10 +59,6 @@ public class WebsocketHelper {
         listListeners.add(listener);
     }
 
-    public static void notifyListenersOfWebsocketMessage(WebsocketMessage websocketMessage) {
-        for (IWebsocketListener listener : listListeners) {
-            listener.whenReceiveWebsocketMessage(websocketMessage);
-        }
-    }
+ 
 
 }

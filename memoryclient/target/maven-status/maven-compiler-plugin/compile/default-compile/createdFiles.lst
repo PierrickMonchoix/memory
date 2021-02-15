@@ -6,6 +6,7 @@ com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/checkBox/Vue
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/PresentationLogin.class
 com/pierrickmonchoix/memoryclient/websocket/websocketMessage/EMessageType.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/VueLogin.class
+com/pierrickmonchoix/memoryclient/websocket/IWebsocketListener.class
 com/pierrickmonchoix/memoryclient/Apptest.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textField/VueTextField.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textOutput/VueTextOutput.class
@@ -15,13 +16,13 @@ com/pierrickmonchoix/memoryclient/websocket/websocketMessage/WebsocketMessageEnc
 com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootLogin/PresentationRootLogin.class
 com/pierrickmonchoix/memoryclient/websocket/websocketClient/WebsocketClient$1.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/IComponantListener.class
+com/pierrickmonchoix/memoryclient/websocket/WebsocketClientHelper.class
 com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootLogin/ModelRootLogin.class
 com/pierrickmonchoix/memoryclient/websocket/websocketClient/WebsocketClient.class
 com/pierrickmonchoix/memoryclient/graphicComponents/IVue.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/checkBox/PresentationCheckBox.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/button/PresentationButton.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/ILoginListener.class
-com/pierrickmonchoix/memoryclient/websocket/websocketClient/IWebsocketListener.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/EComponantBasicEvent.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/loginTextResult/ModelLoginResult.class
 com/pierrickmonchoix/memoryclient/websocket/websocketMessage/WebsocketMessageDecoder.class
@@ -32,6 +33,5 @@ com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/Mo
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/loginTextResult/ModelLoginResult$1.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textOutput/PresentationTextOutput.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/PresentationNotifier.class
-com/pierrickmonchoix/memoryclient/websocket/WebsocketHelper.class
 com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootLogin/VueRootLogin.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/button/VueButton.class

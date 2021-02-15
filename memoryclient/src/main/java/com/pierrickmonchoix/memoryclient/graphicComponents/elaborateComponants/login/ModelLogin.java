@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.EComponantBasicEvent;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.IComponantListener;
-import com.pierrickmonchoix.memoryclient.websocket.WebsocketHelper;
+import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 
 /**
@@ -48,10 +48,10 @@ public class ModelLogin implements IComponantListener {
                  */
                 if (isNewUser()) { // se connecrte a WS et envoie reponse a textResult
                     System.out.println("Tentative de premiere connexion en tant que : " + getUsername());
-                    WebsocketHelper.sendMessageToServer(EMessageType.SIGN_UP, getUsername());
+                    WebsocketClientHelper.sendMessageToServer(EMessageType.SIGN_UP, getUsername());
                 } else {
                     System.out.println("Tentative de connexion habituelle en tant que : " + getUsername());
-                    WebsocketHelper.sendMessageToServer(EMessageType.SIGN_IN, getUsername());
+                    WebsocketClientHelper.sendMessageToServer(EMessageType.SIGN_IN, getUsername());
                 }
 
             }

@@ -17,24 +17,26 @@ public class LoginWebsocketMessageTreater {
     private static Logger logger = Logger.getLogger(LoginWebsocketMessageTreater.class.getName());
 
     public static void treatMessage(WebsocketMessage message, Session session) {
-        switch (message.getType()) {
-            case SIGN_IN: // message n'a pas encore de pseudo
-                if (message.getPseudo().equals("unknown")) {
+        if (message.getPseudo().equals("unknown")
+                && WebsocketServerHelper.getPseudoOfSession(session).equals("unknown")) {
+            switch (message.getType()) {
+                case SIGN_IN: // message n'a pas encore de pseudo
                     logger.info("message sign in detected");
                     treatSignInMessage(message, session);
-                } else {
-                    logger.warning("pseudo incorect : " + message.getPseudo() + " aucun message transmit au client");
-                }
-                break;
-            default:
-            case SIGN_UP: // message n'a pas encore de pseudo
-                if (message.getPseudo().equals("unknown")) {
+
+                    break;
+                default:
+                case SIGN_UP: // message n'a pas encore de pseudo
+
                     logger.info("message sign up detected");
                     treatSignUpMessage(message, session);
-                } else {
-                    logger.warning("pseudo incorect : " + message.getPseudo() + " aucun message transmit au client");
-                }
-                break;
+
+                    break;
+            }
+        } else {
+            logger.warning("attributed pseudo incorect: pseudo message " + message.getPseudo() + " , pseudo session "
+                    + WebsocketServerHelper.getPseudoOfSession(session) + " , aucun message transmit au client");
+
         }
     }
 

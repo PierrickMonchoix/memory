@@ -8,13 +8,14 @@ import java.util.logging.Logger;
 import javax.websocket.EncodeException;
 import javax.websocket.Session;
 
+import com.pierrickmonchoix.memoryserver.business.PlayersManager;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
 import com.pierrickmonchoix.memoryserver.websocket.websocketServer.WebsocketServerLauncher;
 
 /**
  * set d'intermediaire entre le serveur websocket etla partie business.
- * permet d'envoyer des msg a des client, en recevoir et de lancer le serveur
+ * permet d'envoyer des msg a des client, en recevoir et de lancer le serveur.
  */
 public class WebsocketServerHelper {
 
@@ -22,10 +23,13 @@ public class WebsocketServerHelper {
 
     private final static String PSEUDO = "pseudo";
 
+    private static List<IWebsocketListener> listListeners;
+
     private static Logger logger = Logger.getLogger(WebsocketServerHelper.class.getName());
 
     public static void launchWebsocketServer() {
         listSessions = new ArrayList<Session>();
+        listListeners = new ArrayList<IWebsocketListener>();
         WebsocketServerLauncher.launch();
     }
 
@@ -33,11 +37,20 @@ public class WebsocketServerHelper {
         session.getUserProperties().put(PSEUDO, pseudo);
     }
 
+    public static String getPseudoOfSession(Session session) {
+        return (String)session.getUserProperties().get(PSEUDO);
+    }
+
     public static void receiveMessage(WebsocketMessage message, Session session) {
         if( (message.getType() == EMessageType.SIGN_IN) || (message.getType() == EMessageType.SIGN_UP) ){
-            //cas particulier: il faut attribuer un pseudo a la session : no NEED en fait !!!!!!
+            /*
+            cas particulier: on va attribuer un pseudo a la session.
+            grace a ca, en fonction du pseudo, on sait a quelle session on enverra des msg.
+            */
             LoginWebsocketMessageTreater.treatMessage(message, session);
-            //TODO: reflechir a dessus la
+        }
+        else{
+            notifyListenersOfMessage(message);
         }
         
     }
@@ -78,12 +91,14 @@ public class WebsocketServerHelper {
         if (!alreadyHere) {
             logger.info("ajout d'une nouvealle session");
             listSessions.add(s);
+            givePseudoToSession(s, "unknown");
         } else {
             logger.info("session deja existante");
         }
     }
 
     public static void removeSession(Session s) {
+        PlayersManager.removePlayer(getPseudoOfSession(s));
         listSessions.removeIf((session -> (session.getId().equals(s.getId()))));
     }
 
@@ -96,6 +111,18 @@ public class WebsocketServerHelper {
         }
         logger.warning("pseudo non trouvé");
         return null;
+    }
+
+    public static void notifyListenersOfMessage(WebsocketMessage websocketMessage) {
+        logger.info("notification des ws listeners");
+        for (IWebsocketListener listener : listListeners) {
+            logger.info("on a notifié un ws listeners");
+            listener.whenReceiveWebsocketMessage(websocketMessage);
+        }
+    }
+
+    public static void addListener(IWebsocketListener listener) {
+        listListeners.add(listener);
     }
 
 }

@@ -1,4 +1,3 @@
-/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocket/websocketClient/IWebsocketListener.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootLogin/package-info.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textField/VueTextField.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/Apptest.java
@@ -7,7 +6,6 @@
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textField/PresentationTextField.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/IComponantListener.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textOutput/PresentationTextOutput.java
-/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocket/WebsocketHelper.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootLogin/VueRootLogin.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/checkBox/PresentationCheckBox.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocket/websocketMessage/WebsocketMessageDecoder.java
@@ -21,12 +19,14 @@
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/ModelLogin.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textOutput/VueTextOutput.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/ILoginListener.java
+/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocket/IWebsocketListener.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocket/websocketMessage/WebsocketMessage.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/loginTextResult/VueLoginResult.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocket/websocketMessage/EMessageType.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/IVue.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/PresentationNotifier.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/button/PresentationButton.java
+/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocket/WebsocketClientHelper.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/package-info.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootLogin/ModelRootLogin.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/loginTextResult/ModelLoginResult.java

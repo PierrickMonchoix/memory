@@ -2,7 +2,7 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootL
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult.ModelLoginResult;
-import com.pierrickmonchoix.memoryclient.websocket.WebsocketHelper;
+import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 
 /**
  * Composé d'un login qui enoie au serveur un msg de tentative de connexion.
@@ -14,7 +14,7 @@ public class ModelRootLogin {
 
     public ModelRootLogin(PresentationRootLogin presentationRootLogin) {
 
-        WebsocketHelper.initialize();
+        WebsocketClientHelper.initialize();
 
         /*
         lancement des modles filles

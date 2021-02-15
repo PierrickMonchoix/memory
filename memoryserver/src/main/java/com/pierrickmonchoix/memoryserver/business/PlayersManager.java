@@ -18,4 +18,8 @@ public class PlayersManager {
         logger.info("la liste des joueurs a un new membre: \n" + listPlayers);
     }
 
+    public static void removePlayer(String pseudo){
+        listPlayers.removeIf( (player -> (player.getPseudo().equals(pseudo))) ) ;
+    }
+
 }
