@@ -20,6 +20,16 @@ public class PlayersManager {
 
     public static void removePlayer(String pseudo){
         listPlayers.removeIf( (player -> (player.getPseudo().equals(pseudo))) ) ;
+        logger.info("la liste des joueurs a un membre en moins: \n" + listPlayers);
+    }
+
+    public static boolean isPlayerAlreadyConnected(String pseudo){
+        for (Player player : listPlayers) {
+            if(player.getPseudo().equals(pseudo)){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

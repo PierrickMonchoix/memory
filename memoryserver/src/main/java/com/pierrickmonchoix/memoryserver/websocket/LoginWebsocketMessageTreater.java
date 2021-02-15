@@ -17,8 +17,8 @@ public class LoginWebsocketMessageTreater {
     private static Logger logger = Logger.getLogger(LoginWebsocketMessageTreater.class.getName());
 
     public static void treatMessage(WebsocketMessage message, Session session) {
-        if (message.getPseudo().equals("unknown")
-                && WebsocketServerHelper.getPseudoOfSession(session).equals("unknown")) {
+        if (message.getPseudo().equals("unknown") && WebsocketServerHelper.getPseudoOfSession(session).equals("unknown")
+                && !PlayersManager.isPlayerAlreadyConnected(message.getContenu())) {
             switch (message.getType()) {
                 case SIGN_IN: // message n'a pas encore de pseudo
                     logger.info("message sign in detected");
@@ -33,6 +33,11 @@ public class LoginWebsocketMessageTreater {
 
                     break;
             }
+        } else if (PlayersManager.isPlayerAlreadyConnected(message.getContenu())) {
+            logger.warning("le joueur : " + message.getContenu() + " est deja connecté");
+            WebsocketMessage response = WebsocketMessage.newResponseMessage(message);
+            response.setContenu("nok_already_connected_player");
+            WebsocketServerHelper.sendMessageToClient(session, response);
         } else {
             logger.warning("attributed pseudo incorect: pseudo message " + message.getPseudo() + " , pseudo session "
                     + WebsocketServerHelper.getPseudoOfSession(session) + " , aucun message transmit au client");
@@ -42,33 +47,35 @@ public class LoginWebsocketMessageTreater {
 
     private static void treatSignInMessage(WebsocketMessage message, Session session) {
         String pseudo = message.getContenu();
+        WebsocketMessage response = WebsocketMessage.newResponseMessage(message);
         boolean isInDatabase = FactoryDao.isExisting(new Personne(pseudo));
         if (isInDatabase) {
-            message.setContenu("ok_existing_pseudo");
+            response.setContenu("ok_existing_pseudo");
 
             WebsocketServerHelper.givePseudoToSession(session, pseudo);
             PlayersManager.addNewPlayerWithPseudo(pseudo);
         } else {
-            message.setContenu("error_not_existing_pseudo");
+            response.setContenu("error_not_existing_pseudo");
         }
-        WebsocketServerHelper.sendMessageToClient(session, message);
+        WebsocketServerHelper.sendMessageToClient(session, response);
     }
 
     private static void treatSignUpMessage(WebsocketMessage message, Session session) {
         String pseudo = message.getContenu();
+        WebsocketMessage response = WebsocketMessage.newResponseMessage(message);
         boolean isInDatabase = FactoryDao.isExisting(new Personne(pseudo));
         if (isInDatabase) {
             logger.info("nok : il y a deja une personne avec le pseudo : " + pseudo + " dans la DB");
-            message.setContenu("nok_existing_pseudo");
+            response.setContenu("nok_existing_pseudo");
         } else {
             logger.info("ok : il n'y a pas encore de personne avec le pseudo : " + pseudo + " dans la DB");
-            message.setContenu("ok_not_existing_pseudo");
+            response.setContenu("ok_not_existing_pseudo");
 
             WebsocketServerHelper.givePseudoToSession(session, pseudo);
             PlayersManager.addNewPlayerWithPseudo(pseudo);
             FactoryDao.createPersonne(new Personne(pseudo));
         }
-        WebsocketServerHelper.sendMessageToClient(session, message);
+        WebsocketServerHelper.sendMessageToClient(session, response);
     }
 
 }

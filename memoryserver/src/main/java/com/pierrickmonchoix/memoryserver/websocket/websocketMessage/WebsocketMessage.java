@@ -15,7 +15,12 @@ public class WebsocketMessage {
 	private String contenu;
     private EMessageType type;
 
-    
+    public static WebsocketMessage newResponseMessage(WebsocketMessage message){
+        WebsocketMessage response = new WebsocketMessage();
+        response.setPseudo(message.getPseudo());
+        response.setType(message.getType());
+        return response;
+    }
 
     public String getPseudo() {
         return pseudo;
