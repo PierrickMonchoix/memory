@@ -2,6 +2,7 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.
 
 import java.util.logging.Logger;
 
+import com.pierrickmonchoix.memoryclient.FxApp;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ILoginListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
 import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
@@ -23,15 +24,11 @@ public class ModelLoginResult implements ILoginListener, IWebsocketListener { //
 
     private static Logger logger = Logger.getLogger(ModelLoginResult.class.getName());
 
-   
-
     private String text;
 
     public ModelLoginResult(PresentationLoginResult presentationLoginTextResult, ModelLogin modelLogin) {
         this.presentationLoginTextResult = presentationLoginTextResult;
         this.modelLogin = modelLogin;
-
-
 
         WebsocketClientHelper.addListener(this);
         modelLogin.addListener(this);
@@ -58,6 +55,10 @@ public class ModelLoginResult implements ILoginListener, IWebsocketListener { //
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+                if(websocketMessage.getContenu().substring(0,2).equals("ok")){
+                    FxApp.setHeroPseudo(websocketMessage.getPseudo());
+                    FxApp.setLisGamesVue();
+                }
                 presentationLoginTextResult.setText(text); // on a ajouté la reponse WS
             }
         });

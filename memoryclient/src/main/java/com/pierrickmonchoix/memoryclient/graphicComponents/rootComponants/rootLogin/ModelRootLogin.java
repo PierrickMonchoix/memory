@@ -2,6 +2,7 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootL
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult.ModelLoginResult;
+import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.ModelRootListGames;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 
 /**
@@ -10,14 +11,14 @@ import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
  */
 public class ModelRootLogin {
 
-
+    
 
     public ModelRootLogin(PresentationRootLogin presentationRootLogin) {
 
-        WebsocketClientHelper.initialize();
+       
 
         /*
-        lancement des modles filles
+        lancement des modeles filles
         */
         ModelLogin modelLogin = new ModelLogin(presentationRootLogin.getPresentationLogin());
 

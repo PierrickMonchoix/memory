@@ -1,3 +1,10 @@
+On fera référence a notre client par Hero
+et aux autre joueurs (adversaires) par Vilain
+
+
+
+
+
 Protocole de lancement:
 
 1)

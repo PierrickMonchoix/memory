@@ -1,4 +1,5 @@
 /**
+ *
  * Ce package regroupe les composant graphiques évolués : un login , un plateur de jeu ...
  * Ils sont souvent composés de plusieurs 'basicComponant'.
  * Ils sont donc prévu a un effet particulier, ils doivent juste remplir un un role qui sera utile au business.
@@ -13,6 +14,8 @@
  * Chaque présentation doit heriter de 'Presentation', ce qui lui déclare un attribut 'vue' et les fonctions qui vont avec
  * Ici, une présentation NE PEUT PAS heriter de 'PresentationNotifier' (qui herite elle meme de presentation).
  * En effet, ici, si une présentation doit alerter qqchose, c'est forcément son modèle.
+ * 
+ * 
  */
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants;
 

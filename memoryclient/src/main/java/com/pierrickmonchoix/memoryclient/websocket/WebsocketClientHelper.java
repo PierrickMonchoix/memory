@@ -34,6 +34,7 @@ public class WebsocketClientHelper {
      */
     public static void initialize() {
         websocketClient = WebsocketClient.getInstance();
+        websocketClient.connectToEndpoint();
         pseudo = "unknown";
         listListeners = new ArrayList<IWebsocketListener>();
     }

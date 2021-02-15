@@ -20,6 +20,8 @@
  * Mais on supose que cela n'est pas sensé arriver, de maniere a rendre le programme plus "lisible"
  * en gardant des architectures MVP a peu prés similaires.
  * 
+ * Remarque: seul les composant toalements statiques n'ont pas de modèles
+ * 
  * 
  */
 package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin;

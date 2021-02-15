@@ -10,7 +10,9 @@ import com.pierrickmonchoix.memoryserver.dao.FactoryDao;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
 
 /**
- * Traite tous les massages entrants (client > serveur)
+ * Traite tous les massages entrants concernant le login (client > serveur)
+ * C'est la seul classe "gérant" les messages, car il faut associer un pseudo à une session.
+ * Il faut donc lui passer en parametre une session. Ce n'est donc pas concevable de la mettre coté business.
  */
 public class LoginWebsocketMessageTreater {
 
@@ -51,11 +53,12 @@ public class LoginWebsocketMessageTreater {
         boolean isInDatabase = FactoryDao.isExisting(new Personne(pseudo));
         if (isInDatabase) {
             response.setContenu("ok_existing_pseudo");
+            response.setPseudo(pseudo);
 
             WebsocketServerHelper.givePseudoToSession(session, pseudo);
             PlayersManager.addNewPlayerWithPseudo(pseudo);
         } else {
-            response.setContenu("error_not_existing_pseudo");
+            response.setContenu("nok_not_existing_pseudo");
         }
         WebsocketServerHelper.sendMessageToClient(session, response);
     }
@@ -70,6 +73,7 @@ public class LoginWebsocketMessageTreater {
         } else {
             logger.info("ok : il n'y a pas encore de personne avec le pseudo : " + pseudo + " dans la DB");
             response.setContenu("ok_not_existing_pseudo");
+            response.setPseudo(pseudo);
 
             WebsocketServerHelper.givePseudoToSession(session, pseudo);
             PlayersManager.addNewPlayerWithPseudo(pseudo);

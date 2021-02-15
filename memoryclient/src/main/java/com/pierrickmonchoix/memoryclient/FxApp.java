@@ -2,12 +2,18 @@ package com.pierrickmonchoix.memoryclient;
 
 import java.util.logging.Logger;
 
+import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
+import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.ModelRootListGames;
+import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.PresentationRootListGames;
+import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.VueRootListGames;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.ModelRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.PresentationRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.VueRootLogin;
+import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 import com.pierrickmonchoix.memoryclient.websocket.websocketClient.WebsocketClient;
 
 import javafx.application.Application;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -18,7 +24,20 @@ import javafx.stage.Stage;
  */
 public class FxApp extends Application {
 
-    private WebsocketClient websocketClient;
+    private static WebsocketClient websocketClient;
+
+    private static Scene scene;
+
+    private static PresentationRootLogin presentationRootLogin;
+    private static VueRootLogin vueRootLogin;
+    private static ModelRootLogin modelRootLogin;
+
+    private static PresentationRootListGames presentationRootListGames;
+    private static VueRootListGames vueRootListGames;
+    private static ModelRootListGames modelRootListGames;
+
+    private static Stage monPrimaryStage;
+
 
 
     private static Logger logger = Logger.getLogger(FxApp.class.getName());
@@ -34,6 +53,7 @@ public class FxApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        monPrimaryStage = primaryStage;
 
         System.out.println("starting JFX ...");
 
@@ -59,21 +79,38 @@ public class FxApp extends Application {
         TextField text = new TextField("bonjour");
         text.setEditable(false); */
 
-        websocketClient = WebsocketClient.getInstance();
-        websocketClient.connectToEndpoint();
+        WebsocketClientHelper.initialize();
 
-        PresentationRootLogin presentationRootLogin = new PresentationRootLogin("bernard", "first co?", true);
-        VueRootLogin vueRootLogin = new VueRootLogin(presentationRootLogin);
+        presentationRootLogin = new PresentationRootLogin("bernard", "first co?", true);
+        vueRootLogin = new VueRootLogin(presentationRootLogin);
         presentationRootLogin.setVue(vueRootLogin);
-        ModelRootLogin modelRootLogin = new ModelRootLogin(presentationRootLogin);
+        modelRootLogin = new ModelRootLogin(presentationRootLogin);
+
+        presentationRootListGames = new PresentationRootListGames();
+        vueRootListGames = new VueRootListGames(presentationRootListGames);
+        presentationRootListGames.setVue(vueRootListGames);
+        modelRootListGames = new ModelRootListGames(presentationRootListGames);
+
+        scene = new Scene(vueRootLogin, 800, 500);
+
+        primaryStage.setScene(scene);
+
+
 
         
-
-        primaryStage.setScene(new Scene(vueRootLogin, 300, 250));
-
         primaryStage.show();
 
     }
 
+
+    public static void setLisGamesVue(){
+        scene.setRoot((Parent)vueRootListGames);
+        monPrimaryStage.setScene(scene);
+        monPrimaryStage.show();
+    }
+
+    public static void setHeroPseudo(String pseudoHero){
+        modelRootListGames.setPseudoLabelOfHero(pseudoHero);
+    }
 
 }
