@@ -3,27 +3,30 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootL
 import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.labelHeroPseudo.VueLabelHeroPseudo;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGames.VueListGames;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGamesProposals.VueGamesProposals;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 
 public class VueRootListGames extends HBox implements IVue {
 
     private final VueLabelHeroPseudo vueLabelHeroPseudo;
-
-    private final VueListGames vueListGames;
+    private final VueGamesProposals vueGamesProposals;
 
     public VueRootListGames(PresentationRootListGames presentationRootListGames){
 
         vueLabelHeroPseudo = new VueLabelHeroPseudo(presentationRootListGames.getPresentationLabelHeroPseudo());
-
-        vueListGames = new VueListGames(presentationRootListGames.getPresentationListGames());
+        vueGamesProposals = new VueGamesProposals(presentationRootListGames.getPresentationGamesProposals());
         
         setAlignment(Pos.CENTER_LEFT);
 
         getChildren().addAll(vueLabelHeroPseudo);
-        getChildren().addAll(vueListGames);
+        getChildren().addAll(vueGamesProposals);
 
+        setPadding(new Insets(20,20,20,20));
+
+        
         update();
     }
 

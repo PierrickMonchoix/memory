@@ -3,6 +3,7 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.
 import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryclient.FxApp;
+import com.pierrickmonchoix.memoryclient.graphicComponents.RootManager;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ILoginListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
 import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
@@ -49,15 +50,15 @@ public class ModelLoginResult implements ILoginListener, IWebsocketListener { //
     }
 
     @Override
-    public void whenReceiveWebsocketMessage(WebsocketMessage websocketMessage) {
+    public void whenReceiveWebsocketMessage(WebsocketMessage message) {
         logger.info("jai ete notifié par ws");
-        text = text + websocketMessage.getContenu();
+        text = text + message.getContenu();
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                if(websocketMessage.getContenu().substring(0,2).equals("ok")){
-                    FxApp.setHeroPseudo(websocketMessage.getPseudo());
-                    FxApp.setLisGamesVue();
+                if(message.getContenu().substring(0,2).equals("ok")){
+                    RootManager.setHeroPseudo(message.getPseudo());
+                    RootManager.setVueRootListGames();
                 }
                 presentationLoginTextResult.setText(text); // on a ajouté la reponse WS
             }

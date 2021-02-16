@@ -3,6 +3,7 @@ package com.pierrickmonchoix.memoryclient;
 import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
+import com.pierrickmonchoix.memoryclient.graphicComponents.RootManager;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.ModelRootListGames;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.PresentationRootListGames;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.VueRootListGames;
@@ -24,7 +25,7 @@ import javafx.stage.Stage;
  */
 public class FxApp extends Application {
 
-    private static WebsocketClient websocketClient;
+
 
     private static Scene scene;
 
@@ -81,36 +82,15 @@ public class FxApp extends Application {
 
         WebsocketClientHelper.initialize();
 
-        presentationRootLogin = new PresentationRootLogin("bernard", "first co?", true);
-        vueRootLogin = new VueRootLogin(presentationRootLogin);
-        presentationRootLogin.setVue(vueRootLogin);
-        modelRootLogin = new ModelRootLogin(presentationRootLogin);
 
-        presentationRootListGames = new PresentationRootListGames();
-        vueRootListGames = new VueRootListGames(presentationRootListGames);
-        presentationRootListGames.setVue(vueRootListGames);
-        modelRootListGames = new ModelRootListGames(presentationRootListGames);
-
-        scene = new Scene(vueRootLogin, 800, 500);
-
-        primaryStage.setScene(scene);
-
+        RootManager.initialize(primaryStage);
 
 
         
-        primaryStage.show();
 
     }
 
 
-    public static void setLisGamesVue(){
-        scene.setRoot((Parent)vueRootListGames);
-        monPrimaryStage.setScene(scene);
-        monPrimaryStage.show();
-    }
 
-    public static void setHeroPseudo(String pseudoHero){
-        modelRootListGames.setPseudoLabelOfHero(pseudoHero);
-    }
 
 }

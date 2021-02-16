@@ -29,7 +29,7 @@
 
         <dependency>
             <groupId>org.glassfish.tyrus</groupId>
-            <artifactId>tyrus-server</artifactId>1.15
+            <artifactId>tyrus-server</artifactId>
             <version>1.15</version>
         </dependency>
         <dependency>

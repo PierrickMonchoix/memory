@@ -1,29 +1,37 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.gameProposal.PresentationGameProposal;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.labelHeroPseudo.PresentationLabelHeroPseudo;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGames.PresentationListGames;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGamesProposals.PresentationGamesProposals;
+
+
 
 public class PresentationRootListGames extends Presentation{
 
     private final PresentationLabelHeroPseudo presentationLabelHeroPseudo;
-
-    private final PresentationListGames presentationListGames;
+    private final PresentationGamesProposals presentationGamesProposals;
 
     public PresentationRootListGames() {
 
         presentationLabelHeroPseudo = new PresentationLabelHeroPseudo();
+        presentationGamesProposals = new PresentationGamesProposals();
 
-        presentationListGames = new PresentationListGames();
     }
 
     public PresentationLabelHeroPseudo getPresentationLabelHeroPseudo() {
         return presentationLabelHeroPseudo;
     }
 
-    public PresentationListGames getPresentationListGames() {
-        return presentationListGames;
+
+    public PresentationGamesProposals getPresentationGamesProposals() {
+        return presentationGamesProposals;
     }
+
+ 
+
+    
 
 
 
