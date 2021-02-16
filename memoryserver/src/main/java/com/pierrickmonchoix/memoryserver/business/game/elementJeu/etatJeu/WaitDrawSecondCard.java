@@ -28,7 +28,7 @@ public class WaitDrawSecondCard extends EtatJeu implements IWebsocketListener {
     @Override
     public void goNextEtat() {
         waiting = false;
-        changeAndStartEtatTo(automateGameEngine.getCheckPairOrNot());
+        automateGameEngine.changeAndStartEtatJeuTo(automateGameEngine.getCheckPairOrNot());
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.pierrickmonchoix.memoryserver.business.game.elementJeu.etatJeu;
 
-import java.net.http.WebSocket;
+
 import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryserver.business.game.elementJeu.GameEngine;
@@ -21,7 +21,7 @@ public class AskDrawFirstCard extends EtatJeu {
 
     @Override
     public void goNextEtat() {
-        changeAndStartEtatTo( automateGameEngine.getWaitDrawFirstCard() );
+        automateGameEngine.changeAndStartEtatJeuTo( automateGameEngine.getWaitDrawFirstCard() );
     }
 
     private void askClientDrawFirstCard(){

@@ -13,10 +13,7 @@ public abstract class EtatJeu implements IEtatJeu {
         return automateGameEngine;
     }
 
-    protected final void changeAndStartEtatTo(EtatJeu etatJeu){
-        automateGameEngine.changeEtatJeuTo(etatJeu);
-        automateGameEngine.startEtatActuel();
-    }
+
 
     
 

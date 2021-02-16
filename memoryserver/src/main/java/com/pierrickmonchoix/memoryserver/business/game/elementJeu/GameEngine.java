@@ -3,6 +3,8 @@ package com.pierrickmonchoix.memoryserver.business.game.elementJeu;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.xml.stream.events.EndDocument;
+
 import com.pierrickmonchoix.memoryserver.business.Player;
 import com.pierrickmonchoix.memoryserver.business.game.Game;
 import com.pierrickmonchoix.memoryserver.business.game.elementJeu.etatJeu.AskDrawFirstCard;
@@ -28,15 +30,29 @@ public class GameEngine {
     private final WaitDrawSecondCard waitDrawSecondCard;
     private final CheckPairOrNot checkPairOrNot;
 
+    public Game getGame() {
+        return this.game;
+    }
+
+    public EtatJeu getEtatJeu() {
+        return this.etatJeu;
+    }
+
+    public void setEtatJeu(EtatJeu etatJeu) {
+        this.etatJeu = etatJeu;
+    }
+
+
+
     private Card firstCard;
     private Card secondCard;
 
     /**
      * joueur actuel
      */
-    private Player player;
+    private Player actualPlayer;
 
-    public void changeEtatJeuTo(EtatJeu nextEtatJeu) {
+    private void changeEtatJeuTo(EtatJeu nextEtatJeu) {
         etatJeu = nextEtatJeu;
     }
 
@@ -47,7 +63,7 @@ public class GameEngine {
     private int getIdListPlayer() {
         int i = 0;
         for (Player p : getListPlayers()) {
-            if (player.equals(p)) {
+            if (actualPlayer.equals(p)) {
                 return i;
             }
             i++;
@@ -56,12 +72,12 @@ public class GameEngine {
         return -1;
     }
 
-    public void changePlayer() {
+    private void changePlayer() {
         int idPlayer = getIdListPlayer();
         if (idPlayer < game.getMaxPlayer() - 1) {
-            player = getListPlayers().get(idPlayer + 1);
+            actualPlayer = getListPlayers().get(idPlayer + 1);
         } else {
-            player = getListPlayers().get(0);
+            actualPlayer = getListPlayers().get(0);
         }
     }
 
@@ -73,7 +89,7 @@ public class GameEngine {
         this.waitDrawSecondCard = new WaitDrawSecondCard(this);
         this.checkPairOrNot = new CheckPairOrNot(this);
 
-        player = game.getListPlayers().get(0);
+        actualPlayer = game.getListPlayers().get(0);
     }
 
     public AskDrawFirstCard getAskDrawFirstCard() {
@@ -121,27 +137,27 @@ public class GameEngine {
     }
 
     public Player getPlayer() {
-        return player;
+        return actualPlayer;
     }
 
     public void setPlayer(Player player) {
-        this.player = player;
+        this.actualPlayer = player;
     }
 
-    public void paireFound() {
+    public boolean handlePairFoundAndSayIfEndGame() {
         if (firstCard.getTypeCarte() != secondCard.getTypeCarte()) {
             logger.warning("les cartes a supprimer ne sont pas identiques");
         }
-        game.getBoard().removeCards(firstCard);
-        player.incrementScrore();
+        actualPlayer.incrementScrore();
+        return game.getBoard().removeCardsAndSayIfEmpty(firstCard);
     }
 
     public void sendMessageToPlayer(EMessageType messageType, String contenu) {
         WebsocketMessage message = new WebsocketMessage();
-        message.setPseudo(player.getPseudo());
+        message.setPseudo(actualPlayer.getPseudo());
         message.setType(messageType);
         message.setContenu(contenu);
-        WebsocketServerHelper.sendMessageToClient(player.getPseudo(), message);
+        WebsocketServerHelper.sendMessageToClient(actualPlayer.getPseudo(), message);
     }
 
     public void sendMessageToAllPlayer(EMessageType messageType, String contenu) {
@@ -157,8 +173,8 @@ public class GameEngine {
     public void sendMessageToAllPlayerPairFound(){
         Coordinates firstCoordinates = firstCard.getCoordinates();
         Coordinates secondCoordinates = firstCard.getCoordinates();
-        int pointsPlayer = player.getPoints();
-        String pseudoPlayer = player.getPseudo();
+        int pointsPlayer = actualPlayer.getPoints();
+        String pseudoPlayer = actualPlayer.getPseudo();
 
         DataPlayerPointsCoordinates data = new DataPlayerPointsCoordinates(pseudoPlayer, pointsPlayer, firstCoordinates, secondCoordinates);
         
@@ -166,12 +182,40 @@ public class GameEngine {
 
         sendMessageToAllPlayer(EMessageType.PAIR_FOUND , jsonData);
 
+    }
 
+    public void sendMessageToAllPlayerWhoWon() {
+        sendMessageToAllPlayer(EMessageType.WINNER, actualPlayer.getPseudo());
+    }
+
+    public Player getWinner(){
+        //balek egalités pour l'instant
+        int maxPoint = 0;
+        for (Player p : game.getListPlayers()) {
+            maxPoint = p.getPoints();
+        }
+        for (Player p : game.getListPlayers()) {
+            if(p.getPoints() == maxPoint){
+                return p;
+            }
+        }
+        return null;
 
     }
 
+    public void startTurnOfNextPlayer(){
+        changePlayer();
+        etatJeu = askDrawFirstCard;
+    }
+
+
     public Card getCardFromJsonCoordinates(String jsonCoordinates) {
         return game.getBoard().getCardFromJsonCoordinates(jsonCoordinates);
+    }
+
+    public final void changeAndStartEtatJeuTo(EtatJeu etatJeu){
+        changeEtatJeuTo(etatJeu);
+        startEtatActuel();
     }
 
 }

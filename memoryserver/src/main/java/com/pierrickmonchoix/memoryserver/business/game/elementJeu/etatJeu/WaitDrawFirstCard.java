@@ -3,7 +3,6 @@ package com.pierrickmonchoix.memoryserver.business.game.elementJeu.etatJeu;
 import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryserver.business.game.elementJeu.Card;
-import com.pierrickmonchoix.memoryserver.business.game.elementJeu.Coordinates;
 import com.pierrickmonchoix.memoryserver.business.game.elementJeu.GameEngine;
 import com.pierrickmonchoix.memoryserver.websocket.IWebsocketListener;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
@@ -27,7 +26,7 @@ public class WaitDrawFirstCard extends EtatJeu implements IWebsocketListener {
     @Override
     public void goNextEtat() {
         waiting = false;
-        changeAndStartEtatTo(automateGameEngine.getAskDrawSecondCard());
+        automateGameEngine.changeAndStartEtatJeuTo(automateGameEngine.getAskDrawSecondCard());
 
     }
 

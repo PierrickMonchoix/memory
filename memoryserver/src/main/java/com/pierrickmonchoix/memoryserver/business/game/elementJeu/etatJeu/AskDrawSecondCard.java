@@ -21,7 +21,7 @@ public class AskDrawSecondCard extends EtatJeu {
 
     @Override
     public void goNextEtat() {
-        changeAndStartEtatTo(automateGameEngine.getWaitDrawSecondCard());
+        automateGameEngine.changeAndStartEtatJeuTo(automateGameEngine.getWaitDrawSecondCard());
     }
 
     private void askClientDrawSecondCard() {

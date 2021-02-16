@@ -1,11 +1,9 @@
 package com.pierrickmonchoix.memoryserver.business.game.elementJeu;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
-import java.lang.Math;
 
 public class Board {
     private static Logger logger = Logger.getLogger(Board.class.getName());
@@ -17,6 +15,8 @@ public class Board {
     private int tailleY = 4;
 
     public Board() {
+
+        listCards = new ArrayList<Card>();
         listCards.add(new Card(ECardType.UN));
         listCards.add(new Card(ECardType.UN));
         listCards.add(new Card(ECardType.DEUX));
@@ -51,8 +51,9 @@ public class Board {
         return null;
     }
 
-    public void removeCards(Card card){
+    public boolean removeCardsAndSayIfEmpty(Card card){
         listCards.removeIf( (c -> (c.getTypeCarte() == card.getTypeCarte()) ) ) ;
+        return listCards.isEmpty();
     }
 
     public Card getCardFromJsonCoordinates(String jsonCoordinates) {

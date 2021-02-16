@@ -55,7 +55,25 @@ public enum EMessageType {
      * ?
      * 
      */
-    PAIR_FOUND;
+    PAIR_FOUND,
+    
+    
+    /**
+     * server > client :
+     * la partie est terminee, voici le gagnant
+     * 
+     * client > server :
+     * ?
+     * 
+     */
+    WINNER,
+    
+    
+    
+    
+    
+    
+    ;
 
 
 

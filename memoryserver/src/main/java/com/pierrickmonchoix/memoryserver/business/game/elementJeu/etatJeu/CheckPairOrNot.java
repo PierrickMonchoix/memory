@@ -1,27 +1,37 @@
 package com.pierrickmonchoix.memoryserver.business.game.elementJeu.etatJeu;
 
 import com.pierrickmonchoix.memoryserver.business.game.elementJeu.GameEngine;
-import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
-import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 
 public class CheckPairOrNot extends EtatJeu {
 
     public CheckPairOrNot(GameEngine automateGameEngine) {
         super(automateGameEngine);
-        // TODO Auto-generated constructor stub
     }
 
     @Override
     public void start() {
-        if(automateGameEngine.isPairDrawn()){
-            automateGameEngine.paireFound();
-            automateGameEngine.sendMessageToAllPlayerPairFound();
+        if(automateGameEngine.isPairDrawn()){  // verification q'uone paire a bien etet tiree
+            boolean isBoardEmpty = automateGameEngine.handlePairFoundAndSayIfEndGame(); // a faire avant de send msg!
+            
+            if(isBoardEmpty){ // partie terminee
+                automateGameEngine.sendMessageToAllPlayerWhoWon();;
+            }
+            else {
+                automateGameEngine.sendMessageToAllPlayerPairFound();
+
+                //on ne change pa d ejourueru si une paire a ete trouvee
+                goNextEtat();
+            }
+            
+        }
+        else{
+            automateGameEngine.startTurnOfNextPlayer();
         }
     }
 
     @Override
     public void goNextEtat() {
-        
+        automateGameEngine.changeAndStartEtatJeuTo(automateGameEngine.getAskDrawFirstCard());
     }
     
 }
