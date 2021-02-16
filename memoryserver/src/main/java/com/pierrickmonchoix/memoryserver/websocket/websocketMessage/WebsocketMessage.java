@@ -50,7 +50,7 @@ public class WebsocketMessage {
         return gson.toJson(this);
     }
 
-    public static WebsocketMessage toObject(String string){
+    public static WebsocketMessage fromJson(String string){
         return gson.fromJson(string, WebsocketMessage.class);
     }
 

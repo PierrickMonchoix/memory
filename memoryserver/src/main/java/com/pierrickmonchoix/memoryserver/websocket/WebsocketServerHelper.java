@@ -113,11 +113,11 @@ public class WebsocketServerHelper {
         return null;
     }
 
-    public static void notifyListenersOfMessage(WebsocketMessage websocketMessage) {
+    public static void notifyListenersOfMessage(WebsocketMessage message) {
         logger.info("notification des ws listeners");
         for (IWebsocketListener listener : listListeners) {
             logger.info("on a notifié un ws listeners");
-            listener.whenReceiveWebsocketMessage(websocketMessage);
+            listener.whenReceiveWebsocketMessage(message);
         }
     }
 

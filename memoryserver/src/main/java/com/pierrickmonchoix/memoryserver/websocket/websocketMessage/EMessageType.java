@@ -25,5 +25,27 @@ public enum EMessageType {
      * validation ou non de ce pseudo
      * 
      */
-    SIGN_UP;
+    SIGN_UP,
+
+    /**
+     * server > client :
+     * demande de tirage de premiere la carte
+     * 
+     * client > server :
+     * resluat de la premiere carte
+     * 
+     */
+    FIRST_CARD,
+
+    /**
+     * server > client :
+     * demande de tirage de seconde la carte
+     * 
+     * client > server :
+     * resluat de la seconde carte
+     * 
+     */
+    SECOND_CARD;
+
+
 }

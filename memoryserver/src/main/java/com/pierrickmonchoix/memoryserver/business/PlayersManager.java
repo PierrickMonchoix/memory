@@ -32,4 +32,14 @@ public class PlayersManager {
         return false;
     }
 
+    public static Player getPlayerFromPseudo(String pseudo){
+        for (Player player : listPlayers) {
+            if(player.getPseudo().equals(pseudo)){
+                return player;
+            }
+        }
+        logger.warning("ce joueur avec ce pseudo n'exist pas");
+        return null;
+    }
+
 }

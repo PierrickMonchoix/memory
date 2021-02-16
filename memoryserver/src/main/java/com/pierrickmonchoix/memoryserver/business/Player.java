@@ -19,6 +19,13 @@ public class Player {
         this.pseudo = pseudo;
     }
 
+    
+
+    @Override
+    public String toString() {
+        return "Player [pseudo=" + pseudo + "]";
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -42,11 +49,6 @@ public class Player {
         } else if (!pseudo.equals(other.pseudo))
             return false;
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Player [pseudo=" + pseudo + "]";
     }
 
 }
