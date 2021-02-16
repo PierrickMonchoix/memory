@@ -51,6 +51,16 @@ public class Board {
         return null;
     }
 
+    public void removeCards(Card card){
+        listCards.removeIf( (c -> (c.getTypeCarte() == card.getTypeCarte()) ) ) ;
+    }
+
+    public Card getCardFromJsonCoordinates(String jsonCoordinates) {
+        Coordinates coordinates = Coordinates.fromJson(jsonCoordinates);
+        Card drawnCard = getCardFromCoordinates(coordinates);
+        return drawnCard;
+    }
+
 
     
 

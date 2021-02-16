@@ -45,7 +45,19 @@ public enum EMessageType {
      * resluat de la seconde carte
      * 
      */
-    SECOND_CARD;
+    SECOND_CARD,
+
+    /**
+     * server > client :
+     * le client a trouve une paire
+     * 
+     * client > server :
+     * ?
+     * 
+     */
+    PAIR_FOUND;
+
+
 
 
 }

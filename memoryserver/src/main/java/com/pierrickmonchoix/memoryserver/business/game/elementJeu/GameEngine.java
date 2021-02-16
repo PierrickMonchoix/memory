@@ -11,6 +11,9 @@ import com.pierrickmonchoix.memoryserver.business.game.elementJeu.etatJeu.CheckP
 import com.pierrickmonchoix.memoryserver.business.game.elementJeu.etatJeu.EtatJeu;
 import com.pierrickmonchoix.memoryserver.business.game.elementJeu.etatJeu.WaitDrawFirstCard;
 import com.pierrickmonchoix.memoryserver.business.game.elementJeu.etatJeu.WaitDrawSecondCard;
+import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
+import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
+import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
 
 public class GameEngine {
 
@@ -109,16 +112,66 @@ public class GameEngine {
         this.secondCard = secondCard;
     }
 
-    public boolean isPeerDrawn(){
+    public boolean isPairDrawn() {
         return firstCard.getTypeCarte() == secondCard.getTypeCarte();
     }
 
-    public Board getBoard() {
-        return game.getBoard();
+    public void startEtatActuel() {
+        etatJeu.start();
     }
 
-    public void startEtatActuel(){
-        etatJeu.start();
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void paireFound() {
+        if (firstCard.getTypeCarte() != secondCard.getTypeCarte()) {
+            logger.warning("les cartes a supprimer ne sont pas identiques");
+        }
+        game.getBoard().removeCards(firstCard);
+        player.incrementScrore();
+    }
+
+    public void sendMessageToPlayer(EMessageType messageType, String contenu) {
+        WebsocketMessage message = new WebsocketMessage();
+        message.setPseudo(player.getPseudo());
+        message.setType(messageType);
+        message.setContenu(contenu);
+        WebsocketServerHelper.sendMessageToClient(player.getPseudo(), message);
+    }
+
+    public void sendMessageToAllPlayer(EMessageType messageType, String contenu) {
+        for (Player p : game.getListPlayers()) {
+            WebsocketMessage message = new WebsocketMessage();
+            message.setPseudo(p.getPseudo());
+            message.setType(messageType);
+            message.setContenu(contenu);
+            WebsocketServerHelper.sendMessageToClient(p.getPseudo(), message);
+        }
+    }
+
+    public void sendMessageToAllPlayerPairFound(){
+        Coordinates firstCoordinates = firstCard.getCoordinates();
+        Coordinates secondCoordinates = firstCard.getCoordinates();
+        int pointsPlayer = player.getPoints();
+        String pseudoPlayer = player.getPseudo();
+
+        DataPlayerPointsCoordinates data = new DataPlayerPointsCoordinates(pseudoPlayer, pointsPlayer, firstCoordinates, secondCoordinates);
+        
+        String jsonData = data.toJson();
+
+        sendMessageToAllPlayer(EMessageType.PAIR_FOUND , jsonData);
+
+
+
+    }
+
+    public Card getCardFromJsonCoordinates(String jsonCoordinates) {
+        return game.getBoard().getCardFromJsonCoordinates(jsonCoordinates);
     }
 
 }

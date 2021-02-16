@@ -1,6 +1,8 @@
 package com.pierrickmonchoix.memoryserver.business.game.elementJeu.etatJeu;
 
 import com.pierrickmonchoix.memoryserver.business.game.elementJeu.GameEngine;
+import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
+import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 
 public class CheckPairOrNot extends EtatJeu {
 
@@ -11,15 +13,15 @@ public class CheckPairOrNot extends EtatJeu {
 
     @Override
     public void start() {
-        if(automateGameEngine.isPeerDrawn()){
-            //TODO:
+        if(automateGameEngine.isPairDrawn()){
+            automateGameEngine.paireFound();
+            automateGameEngine.sendMessageToAllPlayerPairFound();
         }
     }
 
     @Override
     public void goNextEtat() {
         
-
     }
     
 }

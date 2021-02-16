@@ -28,20 +28,18 @@ public class WaitDrawFirstCard extends EtatJeu implements IWebsocketListener {
     public void goNextEtat() {
         waiting = false;
         changeAndStartEtatTo(automateGameEngine.getAskDrawSecondCard());
-        
+
     }
 
     @Override
-    public void whenReceiveWebsocketMessage(WebsocketMessage websocketMessage) {
-        if(websocketMessage.getType() == EMessageType.FIRST_CARD){
-            if(waiting){
-            logger.info("on a recu la premiere carte");
-            Card drawnCard = getCardFromJsonCoordinates( websocketMessage.getContenu() );
-            automateGameEngine.setFirstCard(drawnCard);
-
-            goNextEtat();
-            }
-            else{
+    public void whenReceiveWebsocketMessage(WebsocketMessage message) {
+        if (message.getType() == EMessageType.FIRST_CARD) {
+            if (waiting) {
+                logger.info("on a recu la premiere carte");
+                Card drawnCard = automateGameEngine.getCardFromJsonCoordinates(message.getContenu());
+                automateGameEngine.setFirstCard(drawnCard);
+                goNextEtat();
+            } else {
                 logger.warning("je n'attendais pas de msg ...");
             }
         }
@@ -49,22 +47,4 @@ public class WaitDrawFirstCard extends EtatJeu implements IWebsocketListener {
 
 
 
-
-    private Card getCardFromJsonCoordinates(String jsonCoordinates){
-        Coordinates coordinates = Coordinates.fromJson(jsonCoordinates);
-        Card drawnCard = automateGameEngine.getBoard().getCardFromCoordinates(coordinates);
-        return drawnCard;
-    }
-
-
-    
-
-    
-
-
-
-
-
-
-    
 }

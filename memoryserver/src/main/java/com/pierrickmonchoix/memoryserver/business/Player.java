@@ -6,6 +6,19 @@ package com.pierrickmonchoix.memoryserver.business;
 public class Player {
 
     private String pseudo;
+    private int points;
+
+    public int getPoints() {
+        return this.points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public void incrementScrore(){
+        points ++;
+    } 
 
     public String getPseudo() {
         return pseudo;

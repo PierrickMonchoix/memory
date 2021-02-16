@@ -1,8 +1,10 @@
 package com.pierrickmonchoix.memoryserver.business.game.elementJeu.etatJeu;
 
+import java.net.http.WebSocket;
 import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryserver.business.game.elementJeu.GameEngine;
+import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 
 public class AskDrawFirstCard extends EtatJeu {
     private static Logger logger = Logger.getLogger(AskDrawFirstCard.class.getName());
@@ -14,7 +16,6 @@ public class AskDrawFirstCard extends EtatJeu {
     @Override
     public void start() {
         askClientDrawFirstCard();
-        
         goNextEtat();
     }
 
@@ -25,7 +26,7 @@ public class AskDrawFirstCard extends EtatJeu {
 
     private void askClientDrawFirstCard(){
         logger.info("askClientDrawFirtCard");
-        //TODO:
+        automateGameEngine.sendMessageToPlayer(EMessageType.FIRST_CARD, "order_draw_firstcard");
     }
 
 
