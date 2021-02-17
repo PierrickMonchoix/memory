@@ -81,6 +81,11 @@ public class WebsocketServerHelper {
         }
     }
 
+
+    public static void sendMessageToEveryPlayer(WebsocketMessage websocketMessage){
+        sendMessageToSeveralClients(PlayersManager.getAllPseudos() ,websocketMessage);
+    }
+
     public static void updateListSessions(Session s) {
         boolean alreadyHere = false;
         for (Session session : listSessions) {

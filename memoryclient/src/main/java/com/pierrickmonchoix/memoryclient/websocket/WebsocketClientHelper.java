@@ -48,11 +48,11 @@ public class WebsocketClientHelper {
         websocketClient.sendMessage(websocketMessage);
     }
 
-    public static void notifyListenersOfMessage(WebsocketMessage websocketMessage) {
-        logger.info("notifcation des ws listeners du msg : " + websocketMessage);
+    public static void notifyListenersOfMessage(WebsocketMessage message) {
+        logger.info("notifcation des ws listeners du msg : " + message);
         for (IWebsocketListener listener : listListeners) {
             logger.info("on a notifié un ws listeners");
-            listener.whenReceiveWebsocketMessage(websocketMessage);
+            listener.whenReceiveWebsocketMessage(message);
         }
     }
 

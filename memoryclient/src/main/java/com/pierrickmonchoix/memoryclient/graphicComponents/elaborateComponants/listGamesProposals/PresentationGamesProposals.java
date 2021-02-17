@@ -18,10 +18,24 @@ public class PresentationGamesProposals extends Presentation{
 
         listPresentationsGameProposal = new ArrayList<PresentationGameProposal>();
         
-        listPresentationsGameProposal.add(new PresentationGameProposal("jack"));
-        listPresentationsGameProposal.add(new PresentationGameProposal("queen"));
-        listPresentationsGameProposal.add(new PresentationGameProposal("king"));
+        listPresentationsGameProposal.add(new PresentationGameProposal("hello"));
+        listPresentationsGameProposal.add(new PresentationGameProposal("world"));
 
+    }
+
+    public PresentationGameProposal getPresentationGameProposalWithPseudo(String pseudo){
+        for (PresentationGameProposal presentationGameProposal : listPresentationsGameProposal) {
+            if(presentationGameProposal.getPseudo().equals(pseudo)){
+                return presentationGameProposal;
+            }
+        }
+        logger.warning("aucune game avec ce pseudo trouvée ...");
+        return null;
+    }
+
+    public void addGameOfPseudo(String pseudo){
+        PresentationGameProposal presentationGameProposal = new PresentationGameProposal(pseudo);
+        listPresentationsGameProposal.add(presentationGameProposal);
     }
 
     public List<PresentationGameProposal> getListPresentationsGameProposal() {

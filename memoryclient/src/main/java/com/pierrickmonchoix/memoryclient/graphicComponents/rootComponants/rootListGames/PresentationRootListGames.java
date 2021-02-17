@@ -1,22 +1,30 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames;
 
+import java.util.logging.Logger;
+
 import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.gameProposal.PresentationGameProposal;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.buttonCreateGame.PresentationButtonCreateGame;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.labelHeroPseudo.PresentationLabelHeroPseudo;
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGames.PresentationListGames;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGamesProposals.PresentationGamesProposals;
 
 
 
 public class PresentationRootListGames extends Presentation{
 
+    private static Logger logger = Logger.getLogger(PresentationRootListGames.class.getName());
+
     private final PresentationLabelHeroPseudo presentationLabelHeroPseudo;
     private final PresentationGamesProposals presentationGamesProposals;
+    private final PresentationButtonCreateGame presentationButtonCreateGame;
 
     public PresentationRootListGames() {
 
         presentationLabelHeroPseudo = new PresentationLabelHeroPseudo();
+        logger.info("fait4)");
         presentationGamesProposals = new PresentationGamesProposals();
+        // set vue 
+        presentationButtonCreateGame = new PresentationButtonCreateGame();
+
 
     }
 
@@ -26,8 +34,16 @@ public class PresentationRootListGames extends Presentation{
 
 
     public PresentationGamesProposals getPresentationGamesProposals() {
+        logger.info("fati 3");
         return presentationGamesProposals;
     }
+
+
+    public PresentationButtonCreateGame getPresentationButtonCreateGame() {
+        return presentationButtonCreateGame;
+    }
+
+
 
  
 

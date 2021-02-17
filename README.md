@@ -1,5 +1,12 @@
+ATTENTION :CHANGER LA PATH DANS LA DAO
+
+
+
 On fera référence a notre client par Hero
 et aux autre joueurs (adversaires) par Vilain
+
+
+
 
 
 

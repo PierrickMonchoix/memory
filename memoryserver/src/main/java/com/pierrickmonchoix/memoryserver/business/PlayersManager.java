@@ -42,4 +42,12 @@ public class PlayersManager {
         return null;
     }
 
+    public static List<String> getAllPseudos(){
+        List<String> listPseudos = new ArrayList<String>(); 
+        for (Player player : listPlayers) {
+            listPseudos.add(player.getPseudo());
+        }
+        return listPseudos;
+    }
+
 }

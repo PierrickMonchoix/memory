@@ -27,7 +27,7 @@ public class Apptest {
         GamesManager.createGameOfHostPlayerPseudo("queen");
 
         GamesManager.addPlayerToGame("jack" , "luffy");
-        GamesManager.addPlayerToGame("jack", "zoro");
+      //  GamesManager.addPlayerToGame("jack", "zoro");
 
 
         System.out.println("la GamesManager: \n" + GamesManager.getJson() );

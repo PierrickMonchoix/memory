@@ -38,11 +38,15 @@ public class RootManager {
         presentationRootLogin = new PresentationRootLogin("bernard", "first co?", true);
         vueRootLogin = new VueRootLogin(presentationRootLogin);
         presentationRootLogin.setVue(vueRootLogin);
-        modelRootLogin = new ModelRootLogin(presentationRootLogin);
+        
 
         presentationRootListGames = new PresentationRootListGames();
         vueRootListGames = new VueRootListGames(presentationRootListGames);
         presentationRootListGames.setVue(vueRootListGames);
+
+
+        // il faut bien que toutes les vues et presentations soient fiates avant les differents mdoelses
+        modelRootLogin = new ModelRootLogin(presentationRootLogin);
         modelRootListGames = new ModelRootListGames(presentationRootListGames);
 
 

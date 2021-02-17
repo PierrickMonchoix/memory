@@ -1,10 +1,14 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents;
 
+import java.util.logging.Logger;
 
 /**
- * Posséde déja une IVue par défaut, mais elle DOIT être set juste apres la construction
+ * Posséde déja une IVue par défaut, mais elle DOIT être set juste apres la
+ * construction
  */
 public abstract class Presentation {
+
+    private static Logger logger = Logger.getLogger(Presentation.class.getName());
 
     protected IVue vue;
 
@@ -16,16 +20,17 @@ public abstract class Presentation {
         return vue;
     }
 
-    public void updateVue(){
+    public void updateVue() {
+        if (vue == null) {
+            logger.warning("cette presentation a aune vue null : " + this.toString());
+        }
         vue.update();
     }
 
-
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return this.getClass().getName();
+    }
 
 }
