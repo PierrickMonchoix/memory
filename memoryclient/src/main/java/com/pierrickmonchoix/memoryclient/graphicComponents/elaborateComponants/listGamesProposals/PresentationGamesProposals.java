@@ -17,9 +17,6 @@ public class PresentationGamesProposals extends Presentation{
     public PresentationGamesProposals(){
 
         listPresentationsGameProposal = new ArrayList<PresentationGameProposal>();
-        
-        listPresentationsGameProposal.add(new PresentationGameProposal("hello"));
-        listPresentationsGameProposal.add(new PresentationGameProposal("world"));
 
     }
 
@@ -36,6 +33,7 @@ public class PresentationGamesProposals extends Presentation{
     public void addGameOfPseudo(String pseudo){
         PresentationGameProposal presentationGameProposal = new PresentationGameProposal(pseudo);
         listPresentationsGameProposal.add(presentationGameProposal);
+        //updateVue();
     }
 
     public List<PresentationGameProposal> getListPresentationsGameProposal() {

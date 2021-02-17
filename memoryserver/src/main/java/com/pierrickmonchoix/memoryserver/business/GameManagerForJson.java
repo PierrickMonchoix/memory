@@ -32,7 +32,7 @@ public class GameManagerForJson {
 
     public GameManagerForJson(){
         listJsonGames = new ArrayList<ShownGameForJson>();
-        List<Game> listGames = GamesManager.getListGames();
+        List<Game> listGames = GamesManager.getInstance().getListGames();
         for (Game g : listGames) {
             ShownGameForJson jsonGame = new ShownGameForJson(g);
             listJsonGames.add(jsonGame);

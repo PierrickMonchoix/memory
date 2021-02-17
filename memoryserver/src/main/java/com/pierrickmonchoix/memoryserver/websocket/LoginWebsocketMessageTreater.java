@@ -22,7 +22,7 @@ public class LoginWebsocketMessageTreater {
 
     public static void treatMessage(WebsocketMessage message, Session session) {
         if (message.getPseudo().equals("unknown") && WebsocketServerHelper.getPseudoOfSession(session).equals("unknown")
-                && !PlayersManager.isPlayerAlreadyConnected(message.getContenu())) {
+                && !PlayersManager.getInstance().isPlayerAlreadyConnected(message.getContenu())) {
             switch (message.getType()) {
                 case SIGN_IN: // message n'a pas encore de pseudo
                     logger.info("message sign in detected");
@@ -37,7 +37,7 @@ public class LoginWebsocketMessageTreater {
 
                     break;
             }
-        } else if (PlayersManager.isPlayerAlreadyConnected(message.getContenu())) {
+        } else if (PlayersManager.getInstance().isPlayerAlreadyConnected(message.getContenu())) {
             logger.warning("le joueur : " + message.getContenu() + " est deja connecté");
             WebsocketMessage response = WebsocketMessage.newResponseMessage(message);
             response.setContenu("nok_already_connected_player");
@@ -58,7 +58,7 @@ public class LoginWebsocketMessageTreater {
             response.setPseudo(pseudo);
 
             WebsocketServerHelper.givePseudoToSession(session, pseudo);
-            PlayersManager.addNewPlayerWithPseudo(pseudo);
+            PlayersManager.getInstance().addNewPlayerWithPseudo(pseudo);
 
             sendMessgeToUpdateListGamesTo(pseudo,session);
         } else {
@@ -83,7 +83,7 @@ public class LoginWebsocketMessageTreater {
             response.setPseudo(pseudo);
 
             WebsocketServerHelper.givePseudoToSession(session, pseudo);
-            PlayersManager.addNewPlayerWithPseudo(pseudo);
+            PlayersManager.getInstance().addNewPlayerWithPseudo(pseudo);
             FactoryDao.createPersonne(new Personne(pseudo));
 
             sendMessgeToUpdateListGamesTo(pseudo,session);
@@ -97,7 +97,7 @@ public class LoginWebsocketMessageTreater {
         WebsocketMessage messageUpdateListGames = new WebsocketMessage();
         messageUpdateListGames.setPseudo(pseudo);
         messageUpdateListGames.setType(EMessageType.UPDATE_LIST_GAMES);
-        messageUpdateListGames.setContenu(GamesManager.getJson());
+        messageUpdateListGames.setContenu(GamesManager.getInstance().getJson());
         WebsocketServerHelper.sendMessageToClient(session, messageUpdateListGames);
     }
 

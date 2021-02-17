@@ -16,21 +16,21 @@ public class Apptest {
 
        
 
-        PlayersManager.addNewPlayerWithPseudo("jack");
-        PlayersManager.addNewPlayerWithPseudo("queen");
-        PlayersManager.addNewPlayerWithPseudo("king");
-        PlayersManager.addNewPlayerWithPseudo("luffy");
-        PlayersManager.addNewPlayerWithPseudo("sanji");
-        PlayersManager.addNewPlayerWithPseudo("zoro");
+        PlayersManager.getInstance().addNewPlayerWithPseudo("jack");
+        PlayersManager.getInstance().addNewPlayerWithPseudo("queen");
+        PlayersManager.getInstance().addNewPlayerWithPseudo("king");
+        PlayersManager.getInstance().addNewPlayerWithPseudo("luffy");
+        PlayersManager.getInstance().addNewPlayerWithPseudo("sanji");
+        PlayersManager.getInstance().addNewPlayerWithPseudo("zoro");
 
-        GamesManager.createGameOfHostPlayerPseudo("jack");
-        GamesManager.createGameOfHostPlayerPseudo("queen");
+        GamesManager.getInstance().createGameOfHostPlayerPseudo("jack");
+        GamesManager.getInstance().createGameOfHostPlayerPseudo("queen");
 
-        GamesManager.addPlayerToGame("jack" , "luffy");
+        GamesManager.getInstance().addPlayerToGame("jack" , "luffy");
       //  GamesManager.addPlayerToGame("jack", "zoro");
 
 
-        System.out.println("la GamesManager: \n" + GamesManager.getJson() );
+        System.out.println("la GamesManager: \n" + GamesManager.getInstance().getJson() );
 
 
 

@@ -24,6 +24,7 @@ public abstract class Presentation {
         if (vue == null) {
             logger.warning("cette presentation a aune vue null : " + this.toString());
         }
+        
         vue.update();
     }
 

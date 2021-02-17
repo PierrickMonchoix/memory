@@ -2,21 +2,20 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.
 
 import java.util.logging.Logger;
 
-import com.pierrickmonchoix.memoryclient.FxApp;
 import com.pierrickmonchoix.memoryclient.graphicComponents.RootManager;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ILoginListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
 import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
+import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
 import javafx.application.Platform;
 
-
 /**
- * Recoit le resultat du serveur :  si la connexion est accépté ou non.
- *  i.e si le signIn marche car il y avais bien ce pseudo en stock ou inversement pour le signUp
- * Il affiche ce resultat par le bais d'un TextviewOutput
+ * Recoit le resultat du serveur : si la connexion est accépté ou non. i.e si le
+ * signIn marche car il y avais bien ce pseudo en stock ou inversement pour le
+ * signUp Il affiche ce resultat par le bais d'un TextviewOutput
  */
 public class ModelLoginResult implements ILoginListener, IWebsocketListener { // implements IWebsocketListener
 
@@ -45,25 +44,28 @@ public class ModelLoginResult implements ILoginListener, IWebsocketListener { //
                 text = "Tentative de connexion habituelle en tant que : " + modelLogin.getUsername() + "\n";
                 presentationLoginTextResult.setText(text); // on ajoutera la reponse WS
             }
-            
+
         }
     }
 
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage message) {
-        logger.info("jai ete notifié par ws");
-        text = text + message.getContenu();
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                if(message.getContenu().substring(0,2).equals("ok")){
-                    RootManager.setHeroPseudo(message.getPseudo());
-                    RootManager.setVueRootListGames();
+        if ((message.getType() == EMessageType.SIGN_IN) || (message.getType() == EMessageType.SIGN_UP)) {
+            logger.info("jai ete notifié par ws");
+            text = text + message.getContenu();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    if (message.getContenu().substring(0, 2).equals("ok")) {
+                        WebsocketClientHelper.setPseudo(message.getPseudo());
+                        RootManager.setHeroPseudo(message.getPseudo());
+                        RootManager.setVueRootListGames();
+                    }
+                    presentationLoginTextResult.setText(text); // on a ajouté la reponse WS
                 }
-                presentationLoginTextResult.setText(text); // on a ajouté la reponse WS
-            }
-        });
-        
+            });
+        }
+
     }
 
     // when notify by ws

@@ -14,31 +14,50 @@ public class GamesManager implements IWebsocketListener {
 
     private static Logger logger = Logger.getLogger(GamesManager.class.getName());
 
-    private final static List<Game> listGames = new ArrayList<Game>();
+    private final List<Game> listGames = new ArrayList<Game>();
 
-    //static GamesManager
 
-    public static void createGameOfHostPlayerPseudo(String pseudo) {
-        Player hostPlayer = PlayersManager.getPlayerFromPseudo(pseudo);
+
+    private static GamesManager instance;
+
+    private GamesManager(){
+        WebsocketServerHelper.addListener(this);
+    }
+
+
+    public static GamesManager getInstance() {
+        if(instance == null){
+            instance = new GamesManager();
+        }
+        return instance;
+    }
+
+    public void createGameOfHostPlayerPseudo(String pseudo) {
+        Player hostPlayer = PlayersManager.getInstance().getPlayerFromPseudo(pseudo);
         createGameOfHostPlayer(hostPlayer);
     }
 
-    private static void createGameOfHostPlayer(Player hostPlayer) {
+    private  void createGameOfHostPlayer(Player hostPlayer) {
         Game newGame = new Game(hostPlayer);
         listGames.add(newGame);
     }
 
     // APPELE PAR LES GAME ENGINE
-    public static void removeGame(Game game) {
+    public void removeGame(Game game) {
         listGames.remove(game);
     }
 
-    public static void addPlayerToGame(String hostPlayerPseudo, String playerPseudo) {
+    public void removeGameOfHostPseudo(String pseudo){
+        listGames.removeIf(g -> (g.getHostPlayer().getPseudo().equals(pseudo) ));
+    }
+
+
+    public void addPlayerToGame(String hostPlayerPseudo, String playerPseudo) {
         Game game = getGameOfHost(hostPlayerPseudo);
         game.addPlayer(playerPseudo);
     }
 
-    private static Game getGameOfHost(String hostPlayerPseudo) {
+    private Game getGameOfHost(String hostPlayerPseudo) {
         for (Game game : listGames) {
             if (game.getHostPlayer().getPseudo().equals(hostPlayerPseudo)) { // pseudo des hostPlayers
                 return game;
@@ -48,11 +67,11 @@ public class GamesManager implements IWebsocketListener {
         return null;
     }
 
-    public static List<Game> getListGames() {
+    public List<Game> getListGames() {
         return listGames;
     }
 
-    public static String getJson() {
+    public String getJson() {
         GameManagerForJson gameManagerForJson = new GameManagerForJson();
         return gameManagerForJson.toJson();
     }
@@ -62,16 +81,15 @@ public class GamesManager implements IWebsocketListener {
         if(message.getType() == EMessageType.CREATE_GAME){
             logger.info("le client : " + message.getPseudo() + " me demande de creer une partie");
             createGameOfHostPlayerPseudo(message.getPseudo());
-            sendMessgeToUpdateListGamesTo(message.getPseudo());
+            sendMessgeToUpdateListGamesToEveryPlayer();
         }
-    }
+    } //: every one
 
-    public static void sendMessgeToUpdateListGamesTo(String pseudo) {
+    public void sendMessgeToUpdateListGamesToEveryPlayer() {
         WebsocketMessage messageUpdateListGames = new WebsocketMessage();
-        messageUpdateListGames.setPseudo(pseudo);
         messageUpdateListGames.setType(EMessageType.UPDATE_LIST_GAMES);
-        messageUpdateListGames.setContenu(GamesManager.getJson());
-        WebsocketServerHelper.sendMessageToClient(pseudo, messageUpdateListGames);
+        messageUpdateListGames.setContenu(getInstance().getJson());
+        WebsocketServerHelper.sendMessageToEveryPlayer(messageUpdateListGames);
     }
 
 }

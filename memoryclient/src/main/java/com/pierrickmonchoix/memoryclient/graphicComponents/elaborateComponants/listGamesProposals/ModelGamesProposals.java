@@ -8,6 +8,8 @@ import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
+import javafx.application.Platform;
+
 public class ModelGamesProposals implements IWebsocketListener {
 
     private static Logger logger = Logger.getLogger(ModelGamesProposals.class.getName());
@@ -32,7 +34,12 @@ public class ModelGamesProposals implements IWebsocketListener {
                 logger.info("ajout new game");
                 presentationGamesProposals.addGameOfPseudo(pseudoHost);
             }
-            presentationGamesProposals.updateVue();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    presentationGamesProposals.updateVue();
+                }
+            });
         }
 
     }

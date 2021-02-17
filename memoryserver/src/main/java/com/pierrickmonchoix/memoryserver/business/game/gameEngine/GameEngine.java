@@ -202,7 +202,7 @@ public class GameEngine {
 
     //END GAME
     public void endGame(){
-        GamesManager.removeGame(this.game);
+        GamesManager.getInstance().removeGame(this.game);
     }
 
 

@@ -20,9 +20,7 @@ public class PresentationRootListGames extends Presentation{
     public PresentationRootListGames() {
 
         presentationLabelHeroPseudo = new PresentationLabelHeroPseudo();
-        logger.info("fait4)");
         presentationGamesProposals = new PresentationGamesProposals();
-        // set vue 
         presentationButtonCreateGame = new PresentationButtonCreateGame();
 
 

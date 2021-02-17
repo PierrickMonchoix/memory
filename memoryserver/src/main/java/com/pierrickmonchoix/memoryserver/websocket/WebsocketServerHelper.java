@@ -58,8 +58,9 @@ public class WebsocketServerHelper {
     public static void sendMessageToClient(String pseudo, WebsocketMessage websocketMessage) {
         logger.info("tentative d'envoie de msg au client : " + pseudo);
         for (Session session : listSessions) {
-            logger.info("on peut envoyer un msg a : " + session.getUserProperties().get(PSEUDO));
+            logger.info("on tente d'envoyer un msg a : " + session.getUserProperties().get(PSEUDO));
             if (session.getUserProperties().get(PSEUDO).equals(pseudo)) {
+                logger.info("on envoie un msg a : " + session.getUserProperties().get(PSEUDO));
                 sendMessageToClient(session, websocketMessage);
             }
         }
@@ -83,7 +84,7 @@ public class WebsocketServerHelper {
 
 
     public static void sendMessageToEveryPlayer(WebsocketMessage websocketMessage){
-        sendMessageToSeveralClients(PlayersManager.getAllPseudos() ,websocketMessage);
+        sendMessageToSeveralClients(PlayersManager.getInstance().getAllPseudos() ,websocketMessage);
     }
 
     public static void updateListSessions(Session s) {
@@ -103,7 +104,7 @@ public class WebsocketServerHelper {
     }
 
     public static void removeSession(Session s) {
-        PlayersManager.removePlayer(getPseudoOfSession(s));
+        PlayersManager.getInstance().removePlayer(getPseudoOfSession(s));
         listSessions.removeIf((session -> (session.getId().equals(s.getId()))));
     }
 

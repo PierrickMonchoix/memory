@@ -52,7 +52,7 @@ public class Game {
 
     //PUBLIC AJOUT D'UN JOUEUR
     public void addPlayer(String pseudo){
-        Player player = PlayersManager.getPlayerFromPseudo(pseudo);
+        Player player = PlayersManager.getInstance().getPlayerFromPseudo(pseudo);
         addPlayer(player);
     }
     private void addPlayer(Player player){

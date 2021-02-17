@@ -70,7 +70,7 @@ public class RootManager {
         setVueRoot(vueRootListGames);
     }
 
-    public static void setHeroPseudo(String pseudoHero){
+    public static void setHeroPseudo(String pseudoHero){  // pour le root listes parties
         modelRootListGames.setPseudoLabelOfHero(pseudoHero);
     }
 
