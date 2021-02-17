@@ -16,7 +16,7 @@ public class Player {
         this.points = points;
     }
 
-    public void incrementScrore(){
+    public void incrementPoints(){
         points ++;
     } 
 
@@ -47,6 +47,7 @@ public class Player {
         return result;
     }
 
+    // CHECK PSEUDO
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -56,7 +57,8 @@ public class Player {
         if (getClass() != obj.getClass())
             return false;
         Player other = (Player) obj;
-        if (pseudo == null) {
+
+        if (pseudo == null) {  
             if (other.pseudo != null)
                 return false;
         } else if (!pseudo.equals(other.pseudo))

@@ -2,14 +2,40 @@ package com.pierrickmonchoix.memoryserver;
 
 import java.util.logging.Logger;
 
-import com.pierrickmonchoix.memoryserver.dao.FactoryDao;
-import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
-import com.pierrickmonchoix.memoryserver.websocket.websocketServer.WebsocketServerLauncher;
+import com.pierrickmonchoix.memoryserver.business.GameManagerForJson;
+import com.pierrickmonchoix.memoryserver.business.GamesManager;
+import com.pierrickmonchoix.memoryserver.business.Player;
+import com.pierrickmonchoix.memoryserver.business.PlayersManager;
+import com.pierrickmonchoix.memoryserver.business.game.Game;
 
 public class Apptest {
     private static Logger logger = Logger.getLogger(Apptest.class.getName());
 
     public static void main(String[] args) {
+
+
+       
+
+        PlayersManager.addNewPlayerWithPseudo("jack");
+        PlayersManager.addNewPlayerWithPseudo("queen");
+        PlayersManager.addNewPlayerWithPseudo("king");
+        PlayersManager.addNewPlayerWithPseudo("luffy");
+        PlayersManager.addNewPlayerWithPseudo("sanji");
+        PlayersManager.addNewPlayerWithPseudo("zoro");
+
+        GamesManager.createGameOfHostPlayerPseudo("jack");
+        GamesManager.createGameOfHostPlayerPseudo("queen");
+
+        GamesManager.addPlayerToGame("jack" , "luffy");
+        GamesManager.addPlayerToGame("jack", "zoro");
+
+
+        System.out.println("la GamesManager: \n" + GamesManager.getJson() );
+
+
+
+
+
         // FactoryDao.resetDatabase();
 
         //WebsocketServerHelper.launchWebsocketServer();

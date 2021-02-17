@@ -49,7 +49,7 @@ public class WebsocketClientHelper {
     }
 
     public static void notifyListenersOfMessage(WebsocketMessage websocketMessage) {
-        logger.info("notification des ws listeners");
+        logger.info("notifcation des ws listeners du msg : " + websocketMessage);
         for (IWebsocketListener listener : listListeners) {
             logger.info("on a notifié un ws listeners");
             listener.whenReceiveWebsocketMessage(websocketMessage);

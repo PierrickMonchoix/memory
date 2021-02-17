@@ -35,7 +35,7 @@ public enum EMessageType {
      * resluat de la premiere carte
      * 
      */
-    FIRST_CARD,
+    DRAW_FIRST_CARD,
 
     /**
      * server > client :
@@ -45,36 +45,39 @@ public enum EMessageType {
      * resluat de la seconde carte
      * 
      */
-    SECOND_CARD,
+    DRAW_SECOND_CARD,
 
     /**
      * server > client :
-     * le client a trouve une paire
+     * on montre les cartes reveles au client
      * 
      * client > server :
-     * ?
+     * le client confirme qu'il a eu le temps de voir les cartes
      * 
      */
-    PAIR_FOUND,
-    
-    
-    /**
-     * server > client :
-     * la partie est terminee, voici le gagnant
-     * 
-     * client > server :
-     * ?
-     * 
-     */
-    WINNER,
-    
-    
-    
-    
-    
-    
-    ;
+    SHOW_CARD,
 
+
+
+    /**
+     * 
+     * 
+     */
+    DRAW_FAILURE,
+
+    /**
+     * 
+     * 
+     */
+    DRAW_SUCCESS,
+
+    /**
+     * 
+     * 
+     */
+    WINNER;
+
+    
 
 
 
