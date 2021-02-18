@@ -4,21 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.pierrickmonchoix.memoryserver.websocket.IWebsocketListener;
-import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
-import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
-
 /**
  * Gére les joueurs (personnes actuelement connectées)
  */
-public class PlayersManager implements IWebsocketListener {
+public class PlayersManager{
+
+    private static Logger logger = Logger.getLogger(PlayersManager.class.getName());
+
+    private List<Player> listPlayers = new ArrayList<Player>(); // personnes connectées
 
     private static PlayersManager instance;
 
-    private PlayersManager() {
-        WebsocketServerHelper.addListener(this);
-    }
-
+    // PATTERN SINGLETON
     public static PlayersManager getInstance() {
         if (instance == null) {
             instance = new PlayersManager();
@@ -26,9 +23,11 @@ public class PlayersManager implements IWebsocketListener {
         return instance;
     }
 
-    private static Logger logger = Logger.getLogger(PlayersManager.class.getName());
+    private PlayersManager() {
 
-    private List<Player> listPlayers = new ArrayList<Player>(); // personnes connectées
+    }
+
+
 
     public void addNewPlayerWithPseudo(String pseudo) {
         listPlayers.add(new Player(pseudo));
@@ -36,7 +35,7 @@ public class PlayersManager implements IWebsocketListener {
     }
 
     public void removePlayer(String pseudo) {
-        GamesManager.getInstance().getListGames().removeIf(g -> (g.getHostPlayer().getPseudo().equals(pseudo) ));
+        GamesManager.getInstance().removeGameOfHostPseudo(pseudo);
         listPlayers.removeIf((player -> (player.getPseudo().equals(pseudo))));
         logger.info("la liste des joueurs a un membre en moins: \n" + listPlayers);
     }
@@ -68,10 +67,6 @@ public class PlayersManager implements IWebsocketListener {
         return listPseudos;
     }
 
-    @Override
-    public void whenReceiveWebsocketMessage(WebsocketMessage websocketMessage) {
-        // TODO Auto-generated method stub
 
-    }
 
 }

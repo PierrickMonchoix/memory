@@ -12,11 +12,13 @@ public class PresentationButton extends PresentationNotifier {
     
     public String text;
     public String color;
+    public boolean enable;
 
 
     public PresentationButton(String text) {
         super(EComponantBasicEvent.BUTTON_PRESSED);
         this.text = text;
+        enable = true;
     }
 
 
@@ -49,6 +51,17 @@ public class PresentationButton extends PresentationNotifier {
         this.color = color;
         updateVue();
     }
+
+
+    public boolean isEnable() {
+        return this.enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+        updateVue();
+    }
+
 
 
 

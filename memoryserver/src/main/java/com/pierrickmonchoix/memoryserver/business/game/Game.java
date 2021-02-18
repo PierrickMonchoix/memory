@@ -24,98 +24,107 @@ public class Game {
 
     private GameEngine gameEngine;
 
+    private boolean started;
+
     private static Gson gson = new Gson();
 
-
-
-    /** 
-    *quand on appuie sur le bouton creer partie (pas lancée!)
-    */
+    /**
+     * quand on appuie sur le bouton creer partie (pas lancée!)
+     */
     public Game(Player hostPlayer) {
+        started = false;
         listPlayers = new ArrayList<Player>();
         this.hostPlayer = hostPlayer;
         listPlayers.add(hostPlayer);
     }
 
-
-
-
     // AJOUT D'UN JOUEUR QUI PEUT FAIRE START LA GAME
-    private void start(){
+    private void start() {
+        started = true;
         logger.info("La partie de " + hostPlayer.getPseudo() + " commence!");
+
         board = new Board();
         setActualPlayer(listPlayers.get(0));
-        logger.info("La partie de " + hostPlayer.getPseudo() + " ressemble a ca : \n" + toJson() );
+         logger.info("La partie de " + hostPlayer.getPseudo() + " ressemble a ca : \n" + toJson());
         gameEngine = new GameEngine(this);
-        gameEngine.start();
+        //gameEngine.start(); 
     }
 
-    //PUBLIC AJOUT D'UN JOUEUR
-    public void addPlayer(String pseudo){
+    // PUBLIC AJOUT D'UN JOUEUR
+    public void addPlayer(String pseudo) {
         Player player = PlayersManager.getInstance().getPlayerFromPseudo(pseudo);
         addPlayer(player);
     }
-    private void addPlayer(Player player){
-        if(listPlayers.size() < maxPlayer){
+
+    private void addPlayer(Player player) {
+        if (listPlayers.size() < maxPlayer) {
             player.setPoints(0);
             listPlayers.add(player);
-            if(listPlayers.size() == maxPlayer){
+            if (listPlayers.size() == maxPlayer) {
                 start();
             }
-        }
-        else{
+        } else {
             logger.warning("nombre de joueur max attein dans la game de  : " + hostPlayer.getPseudo());
         }
 
     }
 
-
-
-
-
-
-
-
-
-
-    //GETTER ET SETTER FOR GSON
+    // GETTER ET SETTER FOR GSON
     public Board getBoard() {
         return board;
     }
+
     public void setBoard(Board board) {
         this.board = board;
     }
+
     public List<Player> getListPlayers() {
         return listPlayers;
     }
+
     public void setListPlayers(List<Player> listPlayers) {
         this.listPlayers = listPlayers;
     }
+
     public int getMaxPlayer() {
         return maxPlayer;
     }
+
     public Player getActualPlayer() {
         return this.actualPlayer;
     }
+
     public void setActualPlayer(Player actualPlayer) {
         this.actualPlayer = actualPlayer;
     }
+
     public Player getWinner() {
         return this.winner;
     }
+
     public void setWinner(Player winner) {
         this.winner = winner;
     }
+
     public Player getHostPlayer() {
         return this.hostPlayer;
     }
+    public boolean isStarted() {
+        return started;
+    }
 
+    public void setStarted(boolean started) {
+        this.started = started;
+    }
 
-    //GSON FUNCTIONS
-    public static Game fromJson(String string){
+    
+
+    // GSON FUNCTIONS
+    public static Game fromJson(String string) {
         return gson.fromJson(string, Game.class);
     }
-    public String toJson(){
+
+    public String toJson() {
         return gson.toJson(this);
     }
 
@@ -127,7 +136,7 @@ public class Game {
         return result;
     }
 
-    //CHECK HOSTPLAYER
+    // CHECK HOSTPLAYER
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -144,12 +153,6 @@ public class Game {
             return false;
         return true;
     }
-
-
-    
-
-
-
 
 
 

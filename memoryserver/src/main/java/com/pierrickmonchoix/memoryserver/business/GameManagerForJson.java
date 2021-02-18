@@ -22,11 +22,15 @@ public class GameManagerForJson {
         public String pseudoHost;
         public int numberPlayer;
         public int maxPlayer;
+        public boolean started;
+        public List<String> listPlayer;
 
         public ShownGameForJson(Game game) {
             this.pseudoHost = game.getHostPlayer().getPseudo();
             this.numberPlayer = game.getListPlayers().size();
             this.maxPlayer = game.getMaxPlayer();
+            this.started = game.isStarted();
+             //TODO: GRISAGES DES BOUTONS si one st dans la sliste des jouerus en jeu
         }
     }
 

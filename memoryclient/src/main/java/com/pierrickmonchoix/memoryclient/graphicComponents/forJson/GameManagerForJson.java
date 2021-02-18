@@ -1,4 +1,4 @@
-package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGamesProposals;
+package com.pierrickmonchoix.memoryclient.graphicComponents.forJson;
 
 
 import java.util.List;

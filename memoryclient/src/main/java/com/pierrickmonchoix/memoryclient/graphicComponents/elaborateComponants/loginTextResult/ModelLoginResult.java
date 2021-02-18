@@ -53,17 +53,15 @@ public class ModelLoginResult implements ILoginListener, IWebsocketListener { //
         if ((message.getType() == EMessageType.SIGN_IN) || (message.getType() == EMessageType.SIGN_UP)) {
             logger.info("jai ete notifié par ws");
             text = text + message.getContenu();
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    if (message.getContenu().substring(0, 2).equals("ok")) {
-                        WebsocketClientHelper.setPseudo(message.getPseudo());
-                        RootManager.setHeroPseudo(message.getPseudo());
-                        RootManager.setVueRootListGames();
-                    }
-                    presentationLoginTextResult.setText(text); // on a ajouté la reponse WS
-                }
-            });
+            // Platform.runLater(new Runnable() {
+
+            if (message.getContenu().substring(0, 2).equals("ok")) {
+                WebsocketClientHelper.setPseudo(message.getPseudo());
+                RootManager.setHeroPseudo(message.getPseudo());
+                RootManager.setVueRootListGames();
+            }
+            presentationLoginTextResult.setText(text); // on a ajouté la reponse WS
+
         }
 
     }

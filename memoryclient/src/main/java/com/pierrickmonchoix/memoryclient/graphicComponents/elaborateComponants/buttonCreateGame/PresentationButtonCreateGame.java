@@ -21,4 +21,9 @@ public class PresentationButtonCreateGame extends Presentation {
         presentationButton.addListener(listener);
     }
 
+
+    public void setEnable(boolean enable){
+        presentationButton.setEnable(enable);
+    }
+
 }

@@ -19,7 +19,6 @@ public class ModelRootListGames {
         
         modelLabelHeroPseudo = new ModelLabelHeroPseudo(presentationRootListGames.getPresentationLabelHeroPseudo());
         
-        logger.info("fait 2");
         modelGamesProposals = new ModelGamesProposals(presentationRootListGames.getPresentationGamesProposals());
 
         modeleButtonCreateGame = new ModeleButtonCreateGame(presentationRootListGames.getPresentationButtonCreateGame());

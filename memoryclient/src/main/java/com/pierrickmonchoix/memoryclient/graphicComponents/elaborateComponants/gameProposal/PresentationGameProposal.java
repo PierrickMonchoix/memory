@@ -1,6 +1,7 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.gameProposal;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
+import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.IComponantListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.button.PresentationButton;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textOutput.PresentationTextOutput;
 
@@ -11,12 +12,12 @@ public class PresentationGameProposal extends Presentation {
 
     private final String pseudo;
 
-    public PresentationGameProposal(String pseudo) {
+    public PresentationGameProposal(String pseudo , String numberPlayer) {
         this.pseudo = pseudo;
         
 
-        presentationTextOutput = new PresentationTextOutput("Partie de " + pseudo);
-        presentationButton = new PresentationButton("GO!");
+        presentationTextOutput = new PresentationTextOutput("Partie de " + pseudo + " " + numberPlayer);
+        presentationButton = new PresentationButton("Join");
 
     }
 
@@ -31,6 +32,10 @@ public class PresentationGameProposal extends Presentation {
 
     public String getPseudo() {
         return this.pseudo;
+    }
+
+    public void addButtonListener(IComponantListener listener){
+        presentationButton.addListener(listener);
     }
 
 

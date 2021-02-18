@@ -123,6 +123,7 @@ public class WebsocketServerHelper {
         logger.info("notification des ws listeners");
         for (IWebsocketListener listener : listListeners) {
             logger.info("on a notifié un ws listeners");
+            
             listener.whenReceiveWebsocketMessage(message);
         }
     }

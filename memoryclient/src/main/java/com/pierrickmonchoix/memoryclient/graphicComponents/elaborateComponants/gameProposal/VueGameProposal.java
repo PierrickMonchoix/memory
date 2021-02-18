@@ -29,7 +29,7 @@ public class VueGameProposal extends HBox implements IVue {
 
         setPadding(new Insets(0,10,0,10));
         
-        setMaxWidth(300);
+        setMaxWidth(500);
         setMaxHeight(50);
 
         getChildren().addAll(vueTextOutput);

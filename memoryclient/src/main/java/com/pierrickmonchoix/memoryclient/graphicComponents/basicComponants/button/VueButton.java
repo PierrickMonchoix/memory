@@ -35,6 +35,8 @@ public class VueButton extends Button implements IVue{
 
     @Override
     public void update() {
+        setDisable( ! presentationButton.isEnable());
+
         setText(presentationButton.getText());
         if(  presentationButton.getColor() != null){
             String colorStyle = "-fx-background-color: "+ presentationButton.getColor() +";";

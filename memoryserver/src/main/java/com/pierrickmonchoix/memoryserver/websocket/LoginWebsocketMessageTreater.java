@@ -38,7 +38,7 @@ public class LoginWebsocketMessageTreater {
                     break;
             }
         } else if (PlayersManager.getInstance().isPlayerAlreadyConnected(message.getContenu())) {
-            logger.warning("le joueur : " + message.getContenu() + " est deja connecté");
+            logger.info("le joueur : " + message.getContenu() + " est deja connecté");
             WebsocketMessage response = WebsocketMessage.newResponseMessage(message);
             response.setContenu("nok_already_connected_player");
             WebsocketServerHelper.sendMessageToClient(session, response);

@@ -30,7 +30,7 @@ public class VueGamesProposals extends VBox implements IVue {
 
     @Override
     public void update() {
-        getChildren().removeAll();
+        getChildren().clear();
         for (PresentationGameProposal presentationGameProposal : presentationGamesProposals.getListPresentationsGameProposal()) {
             VueGameProposal vueGameProposal = new VueGameProposal(presentationGameProposal);
             presentationGameProposal.setVue(vueGameProposal);

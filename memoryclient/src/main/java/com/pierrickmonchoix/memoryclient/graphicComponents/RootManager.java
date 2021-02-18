@@ -9,6 +9,7 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLo
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.PresentationRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.VueRootLogin;
 
+import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -56,9 +57,15 @@ public class RootManager {
     }
 
     private static void update(){
-        scene.setRoot(actualVueRoot);
-        stage.setScene(scene);
-        stage.show();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                scene.setRoot(actualVueRoot);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
+
     }
 
     private static void setVueRoot(Parent vueRoot){

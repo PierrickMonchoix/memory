@@ -27,12 +27,12 @@ public class GameEngine {
     private final Game game;
 
     private EtatJeu etatJeu;
-    private final AskDrawFirstCard askDrawFirstCard;
-    private final WaitDrawFirstCard waitDrawFirstCard;
-    private final AskDrawSecondCard askDrawSecondCard;
-    private final WaitDrawSecondCard waitDrawSecondCard;
-    private final CheckPairOrNot checkPairOrNot;
-    private final WaitCardsSeen waitCardsSeen;
+    private AskDrawFirstCard askDrawFirstCard;
+    private WaitDrawFirstCard waitDrawFirstCard;
+    private AskDrawSecondCard askDrawSecondCard;
+    private WaitDrawSecondCard waitDrawSecondCard;
+    private CheckPairOrNot checkPairOrNot;
+    private WaitCardsSeen waitCardsSeen;
 
     private Card firstCard;
     private Card secondCard;
@@ -41,12 +41,6 @@ public class GameEngine {
     //CONSTRUCTOR ----------------------------------------------------------------------
     public GameEngine(Game game) {
         this.game = game;
-        this.askDrawFirstCard = new AskDrawFirstCard(this);
-        this.waitDrawFirstCard = new WaitDrawFirstCard(this);
-        this.askDrawSecondCard = new AskDrawSecondCard(this);
-        this.waitDrawSecondCard = new WaitDrawSecondCard(this);
-        this.checkPairOrNot = new CheckPairOrNot(this);
-        this.waitCardsSeen = new WaitCardsSeen(this);
     }
 
     //PRIVATE GETTER SETTER OF GAME ----------------------------------------------------------------------
@@ -103,6 +97,12 @@ public class GameEngine {
 
     //PUBLIC START GAME ENGINE
     public void start(){
+        this.askDrawFirstCard = new AskDrawFirstCard(this);
+        this.waitDrawFirstCard = new WaitDrawFirstCard(this);
+        this.askDrawSecondCard = new AskDrawSecondCard(this);
+        this.waitDrawSecondCard = new WaitDrawSecondCard(this);
+        this.checkPairOrNot = new CheckPairOrNot(this);
+        this.waitCardsSeen = new WaitCardsSeen(this);
         changeAndStartEtatJeuTo(askDrawFirstCard);
     }
 

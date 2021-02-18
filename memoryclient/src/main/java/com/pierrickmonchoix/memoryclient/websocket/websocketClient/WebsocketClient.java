@@ -15,12 +15,10 @@ import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMes
 
 import org.glassfish.tyrus.client.ClientManager;
 
-import javafx.application.Platform;
-
 
 /**
- * Client web socket muni d'un pattern singleton.
- * Ce client est UNIQUEMENT utilisé par 'WebsocketHelper' 
+ * Client web socket muni d'un pattern singleton. Ce client est UNIQUEMENT
+ * utilisé par 'WebsocketHelper'
  */
 public class WebsocketClient {
 
@@ -54,7 +52,7 @@ public class WebsocketClient {
         listListeners = new ArrayList<IWebsocketListener>();
     }
 
-    public void connectToEndpoint(){
+    public void connectToEndpoint() {
         websocketClientEndpoint.setClient(this);
     }
 
@@ -83,13 +81,7 @@ public class WebsocketClient {
     public void notifyListenersOfMessage(WebsocketMessage websocketMessage) {
         for (IWebsocketListener listener : listListeners) {
             System.out.println("le clientWS a bien notifié qqun");
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    listener.whenReceiveWebsocketMessage(websocketMessage);
-                }
-            });
-            
+            listener.whenReceiveWebsocketMessage(websocketMessage);
         }
     }
 

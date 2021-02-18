@@ -15,7 +15,7 @@ public class Apptest {
 
 
        
-
+/* 
         PlayersManager.getInstance().addNewPlayerWithPseudo("jack");
         PlayersManager.getInstance().addNewPlayerWithPseudo("queen");
         PlayersManager.getInstance().addNewPlayerWithPseudo("king");
@@ -33,7 +33,7 @@ public class Apptest {
         System.out.println("la GamesManager: \n" + GamesManager.getInstance().getJson() );
 
 
-
+ */
 
 
         // FactoryDao.resetDatabase();

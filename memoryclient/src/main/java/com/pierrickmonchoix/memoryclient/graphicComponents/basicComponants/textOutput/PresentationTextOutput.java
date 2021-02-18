@@ -19,7 +19,7 @@ public class PresentationTextOutput extends Presentation {
 
     public void setText(String text) {
         this.text = text;
-        vue.update();
+        updateVue();
     }
 
     

@@ -43,6 +43,10 @@ public class WebsocketClientHelper {
         WebsocketClientHelper.pseudo = pseudo;
     }
 
+    public static String getPseudo() {
+        return pseudo;
+    }
+
     public static void sendMessageToServer(EMessageType type, String contenu) {
         WebsocketMessage websocketMessage = new WebsocketMessage(pseudo, type, contenu);
         websocketClient.sendMessage(websocketMessage);
