@@ -30,7 +30,15 @@ public class GameManagerForJson {
             this.numberPlayer = game.getListPlayers().size();
             this.maxPlayer = game.getMaxPlayer();
             this.started = game.isStarted();
-             //TODO: GRISAGES DES BOUTONS si one st dans la sliste des jouerus en jeu
+            this.listPlayer = new ArrayList<String>();
+            initListPlayer(game);
+        }
+
+        private void initListPlayer(Game game){
+            List<Player> listObjectPlayers = game.getListPlayers();
+            for (Player player : listObjectPlayers) {
+                listPlayer.add(player.getPseudo());
+            }
         }
     }
 

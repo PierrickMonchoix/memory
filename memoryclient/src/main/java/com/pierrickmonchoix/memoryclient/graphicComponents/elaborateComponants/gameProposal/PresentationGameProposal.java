@@ -38,6 +38,10 @@ public class PresentationGameProposal extends Presentation {
         presentationButton.addListener(listener);
     }
 
+    public void setAnableButton(Boolean enable){
+        presentationButton.setEnable(enable);
+    }
+
 
 
 

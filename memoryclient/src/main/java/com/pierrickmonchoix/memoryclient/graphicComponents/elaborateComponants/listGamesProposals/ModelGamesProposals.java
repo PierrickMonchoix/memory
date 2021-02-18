@@ -66,6 +66,7 @@ public class ModelGamesProposals implements IWebsocketListener {
                 PresentationGameProposal presentationGameProposal = new PresentationGameProposal(
                         shownGameForJson.pseudoHost, numberPlayer);
                 listPresentationsGameProposal.add(presentationGameProposal);
+                updatePresentationIfImInGame(presentationGameProposal, gameManagerForJson);
 
                 // ajout d'un modele
                 ModelGameProposal modelGameProposal = new ModelGameProposal(presentationGameProposal);
@@ -80,6 +81,26 @@ public class ModelGamesProposals implements IWebsocketListener {
             modelGameProposal.unActive();
         }
         listModelGameProposals.clear();
+    }
+
+    private void updatePresentationIfImInGame(PresentationGameProposal presentationGameProposal , GameManagerForJson gameManagerForJson){
+        boolean imInGame = imInGame(gameManagerForJson);
+        presentationGameProposal.setAnableButton( ! imInGame);
+    }
+
+
+    private boolean imInGame(GameManagerForJson gameManagerForJson){
+        String monPseudo = WebsocketClientHelper.getPseudo();
+        List<ShownGameForJson> listShownGameForJsons = gameManagerForJson.listJsonGames;
+        for (ShownGameForJson shownGameForJson : listShownGameForJsons) {
+            List<String> listJoueursInGame = shownGameForJson.listPlayer;
+            for (String pseudoInGame : listJoueursInGame) {
+                if(pseudoInGame.equals(monPseudo)){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

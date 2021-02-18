@@ -40,9 +40,9 @@ public class ModeleButtonCreateGame implements IComponantListener, IWebsocketLis
             logger.info("message recu pour create button: " + message.getContenu());
             GameManagerForJson gameManagerForJson = GameManagerForJson.fromJson(message.getContenu());
 
-            boolean gameAlreadyCreated = iHaveCreateGame(gameManagerForJson);
+            boolean imInGame = imInGame(gameManagerForJson);
 
-            setEnable(!gameAlreadyCreated);
+            setEnable(!imInGame);
             /*
              * for (ShownGameForJson shownGameForJson : listGameManagerForJsons) { String
              * pseudoHost = shownGameForJson.pseudoHost; logger.info("ajout new game");
@@ -53,18 +53,22 @@ public class ModeleButtonCreateGame implements IComponantListener, IWebsocketLis
         }
     }
 
-    private boolean iHaveCreateGame(GameManagerForJson gameManagerForJson) {
 
+    private boolean imInGame(GameManagerForJson gameManagerForJson){
+        String monPseudo = WebsocketClientHelper.getPseudo();
         List<ShownGameForJson> listShownGameForJsons = gameManagerForJson.listJsonGames;
         for (ShownGameForJson shownGameForJson : listShownGameForJsons) {
-            if (shownGameForJson.pseudoHost.equals(WebsocketClientHelper.getPseudo())) {
-                logger.info("oups jai deja cree une partie");
-                return true;
-
+            List<String> listJoueursInGame = shownGameForJson.listPlayer;
+            for (String pseudoInGame : listJoueursInGame) {
+                if(pseudoInGame.equals(monPseudo)){
+                    return true;
+                }
             }
         }
         return false;
     }
+
+
 
     private void setEnable(boolean enable) {
         presentationButtonCreateGame.setEnable(enable);
