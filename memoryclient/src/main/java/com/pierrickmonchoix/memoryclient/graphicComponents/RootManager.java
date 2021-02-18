@@ -40,7 +40,7 @@ public class RootManager {
         
         stage = _stage;
 
-        presentationRootLogin = new PresentationRootLogin("bernard", "first co?", true);
+        presentationRootLogin = new PresentationRootLogin("bernard", "first co?", false);
         vueRootLogin = new VueRootLogin(presentationRootLogin);
         presentationRootLogin.setVue(vueRootLogin);
         

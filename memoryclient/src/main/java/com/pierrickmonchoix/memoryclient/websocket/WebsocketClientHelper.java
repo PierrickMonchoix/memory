@@ -48,7 +48,9 @@ public class WebsocketClientHelper {
     }
 
     public static void sendMessageToServer(EMessageType type, String contenu) {
+        
         WebsocketMessage websocketMessage = new WebsocketMessage(pseudo, type, contenu);
+        logger.info("envoie d'un msg au server : " + websocketMessage);
         websocketClient.sendMessage(websocketMessage);
     }
 

@@ -56,11 +56,11 @@ public class WebsocketServerHelper {
     }
 
     public static void sendMessageToClient(String pseudo, WebsocketMessage websocketMessage) {
-        logger.info("tentative d'envoie de msg au client : " + pseudo);
+        logger.info("tentative d'envoie de msg au pseudo : " + pseudo);
         for (Session session : listSessions) {
-            logger.info("on tente d'envoyer un msg a : " + session.getUserProperties().get(PSEUDO));
+            //logger.info("on tente d'envoyer un msg a : " + session.getUserProperties().get(PSEUDO));
             if (session.getUserProperties().get(PSEUDO).equals(pseudo)) {
-                logger.info("on envoie un msg a : " + session.getUserProperties().get(PSEUDO));
+                logger.info("on envoie un msg au CLIENT : " + pseudo + " message : " +  websocketMessage);
                 sendMessageToClient(session, websocketMessage);
             }
         }
@@ -120,10 +120,14 @@ public class WebsocketServerHelper {
     }
 
     public static void notifyListenersOfMessage(WebsocketMessage message) {
-        logger.info("notification des ws listeners");
-        for (IWebsocketListener listener : listListeners) {
+        logger.info("notification des ws listeners du msg : " + message);
+        List<IWebsocketListener> copyListListeners = new ArrayList<IWebsocketListener>(listListeners);
+        /*
+        on doit paasser par une copie car il arrive
+        que l'on modifie la liste alors que l'on itére celle ci
+        */
+        for (IWebsocketListener listener : copyListListeners) {
             logger.info("on a notifié un ws listeners");
-            
             listener.whenReceiveWebsocketMessage(message);
         }
     }

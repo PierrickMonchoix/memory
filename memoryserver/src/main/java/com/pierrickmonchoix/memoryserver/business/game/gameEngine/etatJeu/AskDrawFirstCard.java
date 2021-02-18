@@ -15,8 +15,10 @@ public class AskDrawFirstCard extends EtatJeu {
 
     @Override
     public void start() {
+        logger.info("begin start askClientDrawFirstCard");
         askClientDrawFirstCard();
-        goNextEtat();
+        logger.info("finish start askClientDrawFirstCard");
+        //goNextEtat();
     }
 
     @Override
@@ -28,7 +30,7 @@ public class AskDrawFirstCard extends EtatJeu {
 
     private void askClientDrawFirstCard(){
         logger.info("askClientDrawFirtCard");
-        automateGameEngine.sendMessageToAllPlayer(EMessageType.DRAW_FIRST_CARD);
+        //automateGameEngine.sendMessageToAllPlayer(EMessageType.DRAW_FIRST_CARD);
     }
 
 

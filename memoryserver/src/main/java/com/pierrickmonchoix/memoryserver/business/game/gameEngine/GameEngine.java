@@ -97,13 +97,17 @@ public class GameEngine {
 
     //PUBLIC START GAME ENGINE
     public void start(){
+        logger.info("start game engine");
         this.askDrawFirstCard = new AskDrawFirstCard(this);
+        logger.info("finish askDrawFirstCard");
         this.waitDrawFirstCard = new WaitDrawFirstCard(this);
-        this.askDrawSecondCard = new AskDrawSecondCard(this);
+      /*   this.askDrawSecondCard = new AskDrawSecondCard(this);
         this.waitDrawSecondCard = new WaitDrawSecondCard(this);
         this.checkPairOrNot = new CheckPairOrNot(this);
         this.waitCardsSeen = new WaitCardsSeen(this);
+        logger.info("quasi finish game engine");
         changeAndStartEtatJeuTo(askDrawFirstCard);
+        logger.info("finish start game engine"); */
     }
 
     //PUBLIC CHANGE ETAT JEU
@@ -112,6 +116,7 @@ public class GameEngine {
         startEtatJeu();
     }
     private void startEtatJeu(){
+        logger.info("begin startEtatJeu");
         this.etatJeu.start();
     }
 
