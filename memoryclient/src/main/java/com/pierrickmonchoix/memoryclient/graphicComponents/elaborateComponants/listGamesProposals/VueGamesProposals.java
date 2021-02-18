@@ -1,5 +1,7 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGamesProposals;
 
+import java.util.List;
+
 import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.gameProposal.PresentationGameProposal;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.gameProposal.VueGameProposal;
@@ -31,7 +33,9 @@ public class VueGamesProposals extends VBox implements IVue {
     @Override
     public void update() {
         getChildren().clear();
-        for (PresentationGameProposal presentationGameProposal : presentationGamesProposals.getListPresentationsGameProposal()) {
+        List<PresentationGameProposal> listPresentationGameProposal = presentationGamesProposals.getListPresentationsGameProposal();
+        
+        for (PresentationGameProposal presentationGameProposal : listPresentationGameProposal) {
             VueGameProposal vueGameProposal = new VueGameProposal(presentationGameProposal);
             presentationGameProposal.setVue(vueGameProposal);
         

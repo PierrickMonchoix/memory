@@ -2,6 +2,8 @@ package com.pierrickmonchoix.memoryclient.graphicComponents;
 
 import java.util.logging.Logger;
 
+import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.image.PresentationImage;
+import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.image.VueImage;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.ModelRootListGames;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.PresentationRootListGames;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.VueRootListGames;
@@ -12,6 +14,8 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLo
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class RootManager {
@@ -51,8 +55,12 @@ public class RootManager {
         modelRootListGames = new ModelRootListGames(presentationRootListGames);
 
 
+
+   
+
         actualVueRoot = vueRootLogin;
         scene = new Scene(actualVueRoot, 800, 500);
+  
         update();
     }
 

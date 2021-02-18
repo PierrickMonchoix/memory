@@ -25,6 +25,7 @@ com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textOutput/P
 com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootLogin/VueRootLogin.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/gameProposal/VueGameProposal.class
 com/pierrickmonchoix/memoryclient/websocket/websocketClient/WebsocketClientEndpoint.class
+com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/image/PresentationImage.class
 com/pierrickmonchoix/memoryclient/FxApp.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/loginTextResult/PresentationLoginResult.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/buttonCreateGame/VueButtonCreateGame.class
@@ -37,6 +38,7 @@ com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/gameProp
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/button/VueButton$1.class
 com/pierrickmonchoix/memoryclient/websocket/websocketMessage/WebsocketMessageEncoder.class
 com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootListGames/ModelRootListGames.class
+com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/image/VueImage.class
 com/pierrickmonchoix/memoryclient/graphicComponents/RootManager.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/IComponantListener.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/listGamesProposals/ModelGamesProposals.class
