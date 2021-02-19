@@ -1,6 +1,6 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textField;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
 /**
  * Text input (Utilisateur > Application)

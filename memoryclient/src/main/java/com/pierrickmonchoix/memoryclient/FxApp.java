@@ -3,9 +3,6 @@ package com.pierrickmonchoix.memoryclient;
 import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.RootManager;
-import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.ModelRootListGames;
-import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.PresentationRootListGames;
-import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.VueRootListGames;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.ModelRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.PresentationRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.VueRootLogin;
@@ -28,9 +25,9 @@ public class FxApp extends Application {
     private static VueRootLogin vueRootLogin;
     private static ModelRootLogin modelRootLogin;
 
-    private static PresentationRootListGames presentationRootListGames;
+/*     private static PresentationRootListGames presentationRootListGames;
     private static VueRootListGames vueRootListGames;
-    private static ModelRootListGames modelRootListGames;
+    private static ModelRootListGames modelRootListGames; */
 
     private static Stage monPrimaryStage;
 

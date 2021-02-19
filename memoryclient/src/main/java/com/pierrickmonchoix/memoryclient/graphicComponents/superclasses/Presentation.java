@@ -1,4 +1,4 @@
-package com.pierrickmonchoix.memoryclient.graphicComponents;
+package com.pierrickmonchoix.memoryclient.graphicComponents.superclasses;
 
 import java.util.logging.Logger;
 
@@ -35,7 +35,7 @@ public abstract class Presentation {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                vue.update();
+                vue.updateFromPresentation();
             }
         });
         

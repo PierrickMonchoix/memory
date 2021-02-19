@@ -55,7 +55,7 @@ public class WebsocketClientHelper {
     }
 
     public static void notifyListenersOfMessage(WebsocketMessage message) {
-        logger.info("notifcation des ws listeners du msg : " + message);
+        logger.info("reception ws et notifcation des ws listeners du msg : " + message);
         for (IWebsocketListener listener : listListeners) {
             logger.info("on a notifié un ws listeners");
             listener.whenReceiveWebsocketMessage(message);

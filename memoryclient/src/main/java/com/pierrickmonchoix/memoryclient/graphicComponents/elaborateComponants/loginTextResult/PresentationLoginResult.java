@@ -1,7 +1,8 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textOutput.PresentationTextOutput;
+import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textOutput.VueTextOutput;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
 public class PresentationLoginResult extends Presentation{
 
@@ -10,6 +11,8 @@ public class PresentationLoginResult extends Presentation{
     public PresentationLoginResult(String text) {
 
         presentationTextOutput = new PresentationTextOutput(text);
+        VueTextOutput vueTextOutput = new VueTextOutput(presentationTextOutput);
+        presentationTextOutput.setVue(vueTextOutput);
         
 
     }
@@ -19,7 +22,7 @@ public class PresentationLoginResult extends Presentation{
     }
 
     public void setText(String text){
-        presentationTextOutput.setText(text);
+        presentationTextOutput.setUpText(text);
     }
 
 

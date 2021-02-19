@@ -2,7 +2,6 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootL
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult.ModelLoginResult;
-import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.ModelRootListGames;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 
 /**

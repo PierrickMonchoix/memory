@@ -10,7 +10,6 @@ public class ModelLabelHeroPseudo {
 
     public void setPseudoLabelOfHero(String pseudoHero){
         presentationAffichagePseudo.setText(pseudoHero);
-
     }
 
 

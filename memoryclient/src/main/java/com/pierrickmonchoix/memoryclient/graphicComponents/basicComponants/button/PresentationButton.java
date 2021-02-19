@@ -5,8 +5,8 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.butt
 
 import java.util.logging.Logger;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.EComponantBasicEvent;
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.PresentationNotifier;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.EChildEvent;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.PresentationNotifier;
 
 public class PresentationButton extends PresentationNotifier {
 
@@ -17,7 +17,7 @@ public class PresentationButton extends PresentationNotifier {
     public boolean enable;
 
     public PresentationButton(String text) {
-        super(EComponantBasicEvent.BUTTON_PRESSED);
+        super(EChildEvent.BUTTON_PRESSED);
         this.text = text;
         enable = true;
     }
@@ -26,20 +26,20 @@ public class PresentationButton extends PresentationNotifier {
         return text;
     }
 
-    public void setText(String text) {
+    public void setUpText(String text) {
         this.text = text;
         updateVue();
     }
 
     public void alertPressed() {
-        notifyListeners();
+        notifyParent();
     }
 
     public String getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setUpColor(String color) {
         this.color = color;
         updateVue();
     }
@@ -48,7 +48,7 @@ public class PresentationButton extends PresentationNotifier {
         return this.enable;
     }
 
-    public void setEnable(boolean enable) {
+    public void setUpEnable(boolean enable) {
         logger.info("button vue : " + vue );
         this.enable = enable;
         updateVue();

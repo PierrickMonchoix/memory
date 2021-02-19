@@ -1,7 +1,7 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.image;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.EComponantBasicEvent;
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.PresentationNotifier;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.EChildEvent;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.PresentationNotifier;
 
 public class PresentationImage extends PresentationNotifier {
 
@@ -9,17 +9,17 @@ public class PresentationImage extends PresentationNotifier {
 
 
     public PresentationImage(String path) {
-        super(EComponantBasicEvent.IMAGE_CLICKED);
+        super(EChildEvent.IMAGE_CLICKED);
         pathImage = path;
     }
 
-    public void setPath(String path){
+    public void setUpPath(String path){
         pathImage = path;
         updateVue();
     }
 
     public void onClick(){
-        notifyListeners();
+        notifyParent();
     }
 
     public String getPathImage() {

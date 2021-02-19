@@ -1,6 +1,6 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.button;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IVue;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,7 +17,7 @@ public class VueButton extends Button implements IVue{
         super();
         this.presentationButton = presentationButton;
 
-        update();
+        updateFromPresentation();
 
         /*
             Ajout des notifiers
@@ -34,7 +34,7 @@ public class VueButton extends Button implements IVue{
     
 
     @Override
-    public void update() {
+    public void updateFromPresentation() {
         setDisable( ! presentationButton.isEnable());
 
         setText(presentationButton.getText());

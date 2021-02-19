@@ -1,34 +1,42 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.gameProposal;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.EComponantBasicEvent;
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.IComponantListener;
+import java.util.logging.Logger;
+
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.EChildEvent;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IChildenListener;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 
-public class ModelGameProposal implements IComponantListener {
+public class ModelGameProposal implements IChildenListener {
+
+
+    private static Logger logger = Logger.getLogger(ModelGameProposal.class.getName());
 
     final PresentationGameProposal presentationGameProposal;
 
-    private boolean actived;
-
-
     public ModelGameProposal(PresentationGameProposal presentationGameProposal) {
         this.presentationGameProposal = presentationGameProposal;
-        actived = true;
 
-        presentationGameProposal.addButtonListener(this);
+        listenAllChildren();
     }
 
     @Override
-    public void whenNotifiedByComponant(EComponantBasicEvent typeEvent) {
-        if ( actived || ( typeEvent == EComponantBasicEvent.BUTTON_PRESSED )) {
-            WebsocketClientHelper.sendMessageToServer(EMessageType.JOIN_GAME, presentationGameProposal.getPseudo());
+    public void listenAllChildren() {
+        presentationGameProposal.attributeParentListener(this);
+
+    }
+
+    @Override
+    public void whenNotifiedByChild(EChildEvent typeEvent) {
+        if (typeEvent == EChildEvent.ASK_FOR_JOIN_GAME) {
+
+            WebsocketClientHelper.sendMessageToServer(EMessageType.JOIN_GAME,
+                    presentationGameProposal.getPseudoPlayer());
         }
+        else{
+            logger.warning("mon mes childs ne m'ont pas bien notifiées");
+        }
+
     }
 
-    public void unActive(){
-        actived = false;
-    }
-
-    
 }

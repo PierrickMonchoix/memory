@@ -2,8 +2,8 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.
 
 import java.util.logging.Logger;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.button.VueButton;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IVue;
 
 import javafx.scene.layout.VBox;
 
@@ -15,18 +15,17 @@ public class VueButtonCreateGame extends VBox implements IVue {
 
 
     public VueButtonCreateGame(PresentationButtonCreateGame presentationButtonCreateGame) {
-        vueButton = new VueButton(presentationButtonCreateGame.getPresentationButton());
-        presentationButtonCreateGame.getPresentationButton().setVue(vueButton);
+        vueButton = (VueButton) presentationButtonCreateGame.getPresentationButton().getVue();
+        logger.info("creation");
 
         getChildren().addAll(vueButton);
 
-        update();
+        updateFromPresentation();
     }
 
     @Override
-    public void update() {
-        logger.info("vueButton CreateGame : " + vueButton);
-        vueButton.update();
+    public void updateFromPresentation() {
+        // notinng to move or create/delete
     }
 
 

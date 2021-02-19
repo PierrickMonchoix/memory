@@ -1,6 +1,6 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.image;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IVue;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,11 +29,11 @@ public class VueImage extends ImageView implements IVue{
 			presentationImage.onClick();
 		});
 
-        update();
+        updateFromPresentation();
     }
 
     @Override
-    public void update() {
+    public void updateFromPresentation() {
         image = new Image(this.getClass().getResourceAsStream(presentationImage.getPathImage()));
         setImage(image);
     }

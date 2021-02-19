@@ -1,6 +1,6 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textField;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IVue;
 
 import javafx.scene.control.TextField;
 
@@ -15,11 +15,11 @@ public class VueTextField extends TextField implements IVue{
         setText(this.presentationTextField.getDefaultText());
 
         
-        update();
+        updateFromPresentation();
     }
 
     @Override
-    public void update() {
+    public void updateFromPresentation() {
        //vide, normal car il n'y a QUE des inputs
     }
 

@@ -1,8 +1,8 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.VueLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult.VueLoginResult;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IVue;
 
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
@@ -29,12 +29,12 @@ public class VueRootLogin extends VBox implements IVue {
         getChildren().addAll(vueLogin);
         getChildren().addAll(vueLoginTextResult);
 
-        update();
+        updateFromPresentation();
     }
 
     @Override
-    public void update() {
-        vueLogin.update();
+    public void updateFromPresentation() {
+        vueLogin.updateFromPresentation();
     }
 
 

@@ -1,7 +1,8 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.labelHeroPseudo;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textOutput.PresentationTextOutput;
+import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textOutput.VueTextOutput;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
 public class PresentationLabelHeroPseudo extends Presentation {
 
@@ -10,6 +11,8 @@ public class PresentationLabelHeroPseudo extends Presentation {
     public PresentationLabelHeroPseudo() {
 
         presentationTextOutput = new PresentationTextOutput("default false pseudo");
+        VueTextOutput vueTextOutput = new VueTextOutput(presentationTextOutput);
+        presentationTextOutput.setVue(vueTextOutput);
 
     }
 
@@ -17,7 +20,7 @@ public class PresentationLabelHeroPseudo extends Presentation {
         return presentationTextOutput;
     }
 
-    public void setText(String text) {
-        presentationTextOutput.setText(text);
+    public void setText(String text) {  
+        presentationTextOutput.setUpText(text);  // utilise upgradeFromPresentation ne bout de chaine (basic compo)
     }
 }

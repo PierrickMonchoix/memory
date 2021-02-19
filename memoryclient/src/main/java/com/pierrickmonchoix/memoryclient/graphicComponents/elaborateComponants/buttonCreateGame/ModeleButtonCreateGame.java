@@ -3,16 +3,16 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.EComponantBasicEvent;
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.IComponantListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.forJson.GameManagerForJson;
 import com.pierrickmonchoix.memoryclient.graphicComponents.forJson.ShownGameForJson;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.EChildEvent;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IChildenListener;
 import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
-public class ModeleButtonCreateGame implements IComponantListener, IWebsocketListener {
+public class ModeleButtonCreateGame implements IChildenListener, IWebsocketListener {
 
     private final PresentationButtonCreateGame presentationButtonCreateGame;
 
@@ -21,18 +21,34 @@ public class ModeleButtonCreateGame implements IComponantListener, IWebsocketLis
     public ModeleButtonCreateGame(PresentationButtonCreateGame presentationButtonCreateGame) {
         this.presentationButtonCreateGame = presentationButtonCreateGame;
 
-        presentationButtonCreateGame.addButtonListener(this);
+        
+        
+        listenWebsocketHelper();
+        listenAllChildren();
+    }
+
+    @Override
+    public void listenWebsocketHelper() {
         WebsocketClientHelper.addListener(this);
+    }
+
+    @Override
+    public void listenAllChildren() {
+        presentationButtonCreateGame.attributeParentListener(this);
 
     }
 
     @Override
-    public void whenNotifiedByComponant(EComponantBasicEvent typeEvent) {
-        if (typeEvent == EComponantBasicEvent.BUTTON_PRESSED) {
+    public void whenNotifiedByChild(EChildEvent typeEvent) {
+        if (typeEvent == EChildEvent.ASK_FOR_CREATE_GAME) {
             WebsocketClientHelper.sendMessageToServer(EMessageType.CREATE_GAME, "");
         }
-
+        else{
+            logger.warning("mon chiled ne m'as pas bien notifié");
+        }
     }
+
+
 
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage message) {
@@ -42,13 +58,8 @@ public class ModeleButtonCreateGame implements IComponantListener, IWebsocketLis
 
             boolean imInGame = imInGame(gameManagerForJson);
 
-            setEnable(!imInGame);
-            /*
-             * for (ShownGameForJson shownGameForJson : listGameManagerForJsons) { String
-             * pseudoHost = shownGameForJson.pseudoHost; logger.info("ajout new game");
-             * 
-             * }
-             */
+            // le bouton doit etre enable ou non selon si je suis inscrit dans une partie ou non
+            presentationButtonCreateGame.setEnable( ! imInGame);
 
         }
     }
@@ -70,8 +81,7 @@ public class ModeleButtonCreateGame implements IComponantListener, IWebsocketLis
 
 
 
-    private void setEnable(boolean enable) {
-        presentationButtonCreateGame.setEnable(enable);
-    }
+
+
 
 }

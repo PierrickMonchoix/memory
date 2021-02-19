@@ -1,8 +1,8 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.PresentationLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult.PresentationLoginResult;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
 public class PresentationRootLogin extends Presentation{
 

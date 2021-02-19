@@ -1,7 +1,7 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.checkBox;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.EComponantBasicEvent;
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.PresentationNotifier;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.EChildEvent;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.PresentationNotifier;
 
 
 
@@ -15,7 +15,7 @@ public class PresentationCheckBox extends PresentationNotifier {
 
 
     public PresentationCheckBox(String text , boolean defaultCheck ) {
-        super(EComponantBasicEvent.CHECK_BOX_CHECKED);
+        super(EChildEvent.CHECK_BOX_CHECKED);
         this.text = text;
         this.defaultCheck = defaultCheck;
 
@@ -38,7 +38,7 @@ public class PresentationCheckBox extends PresentationNotifier {
 
 
     public void alertChecked(){
-        notifyListeners();
+        notifyParent();
     }
 
 

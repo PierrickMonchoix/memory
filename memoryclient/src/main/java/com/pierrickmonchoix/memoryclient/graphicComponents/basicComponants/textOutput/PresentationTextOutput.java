@@ -1,6 +1,6 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textOutput;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
 /**
  * Text output (Application > Utilisateur)
@@ -17,7 +17,7 @@ public class PresentationTextOutput extends Presentation {
         return text;
     }
 
-    public void setText(String text) {
+    public void setUpText(String text) {
         this.text = text;
         updateVue();
     }

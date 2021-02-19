@@ -7,6 +7,8 @@ import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMes
  */
 public interface IWebsocketListener {
 
+    public void listenWebsocketHelper();
+
     public void whenReceiveWebsocketMessage(WebsocketMessage websocketMessage);
     
 }

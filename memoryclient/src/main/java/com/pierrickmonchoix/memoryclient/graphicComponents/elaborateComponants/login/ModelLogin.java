@@ -1,48 +1,39 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.logging.Logger;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.EComponantBasicEvent;
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.IComponantListener;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.EChildEvent;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IChildenListener;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 
 /**
  * Ce login enoie un msg au serveur lors de l'appui sur le bouton de connexion.
- * Il prévient le serveur que le client tente de se connecter avec le psueod dans son textfield,
- *   et s'il souhaite se connecter en signIn ou signUp
+ * Il prévient le serveur que le client tente de se connecter avec le psueod
+ * dans son textfield, et s'il souhaite se connecter en signIn ou signUp
  */
-public class ModelLogin implements IComponantListener {
+public class ModelLogin implements IChildenListener {
+
+    private static Logger logger = Logger.getLogger(ModelLogin.class.getName());
 
     private final PresentationLogin presentationLogin;
 
-    private final List<ILoginListener> listListeners;
-
     public ModelLogin(PresentationLogin presentationLogin) {
         this.presentationLogin = presentationLogin;
-
-        presentationLogin.addButtonListener(this);
-
-        listListeners = new ArrayList<ILoginListener>();
-
-    }
-
-    public String getUsername() {
-        return presentationLogin.getUsername();
-    }
-
-    public Boolean isNewUser() {
-        return presentationLogin.isNewUser();
+        
+        listenAllChildren();
     }
 
     @Override
-    public void whenNotifiedByComponant(EComponantBasicEvent typeEvent) {
-        if (typeEvent == EComponantBasicEvent.BUTTON_PRESSED) {
+    public void listenAllChildren() {
+        presentationLogin.attributeParentListener(this);
+    }
+
+    @Override
+    public void whenNotifiedByChild(EChildEvent typeEvent) {
+        if (typeEvent == EChildEvent.ASK_FOR_LOGIN) {
             if (!getUsername().equals("")) { // si le nom d'utilisateur est bien remplit!
                 // WebsocketHelper.setPseudo(getUsername());
-                notifyListenersOfSignInOrUp();
-
                 /*
                  * LOGS:
                  */
@@ -55,18 +46,20 @@ public class ModelLogin implements IComponantListener {
                 }
 
             }
+
+        }
+        else{
+            logger.warning("mes enfants ne m'as pas bien notifié");
         }
 
     }
 
-    public void addListener(ILoginListener listener) {
-        listListeners.add(listener);
+    public String getUsername() {
+        return presentationLogin.getUsername();
     }
 
-    public void notifyListenersOfSignInOrUp() {
-        for (ILoginListener listener : listListeners) {
-            listener.whenNotifiedOfSignInOrUp();
-        }
+    public Boolean isNewUser() {
+        return presentationLogin.isNewUser();
     }
 
 }

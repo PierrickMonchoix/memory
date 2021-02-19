@@ -1,6 +1,6 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textOutput;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IVue;
 
 import javafx.scene.control.Label;
 
@@ -12,11 +12,11 @@ public class VueTextOutput extends Label implements IVue {
         super();
         this.presentationTextOutput = presentationTextOutput;
 
-        update();
+        updateFromPresentation();
     }
 
     @Override
-    public void update() {
+    public void updateFromPresentation() {
         setText(presentationTextOutput.getText());
     }
 

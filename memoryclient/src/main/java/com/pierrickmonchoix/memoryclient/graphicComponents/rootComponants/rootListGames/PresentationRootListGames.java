@@ -2,10 +2,10 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootL
 
 import java.util.logging.Logger;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.buttonCreateGame.PresentationButtonCreateGame;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.labelHeroPseudo.PresentationLabelHeroPseudo;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGamesProposals.PresentationGamesProposals;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
 
 

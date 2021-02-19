@@ -94,10 +94,12 @@ public class LoginWebsocketMessageTreater {
 
 
     public static void sendMessgeToUpdateListGamesTo(String pseudo , Session session){
+        logger.info("envoie d'un msg a " + pseudo + " pour quil update sa liste game");
         WebsocketMessage messageUpdateListGames = new WebsocketMessage();
         messageUpdateListGames.setPseudo(pseudo);
         messageUpdateListGames.setType(EMessageType.UPDATE_LIST_GAMES);
         messageUpdateListGames.setContenu(GamesManager.getInstance().getJson());
+        logger.info("msg pour " + pseudo + " : " + messageUpdateListGames);
         WebsocketServerHelper.sendMessageToClient(session, messageUpdateListGames);
     }
 

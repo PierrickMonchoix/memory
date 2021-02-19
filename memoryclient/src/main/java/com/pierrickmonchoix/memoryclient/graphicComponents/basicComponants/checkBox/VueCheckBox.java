@@ -1,11 +1,10 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.checkBox;
 
-import javafx.scene.control.CheckBox;
-
-import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IVue;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.CheckBox;
 
 /*
 l'extends et l'implement de IVue :
@@ -33,7 +32,7 @@ public class VueCheckBox extends CheckBox implements IVue {
         /*
          * l'update d'initialisation :
          */
-        update();
+        updateFromPresentation();
 
         setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
@@ -47,7 +46,7 @@ public class VueCheckBox extends CheckBox implements IVue {
      * l'update :
      */
     @Override
-    public void update() {
+    public void updateFromPresentation() {
         this.setText(presentationCheckBox.getText());
     }
 

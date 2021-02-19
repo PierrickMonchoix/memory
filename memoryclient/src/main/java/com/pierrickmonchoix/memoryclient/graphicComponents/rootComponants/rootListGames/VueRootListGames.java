@@ -1,9 +1,9 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.buttonCreateGame.VueButtonCreateGame;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.labelHeroPseudo.VueLabelHeroPseudo;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGamesProposals.VueGamesProposals;
+import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IVue;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -34,11 +34,11 @@ public class VueRootListGames extends HBox implements IVue {
         setPadding(new Insets(20,20,20,20));
 
         
-        update();
+        updateFromPresentation();
     }
 
     @Override
-    public void update() {
+    public void updateFromPresentation() {
         // TODO Auto-generated method stub
 
     }
