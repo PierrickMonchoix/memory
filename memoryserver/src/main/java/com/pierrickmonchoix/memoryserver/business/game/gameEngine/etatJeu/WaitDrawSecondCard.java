@@ -3,7 +3,6 @@ package com.pierrickmonchoix.memoryserver.business.game.gameEngine.etatJeu;
 import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryserver.business.game.gameEngine.GameEngine;
-import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
 
@@ -32,7 +31,7 @@ public class WaitDrawSecondCard extends EtatJeuWaiting {
 
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage message) {
-        if (message.getType() == EMessageType.DRAW_SECOND_CARD) {
+        if (message.getType() == EMessageType.DRAW_CARD) {
             logger.info("msg recu par ws");
             if (waiting) {
                 logger.info("on a recu la premiere carte");

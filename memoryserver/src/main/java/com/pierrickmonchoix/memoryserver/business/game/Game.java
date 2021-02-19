@@ -42,12 +42,12 @@ public class Game {
     private void start() {
         started = true;
         logger.info("La partie de " + hostPlayer.getPseudo() + " commence!");
-/* //TOCHANGE
+
         board = new Board();
         setActualPlayer(listPlayers.get(0));
-         logger.info("La partie de " + hostPlayer.getPseudo() + " ressemble a ca : \n" + toJson());
+        logger.info("La partie de " + hostPlayer.getPseudo() + " ressemble a ca : \n" + toJson());
         gameEngine = new GameEngine(this);
-        gameEngine.start();  */
+        gameEngine.start();  
     }
 
     // PUBLIC AJOUT D'UN JOUEUR

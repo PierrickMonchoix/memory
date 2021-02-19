@@ -1,9 +1,13 @@
 package com.pierrickmonchoix.memoryserver.business;
 
+import com.google.gson.Gson;
+
 /**
  * un player est une personne qui a reussi a passer le lgoin, connexion réussie.
  */
 public class Player {
+
+    private static Gson gson = new Gson();
 
     private String pseudo;
     private int points;
@@ -65,5 +69,15 @@ public class Player {
             return false;
         return true;
     }
+
+    public static Player fromJson(String string){
+        return gson.fromJson(string, Player.class);
+    }
+
+    public String toJson(){
+        return gson.toJson(this);
+    }
+
+
 
 }

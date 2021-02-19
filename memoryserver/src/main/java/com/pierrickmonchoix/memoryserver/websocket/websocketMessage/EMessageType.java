@@ -25,7 +25,7 @@ public enum EMessageType {
     /**
      * server > client : demande de tirage de premiere la carte
      * 
-     * client > server : resluat de la premiere carte
+     * client > server : rien
      * 
      */
     DRAW_FIRST_CARD,
@@ -33,10 +33,22 @@ public enum EMessageType {
     /**
      * server > client : demande de tirage de seconde la carte
      * 
-     * client > server : resluat de la seconde carte
+     * client > server : rien
      * 
      */
     DRAW_SECOND_CARD,
+
+    /**
+     * 
+     * 
+     * client > server : j'ai tiré une carte,
+     * débrouille toi pour savoir si 1ere ou 2 eme
+     * 
+     * 
+     */
+    DRAW_CARD,
+
+    
 
     /**
      * server > client : on montre les cartes reveles au client
