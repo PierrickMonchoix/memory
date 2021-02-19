@@ -1,11 +1,15 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.gameProposal;
 
+import java.util.logging.Logger;
+
 import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.IComponantListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.button.PresentationButton;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textOutput.PresentationTextOutput;
 
 public class PresentationGameProposal extends Presentation {
+
+    private static Logger logger = Logger.getLogger(PresentationGameProposal.class.getName());
 
     private final PresentationTextOutput presentationTextOutput;
     private final PresentationButton presentationButton;
@@ -39,6 +43,7 @@ public class PresentationGameProposal extends Presentation {
     }
 
     public void setAnableButton(Boolean enable){
+        logger.info("vue of PresentationGameProposal : " + vue  + " pseudo: " + pseudo);   // la vue de game proposal est null
         presentationButton.setEnable(enable);
     }
 

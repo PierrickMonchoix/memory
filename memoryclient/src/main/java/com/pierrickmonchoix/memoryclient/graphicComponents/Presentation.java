@@ -30,7 +30,7 @@ public abstract class Presentation {
 
     public void updateVue() {
         if (vue == null) {
-            logger.warning("cette presentation a aune vue null : " + this.toString());
+            logger.warning("cette presentation a aune vue null : " + this.toString() + " : " + this.getClass().getName());
         }
         Platform.runLater(new Runnable() {
             @Override

@@ -1,5 +1,7 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login;
 
+import java.util.logging.Logger;
+
 import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.button.VueButton;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.checkBox.VueCheckBox;
@@ -14,6 +16,8 @@ public class VueLogin extends VBox implements IVue {
     private final VueCheckBox vueCheckBox;
     private final VueTextField vueTextField;
     private final VueButton vueButton;
+
+    private static Logger logger = Logger.getLogger(VueLogin.class.getName());
 
     public VueLogin(PresentationLogin presentationLogin) {
 
@@ -41,6 +45,7 @@ public class VueLogin extends VBox implements IVue {
 
     @Override
     public void update() {
+        logger.info("vueButton : " + vueButton);
         vueCheckBox.update();
         vueTextField.update();
         vueButton.update();

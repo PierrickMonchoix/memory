@@ -1,5 +1,7 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.board;
 
+import java.util.logging.Logger;
+
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.EComponantBasicEvent;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.IComponantListener;
 import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
@@ -7,6 +9,8 @@ import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
 public class ModelBoard implements IWebsocketListener, IComponantListener {
+
+    private static Logger logger = Logger.getLogger(ModelBoard.class.getName());
 
     private final PresentationBoard presentationBoard;
     
@@ -33,6 +37,7 @@ public class ModelBoard implements IWebsocketListener, IComponantListener {
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage websocketMessage) {
         // TODO Auto-generated method stub
+        logger.info("msg recu par ws");
 
     }
 

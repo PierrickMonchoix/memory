@@ -6,8 +6,7 @@ import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.Presentation;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.gameProposal.PresentationGameProposal;
-import com.pierrickmonchoix.memoryclient.graphicComponents.forJson.GameManagerForJson;
-import com.pierrickmonchoix.memoryclient.graphicComponents.forJson.ShownGameForJson;
+
 
 public class PresentationGamesProposals extends Presentation {
 

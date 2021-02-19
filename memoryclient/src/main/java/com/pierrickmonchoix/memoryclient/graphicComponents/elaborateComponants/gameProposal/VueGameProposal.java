@@ -1,5 +1,7 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.gameProposal;
 
+import java.util.logging.Logger;
+
 import com.pierrickmonchoix.memoryclient.graphicComponents.IVue;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.button.VueButton;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textOutput.VueTextOutput;
@@ -13,6 +15,7 @@ public class VueGameProposal extends HBox implements IVue {
     private final VueTextOutput vueTextOutput;
     private final VueButton vueButton;
 
+    private static Logger logger = Logger.getLogger(VueGameProposal.class.getName());
     public VueGameProposal(PresentationGameProposal presentationGameProposal){
         super(100);
 
@@ -46,8 +49,11 @@ public class VueGameProposal extends HBox implements IVue {
 
     @Override
     public void update() {
+        logger.info("vueTextOutput : " + vueTextOutput);
+        logger.info("vueButton : " + vueButton);
         vueTextOutput.update();
         vueButton.update();
+        
     }
     
 }

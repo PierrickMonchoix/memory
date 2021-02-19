@@ -32,7 +32,6 @@ public class PresentationRootListGames extends Presentation{
 
 
     public PresentationGamesProposals getPresentationGamesProposals() {
-        logger.info("fati 3");
         return presentationGamesProposals;
     }
 

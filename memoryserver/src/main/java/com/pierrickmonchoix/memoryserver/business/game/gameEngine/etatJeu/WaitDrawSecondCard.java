@@ -33,6 +33,7 @@ public class WaitDrawSecondCard extends EtatJeuWaiting {
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage message) {
         if (message.getType() == EMessageType.DRAW_SECOND_CARD) {
+            logger.info("msg recu par ws");
             if (waiting) {
                 logger.info("on a recu la premiere carte");
                 String jsonCoordinatesSecondCard = message.getContenu();

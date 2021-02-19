@@ -31,6 +31,7 @@ public class WaitCardsSeen extends EtatJeuWaiting {
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage message) {
         if (message.getType() == EMessageType.SHOW_CARD) {
+            logger.info("msg recu par ws");
             if (waiting) {
                 logger.info("les client ont vu les cartes");
                 goNextEtat();

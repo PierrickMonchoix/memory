@@ -36,9 +36,11 @@ public class GamesManager implements IWebsocketListener {
     public void whenReceiveWebsocketMessage(WebsocketMessage message) {
         switch (message.getType()) {
             case CREATE_GAME:
+                logger.info("msg recu par ws");
                 treatCreateGameMessage(message);
                 break;
             case JOIN_GAME:
+                logger.info("msg recu par ws");
                 treatJoinGameMessage(message);
                 break;
             default:

@@ -51,7 +51,7 @@ public class ModelLoginResult implements ILoginListener, IWebsocketListener { //
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage message) {
         if ((message.getType() == EMessageType.SIGN_IN) || (message.getType() == EMessageType.SIGN_UP)) {
-            logger.info("jai ete notifié par ws");
+            logger.info("msg recu par ws");
             text = text + message.getContenu();
             // Platform.runLater(new Runnable() {
 

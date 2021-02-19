@@ -32,6 +32,7 @@ public class ModelGamesProposals implements IWebsocketListener {
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage message) {
         if (message.getType() == EMessageType.UPDATE_LIST_GAMES) {
+            logger.info("msg recu par ws");
             logger.info("message recu pour games proposals: " + message.getContenu());
             GameManagerForJson gameManagerForJson = GameManagerForJson.fromJson(message.getContenu());
             updateList(gameManagerForJson);
@@ -66,7 +67,7 @@ public class ModelGamesProposals implements IWebsocketListener {
                 PresentationGameProposal presentationGameProposal = new PresentationGameProposal(
                         shownGameForJson.pseudoHost, numberPlayer);
                 listPresentationsGameProposal.add(presentationGameProposal);
-                updatePresentationIfImInGame(presentationGameProposal, gameManagerForJson);
+                
 
                 // ajout d'un modele
                 ModelGameProposal modelGameProposal = new ModelGameProposal(presentationGameProposal);
@@ -74,6 +75,11 @@ public class ModelGamesProposals implements IWebsocketListener {
             }
         }
         presentationGamesProposals.updateVue();
+        for (PresentationGameProposal presentationGameProposal : listPresentationsGameProposal) {
+            updatePresentationIfImInGame(presentationGameProposal, gameManagerForJson);
+        }
+        
+        
     }
 
     private void clearModelList() {
