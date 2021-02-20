@@ -1,9 +1,12 @@
 package com.pierrickmonchoix.memoryserver.business.game.gameEngine.etatJeu;
 
+import java.util.logging.Logger;
+
 import com.pierrickmonchoix.memoryserver.business.game.gameEngine.GameEngine;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 
 public class CheckPairOrNot extends EtatJeu {
+    private static Logger logger = Logger.getLogger(CheckPairOrNot.class.getName());
 
     public CheckPairOrNot(GameEngine automateGameEngine) {
         super(automateGameEngine);
@@ -11,6 +14,7 @@ public class CheckPairOrNot extends EtatJeu {
 
     @Override
     public void start() {
+        logger.info("###### ETAT JEU = CheckPairOrNot");
         checkPairOrNot();
         //on ve va pas forcement au next etat!
     }
@@ -21,18 +25,22 @@ public class CheckPairOrNot extends EtatJeu {
     }
 
     private void checkPairOrNot(){
+        automateGameEngine.updateScoresAndBoard();
+
         if(automateGameEngine.isWinner()){
-            automateGameEngine.updateScoresAndBoard();// a faire apres verif du winner
-            automateGameEngine.sendMessageToAllPlayer(EMessageType.WINNER);
+            logger.info("il y a un vainceur");
+            String pseudoWinner = getAutomateGameEngine().getWinner().getPseudo();
+            automateGameEngine.sendSpecificMessageToAllPlayer(EMessageType.WINNER , pseudoWinner);
             automateGameEngine.endGame();
+            
         }
         else {
             if(automateGameEngine.isPairDrawn()){
-                automateGameEngine.updateScoresAndBoard();
+                logger.info("il y a eu une paire returned");
                 automateGameEngine.sendMessageToAllPlayer(EMessageType.DRAW_SUCCESS);
             }
             else{ // pas de paire tirée
-                automateGameEngine.updateScoresAndBoard();
+                logger.info("il y n'y a PAS eu une paire returned");
                 automateGameEngine.sendMessageToAllPlayer(EMessageType.DRAW_FAILURE);
             }
             goNextEtat(); // ask pair

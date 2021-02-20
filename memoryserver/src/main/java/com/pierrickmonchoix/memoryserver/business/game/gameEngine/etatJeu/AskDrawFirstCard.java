@@ -15,11 +15,10 @@ public class AskDrawFirstCard extends EtatJeu {
 
     @Override
     public void start() {
-        logger.info("begin start askClientDrawFirstCard");
-        logger.info("La partie 5 ressemble a ca : \n" + automateGameEngine.getGame().toJson());
+        logger.info("###### ETAT JEU = AskDrawFirstCard");
         askClientDrawFirstCard();
        // logger.info("finish start askClientDrawFirstCard");
-       // goNextEtat();
+        goNextEtat();
     }
 
     @Override

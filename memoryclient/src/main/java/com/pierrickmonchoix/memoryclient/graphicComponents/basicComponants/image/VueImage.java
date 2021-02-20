@@ -27,7 +27,7 @@ public class VueImage extends ImageView implements IVue{
 
         setPickOnBounds(true);
 		setFitWidth(100);
-		setFitWidth(100);
+		setFitHeight(250);
 		setOnMouseClicked((MouseEvent e) -> {
 			System.out.println("Clicked!"); // change functionality
 			presentationImage.onClick();
@@ -39,7 +39,7 @@ public class VueImage extends ImageView implements IVue{
     @Override
     public void updateFromPresentation() {
         logger.info("");
-       // image = new Image(this.getClass().getResourceAsStream(presentationImage.getPathImage()));
+        image = new Image(this.getClass().getResourceAsStream(presentationImage.getPathImage()));
         setImage(image);
     }
     

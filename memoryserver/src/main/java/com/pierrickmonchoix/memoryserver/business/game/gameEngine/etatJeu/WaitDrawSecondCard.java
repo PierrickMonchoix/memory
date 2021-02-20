@@ -18,6 +18,7 @@ public class WaitDrawSecondCard extends EtatJeuWaiting {
 
     @Override
     public void start() {
+        logger.info("###### ETAT JEU = WaitDrawSecondCard");
         waiting = true;
         // se contente d'attendre
 
@@ -26,12 +27,14 @@ public class WaitDrawSecondCard extends EtatJeuWaiting {
     @Override
     public void goNextEtat() {
         waiting = false;
-        automateGameEngine.changeAndStartEtatJeuTo(automateGameEngine.getWaitCardsSeen());
+        automateGameEngine.changeAndStartEtatJeuTo(automateGameEngine.getAskCardsSeen());
     }
 
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage message) {
-        if (message.getType() == EMessageType.DRAW_CARD) {
+        String pseudoMessageSender = message.getPseudo();
+        String pseudoActualPlayer = getAutomateGameEngine().getActualPlayer().getPseudo();
+        if ((message.getType() == EMessageType.DRAW_CARD) && (pseudoActualPlayer.equals(pseudoMessageSender))) {
             logger.info("msg recu par ws");
             if (waiting) {
                 logger.info("on a recu la premiere carte");

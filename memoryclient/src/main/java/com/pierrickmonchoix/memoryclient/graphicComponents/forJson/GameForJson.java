@@ -1,6 +1,5 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.forJson;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 

@@ -9,6 +9,7 @@ import com.pierrickmonchoix.memoryserver.business.game.Game;
 import com.pierrickmonchoix.memoryserver.business.game.elementsJeu.Board;
 import com.pierrickmonchoix.memoryserver.business.game.elementsJeu.carte.Card;
 import com.pierrickmonchoix.memoryserver.business.game.elementsJeu.carte.Coordinates;
+import com.pierrickmonchoix.memoryserver.business.game.gameEngine.etatJeu.AskCardsSeen;
 import com.pierrickmonchoix.memoryserver.business.game.gameEngine.etatJeu.AskDrawFirstCard;
 import com.pierrickmonchoix.memoryserver.business.game.gameEngine.etatJeu.AskDrawSecondCard;
 import com.pierrickmonchoix.memoryserver.business.game.gameEngine.etatJeu.CheckPairOrNot;
@@ -20,7 +21,6 @@ import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
 
-
 public class GameEngine {
     private static Logger logger = Logger.getLogger(GameEngine.class.getName());
 
@@ -31,63 +31,79 @@ public class GameEngine {
     private WaitDrawFirstCard waitDrawFirstCard;
     private AskDrawSecondCard askDrawSecondCard;
     private WaitDrawSecondCard waitDrawSecondCard;
-    private CheckPairOrNot checkPairOrNot;
+    private AskCardsSeen askCardsSeen;
     private WaitCardsSeen waitCardsSeen;
+    private CheckPairOrNot checkPairOrNot;
 
     private Card firstCard;
     private Card secondCard;
 
-
-    //CONSTRUCTOR ----------------------------------------------------------------------
+    // CONSTRUCTOR
+    // ----------------------------------------------------------------------
     public GameEngine(Game game) {
         this.game = game;
     }
 
-    //PRIVATE GETTER SETTER OF GAME ----------------------------------------------------------------------
+    // PRIVATE GETTER SETTER OF GAME
+    // ----------------------------------------------------------------------
     private List<Player> getListPlayers() {
         return game.getListPlayers();
     }
-    private Player getActualPlayer(){
+
+    public Player getActualPlayer() {
         return game.getActualPlayer();
     }
-    private void setActualPlayer(Player player){
+
+    private void setActualPlayer(Player player) {
         game.setActualPlayer(player);
     }
-    private void setWinner(Player winner){
+
+    private void setWinner(Player winner) {
         game.setWinner(winner);
     }
-    private Player getWinner(){
+
+    public Player getWinner() {
         return game.getWinner();
     }
-    private Board getBoard(){
+
+    private Board getBoard() {
         return game.getBoard();
     }
 
-    //PUBLIC GETTERS SETTERS
+    // PUBLIC GETTERS SETTERS
     public AskDrawFirstCard getAskDrawFirstCard() {
         return askDrawFirstCard;
     }
+
     public WaitDrawFirstCard getWaitDrawFirstCard() {
         return waitDrawFirstCard;
     }
+
     public AskDrawSecondCard getAskDrawSecondCard() {
         return askDrawSecondCard;
     }
+
     public WaitDrawSecondCard getWaitDrawSecondCard() {
         return waitDrawSecondCard;
     }
+
     public CheckPairOrNot getCheckPairOrNot() {
         return checkPairOrNot;
     }
-    public WaitCardsSeen getWaitCardsSeen(){
+
+    public WaitCardsSeen getWaitCardsSeen() {
         return waitCardsSeen;
+    }
+
+    public AskCardsSeen getAskCardsSeen() {
+        return askCardsSeen;
     }
 
     // PUBLIC SEND MESSAGE TO PLAYERS
     public void sendMessageToAllPlayer(EMessageType messageType) {
         logger.info("le sever va creer game to json : ");
-        logger.info("la game : " + game.toJson() );      
-        String jsonGame = game.toJson() ;
+        logger.info("la game : " + game.toJson());
+        String jsonGame = game.toJson();
         for (Player p : getListPlayers()) {
             WebsocketMessage message = new WebsocketMessage();
             message.setPseudo(p.getPseudo());
@@ -97,43 +113,61 @@ public class GameEngine {
         }
     }
 
-    //PUBLIC START GAME ENGINE
-    public void start(){
+    // PUBLIC SEND MESSAGE TO PLAYERS
+    public void sendSpecificMessageToAllPlayer(EMessageType messageType , String contenu) {
+        logger.info("le sever va creer game to json : ");
+        logger.info("la game : " + game.toJson());
+        for (Player p : getListPlayers()) {
+            WebsocketMessage message = new WebsocketMessage();
+            message.setPseudo(p.getPseudo());
+            message.setType(messageType);
+            message.setContenu(contenu);
+            WebsocketServerHelper.sendMessageToClient(p.getPseudo(), message);
+        }
+    }
+
+    // PUBLIC START GAME ENGINE
+    public void start() {
         logger.info("La partie 3 ressemble a ca : \n" + game.toJson());
         logger.info("start game engine");
         this.askDrawFirstCard = new AskDrawFirstCard(this);
         logger.info("finish askDrawFirstCard");
         this.waitDrawFirstCard = new WaitDrawFirstCard(this);
-         this.askDrawSecondCard = new AskDrawSecondCard(this);
+        this.askDrawSecondCard = new AskDrawSecondCard(this);
         this.waitDrawSecondCard = new WaitDrawSecondCard(this);
+        this.askCardsSeen = new AskCardsSeen(this);
         this.checkPairOrNot = new CheckPairOrNot(this);
         this.waitCardsSeen = new WaitCardsSeen(this);
         logger.info("quasi finish game engine");
 
         logger.info("La partie 4 ressemble a ca : \n" + game.toJson());
         changeAndStartEtatJeuTo(askDrawFirstCard);
-        logger.info("finish start game engine"); 
+        logger.info("finish start game engine");
     }
 
-    //PUBLIC CHANGE ETAT JEU
+    // PUBLIC CHANGE ETAT JEU
     public void changeAndStartEtatJeuTo(EtatJeu etatJeu) {
         this.etatJeu = etatJeu;
         startEtatJeu();
     }
-    private void startEtatJeu(){
+
+    private void startEtatJeu() {
         logger.info("begin startEtatJeu");
         this.etatJeu.start();
     }
 
-    //PUBLIC CHANGE PLAYER
+    // PUBLIC CHANGE PLAYER
     public void changePlayer() {
+        logger.info("l' ancien joueur est : " + getActualPlayer().getPseudo());
         int idPlayer = getIdListPlayer();
         if (idPlayer < game.getMaxPlayer() - 1) {
-            setActualPlayer( getListPlayers().get(idPlayer + 1) );
+            setActualPlayer(getListPlayers().get(idPlayer + 1));
         } else {
-            setActualPlayer( getListPlayers().get(0) );
+            setActualPlayer(getListPlayers().get(0));
         }
+        logger.info("le nouveau joueur est : " + getActualPlayer().getPseudo());
     }
+
     private int getIdListPlayer() {
         int i = 0;
         for (Player p : getListPlayers()) {
@@ -146,54 +180,60 @@ public class GameEngine {
         return -1;
     }
 
+    // PUBLIC DRAW CARDS
+    public void drawFirstCardOfJsonCoordinates(String jsonCoordinates) {
+        this.firstCard = drawCardOfJsonCoordinates(jsonCoordinates);
+    }
 
-    //PUBLIC DRAW CARDS
-    public void drawFirstCardOfJsonCoordinates(String jsonCoordinates){
-        this.firstCard =  drawCardOfJsonCoordinates(jsonCoordinates);
+    public void drawSecondCardOfJsonCoordinates(String jsonCoordinates) {
+        this.secondCard = drawCardOfJsonCoordinates(jsonCoordinates);
     }
-    public void drawSecondCardOfJsonCoordinates(String jsonCoordinates){
-        this.secondCard =  drawCardOfJsonCoordinates(jsonCoordinates);
-    }
-    private Card drawCardOfJsonCoordinates(String jsonCoordinates){
+
+    private Card drawCardOfJsonCoordinates(String jsonCoordinates) {
         Coordinates coordinates = Coordinates.fromJson(jsonCoordinates);
         return drawCardOfCoordinates(coordinates);
     }
-    private Card drawCardOfCoordinates(Coordinates coordinates){
+
+    private Card drawCardOfCoordinates(Coordinates coordinates) {
         return getBoard().drawCardOfCoordinates(coordinates);
     }
-    
 
-    //PUBLIC IS PAIR DRWAN
+    // PUBLIC IS PAIR DRWAN
     public boolean isPairDrawn() {
         return firstCard.getTypeCarte() == secondCard.getTypeCarte();
     }
 
-    //PUBLIC UPDATE SCORES AND BOARD
-    public void updateScoresAndBoard(){
-        if(isPairDrawn()){
+    // PUBLIC UPDATE SCORES AND BOARD
+    public void updateScoresAndBoard() {
+        if (isPairDrawn()) {
             incrementsPointsActualPlayer();
             removeRevealedCards();
-            if(isBoardEmpty()){
+            if (isBoardEmpty()) {
                 declareWinner();
             }
-        }
-        else{
+        } else {
             returnRevealedCards();
+            changePlayer();
         }
     }
-    private void incrementsPointsActualPlayer(){
+
+    private void incrementsPointsActualPlayer() {
         getActualPlayer().incrementPoints();
     }
-    private void removeRevealedCards(){
+
+    private void removeRevealedCards() {
         getBoard().removeRevealedCards();
     }
-    private void returnRevealedCards(){
+
+    private void returnRevealedCards() {
         getBoard().returnRevealedCards();
     }
-    private boolean isBoardEmpty(){
+
+    private boolean isBoardEmpty() {
         return getBoard().isEmpty();
     }
-    private void declareWinner() {  // pas d'égalités pour l'instant
+
+    private void declareWinner() { // pas d'égalités pour l'instant
         int maxPoint = 0;
         for (Player p : game.getListPlayers()) {
             maxPoint = p.getPoints();
@@ -205,21 +245,18 @@ public class GameEngine {
         }
     }
 
-    //PUBLIC IS WINNER ?
-    public boolean isWinner(){
-        return ( getWinner() == null );
+    // PUBLIC IS WINNER ?
+    public boolean isWinner() {
+        return (getWinner() != null);
     }
 
-    //END GAME
-    public void endGame(){
+    // END GAME
+    public void endGame() {
         GamesManager.getInstance().removeGame(this.game);
     }
 
     public Game getGame() {
         return game;
     }
-
-
-
 
 }

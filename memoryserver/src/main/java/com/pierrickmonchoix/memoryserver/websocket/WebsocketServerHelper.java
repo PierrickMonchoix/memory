@@ -25,11 +25,14 @@ public class WebsocketServerHelper {
 
     private static List<IWebsocketListener> listListeners;
 
+    private static List<IWebsocketFinishNotifyListener> listFinishNotifyListener;
+
     private static Logger logger = Logger.getLogger(WebsocketServerHelper.class.getName());
 
     public static void launchWebsocketServer() {
         listSessions = new ArrayList<Session>();
         listListeners = new ArrayList<IWebsocketListener>();
+        listFinishNotifyListener = new ArrayList<IWebsocketFinishNotifyListener>();
         WebsocketServerLauncher.launch();
     }
 
@@ -130,10 +133,27 @@ public class WebsocketServerHelper {
             logger.info("on a notifié un ws listeners");
             listener.whenReceiveWebsocketMessage(message);
         }
+
+        logger.info("notification des ws listeners du msg : " + message);
+        List<IWebsocketFinishNotifyListener> copyListFinishListeners = new ArrayList<IWebsocketFinishNotifyListener>(listFinishNotifyListener);
+        /*
+        on doit paasser par une copie car il arrive
+        que l'on modifie la liste alors que l'on itére celle ci
+        */
+        for (IWebsocketFinishNotifyListener finishListener : copyListFinishListeners) {
+            logger.info("on a notifié un ws listeners");
+            finishListener.whenMessageIsNotMoreDestributed(message);
+        }
+
+
     }
 
     public static void addListener(IWebsocketListener listener) {
         listListeners.add(listener);
+    }
+
+    public static void addFinishNotifyListener(IWebsocketFinishNotifyListener finishNotifyListener) {
+        listFinishNotifyListener.add(finishNotifyListener);
     }
 
 }

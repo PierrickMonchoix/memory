@@ -13,7 +13,7 @@ public class Board {
     private static Logger logger = Logger.getLogger(Board.class.getName());
 
     private List<Card> listCards;
-    private int tailleX = 3;
+    private int tailleX = 4;
     //private int tailleY = 4;
 
 
@@ -48,6 +48,7 @@ public class Board {
     public Card drawCardOfCoordinates(Coordinates coordinates){
         Card cardToDraw = getCardFromCoordinates(coordinates);
         cardToDraw.setRevealed(true);
+        logger.info("une carte a étée révélée : " + cardToDraw.getCoordinates());
         return cardToDraw;
     }
     private Card getCardFromCoordinates(Coordinates coordinates){

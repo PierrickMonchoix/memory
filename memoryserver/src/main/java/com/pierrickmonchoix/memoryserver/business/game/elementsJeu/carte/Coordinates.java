@@ -63,6 +63,13 @@ public class Coordinates {
         return gson.toJson(this);
     }
 
+    @Override
+    public String toString() {
+        return "Coordinates [x=" + x + ", y=" + y + "]";
+    }
+
+    
+
 
 
     

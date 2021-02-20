@@ -50,17 +50,17 @@ public enum ECardType {
     public static String toImagePath(ECardType type){
         switch (type) {
             case UN:
-                return "/un";
+                return "/un.png";
             case DEUX:
-                return "/deux";
+                return "/deux.png";
             case TROIS:
-                return "/trois";
+                return "/trois.png";
             case QUATRE:
-                return "/quatre";
+                return "/quatre.png";
             case CINQ:
-                return "/cinq";
+                return "/cinq.png";
             case SIX:
-                return "/six";
+                return "/six.png";
             default:
                 logger.warning("erreur de syntaxe");
                 return null;

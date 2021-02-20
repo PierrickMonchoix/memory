@@ -18,6 +18,7 @@ public class WaitCardsSeen extends EtatJeuWaiting {
 
     @Override
     public void start() {
+        logger.info("###### ETAT JEU = WaitCardsSeen");
         waiting = true;
     }
 
@@ -29,7 +30,9 @@ public class WaitCardsSeen extends EtatJeuWaiting {
 
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage message) {
-        if (message.getType() == EMessageType.SHOW_CARD) {
+        String pseudoMessageSender = message.getPseudo();
+        String pseudoActualPlayer = getAutomateGameEngine().getActualPlayer().getPseudo();
+        if ((message.getType() == EMessageType.SHOW_CARD) && (pseudoActualPlayer.equals(pseudoMessageSender))) {
             logger.info("msg recu par ws");
             if (waiting) {
                 logger.info("les client ont vu les cartes");

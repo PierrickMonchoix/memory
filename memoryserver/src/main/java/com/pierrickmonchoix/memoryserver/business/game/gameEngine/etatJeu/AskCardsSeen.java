@@ -5,27 +5,28 @@ import java.util.logging.Logger;
 import com.pierrickmonchoix.memoryserver.business.game.gameEngine.GameEngine;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 
-public class AskDrawSecondCard extends EtatJeu {
+public class AskCardsSeen extends EtatJeu {
     private static Logger logger = Logger.getLogger(AskDrawSecondCard.class.getName());
 
-    public AskDrawSecondCard(GameEngine automateGameEngine) {
+    public AskCardsSeen(GameEngine automateGameEngine) {
         super(automateGameEngine);
     }
 
     @Override
     public void start() {
-        logger.info("###### ETAT JEU = AskDrawSecondCard");
-        askClientDrawSecondCard();
+        logger.info("###### ETAT JEU = AskCardsSeen");
+        askClientToSeeCards();
         goNextEtat();
     }
 
     @Override
     public void goNextEtat() {
-        automateGameEngine.changeAndStartEtatJeuTo(automateGameEngine.getWaitDrawSecondCard());
+        automateGameEngine.changeAndStartEtatJeuTo(automateGameEngine.getWaitCardsSeen());
     }
 
-    private void askClientDrawSecondCard(){
-        logger.info("askClientDrawSecondCard");
-        automateGameEngine.sendMessageToAllPlayer(EMessageType.DRAW_SECOND_CARD);
+    private void askClientToSeeCards(){
+        logger.info("askClientToSeeCards");
+        automateGameEngine.sendMessageToAllPlayer(EMessageType.SHOW_CARD);
     }
+    
 }

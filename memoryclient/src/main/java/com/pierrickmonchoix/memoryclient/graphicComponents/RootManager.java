@@ -2,6 +2,7 @@ package com.pierrickmonchoix.memoryclient.graphicComponents;
 
 import java.util.logging.Logger;
 
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.winner.PresentationWinner;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootGame.ModelRootGame;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootGame.PresentationRootGame;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootGame.VueRootGame;
@@ -11,6 +12,9 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLi
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.ModelRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.PresentationRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.VueRootLogin;
+import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootWinner.ModeleRootWinner;
+import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootWinner.PresentationRootWinner;
+import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootWinner.VueRootWinner;
 import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
@@ -36,6 +40,10 @@ public class RootManager implements IWebsocketListener {
     private PresentationRootGame presentationRootGame;
     private VueRootGame vueRootGame;
     private ModelRootGame modelRootGame;
+
+    private PresentationRootWinner presentationRootWinner;
+    private VueRootWinner vueRootWinner;
+    private ModeleRootWinner modeleRootWinner;
 
     private Parent actualVueRoot;
 
@@ -71,14 +79,19 @@ public class RootManager implements IWebsocketListener {
         vueRootGame = new VueRootGame(presentationRootGame);
         presentationRootGame.setVue(vueRootGame);
 
+        presentationRootWinner = new PresentationRootWinner();
+        vueRootWinner = new VueRootWinner(presentationRootWinner);
+        presentationRootWinner.setVue(vueRootGame);
+
         // il faut bien que toutes les vues et presentations soient fiates avant les
         // differents mdoelses
         modelRootLogin = new ModelRootLogin(presentationRootLogin);
         modelRootListGames = new ModelRootListGames(presentationRootListGames);
         modelRootGame = new ModelRootGame(presentationRootGame);
+        modeleRootWinner = new ModeleRootWinner(presentationRootWinner);
 
         actualVueRoot = vueRootLogin;
-        scene = new Scene(actualVueRoot, 800, 500);
+        scene = new Scene(actualVueRoot, 800, 800);
 
         listenWebsocketHelper();
 
@@ -98,6 +111,10 @@ public class RootManager implements IWebsocketListener {
         if(websocketMessage.getType() == EMessageType.DRAW_FIRST_CARD){
             logger.info("je set la vue rootGame");
             setVueRoot(vueRootGame);
+        }
+        else if(websocketMessage.getType() == EMessageType.WINNER){
+            logger.info("je set la vue rootWinner");
+            setVueRoot(vueRootWinner);
         }
     }
 

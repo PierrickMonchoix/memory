@@ -13,7 +13,7 @@ public class PresentationCard extends PresentationNotifier implements IChildenLi
     private final PresentationImage presentationImage;
 
     private final String pathCardImage; // on us epas de update vue pour ca
-    private final String pathMystereImage = "/mystere";
+    private final String pathMystereImage = "/mystere.png";
 
     private final int x;
     private final int y;
@@ -69,9 +69,11 @@ public class PresentationCard extends PresentationNotifier implements IChildenLi
 
     public void setReveal(boolean reveal) {
         if (reveal) {
-            if (pathCardImage == null) {
-                logger.warning(("la path de l'image n'as pas ete initialisée"));
+            if (pathCardImage != null) {
                 presentationImage.setUpPath(pathCardImage);
+            }
+            else{
+                logger.warning("la path de l'image n'as pas ete initialisée");
             }
         } else {
             presentationImage.setUpPath(pathMystereImage);
