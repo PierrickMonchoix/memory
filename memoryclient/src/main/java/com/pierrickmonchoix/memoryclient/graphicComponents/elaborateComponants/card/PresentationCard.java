@@ -20,7 +20,7 @@ public class PresentationCard extends PresentationNotifier implements IChildenLi
 
     private static Logger logger = Logger.getLogger(PresentationImage.class.getName());
 
-    public PresentationCard(String pathCardImage, int x, int y) {
+    public PresentationCard(String pathCardImage, int x, int y , boolean revealed) {
         super(EChildEvent.DRAW_CARD);
 
 
@@ -31,6 +31,8 @@ public class PresentationCard extends PresentationNotifier implements IChildenLi
         presentationImage = new PresentationImage(pathMystereImage);
         VueImage vueImage = new VueImage(presentationImage);
         presentationImage.setVue(vueImage);
+
+        setReveal(revealed);
 
         listenAllChildren();
 

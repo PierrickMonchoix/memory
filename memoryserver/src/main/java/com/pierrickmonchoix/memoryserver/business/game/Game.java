@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.google.gson.Gson;
 import com.pierrickmonchoix.memoryserver.business.Player;
 import com.pierrickmonchoix.memoryserver.business.PlayersManager;
 import com.pierrickmonchoix.memoryserver.business.game.elementsJeu.Board;
 import com.pierrickmonchoix.memoryserver.business.game.gameEngine.GameEngine;
+import com.pierrickmonchoix.memoryserver.forJson.GameForJson;
 
 public class Game {
     private static Logger logger = Logger.getLogger(Game.class.getName());
@@ -21,12 +21,15 @@ public class Game {
     private Player actualPlayer;
 
     private Player winner;
+    private boolean started;
+
+
 
     private GameEngine gameEngine;
 
-    private boolean started;
+    
 
-    private static Gson gson = new Gson();
+    
 
     /**
      * quand on appuie sur le bouton creer partie (pas lancée!)
@@ -47,6 +50,7 @@ public class Game {
         setActualPlayer(listPlayers.get(0));
         logger.info("La partie de " + hostPlayer.getPseudo() + " ressemble a ca : \n" + toJson());
         gameEngine = new GameEngine(this);
+        logger.info("La partie 2 ressemble a ca : \n" + toJson());
         gameEngine.start();  
     }
 
@@ -119,14 +123,6 @@ public class Game {
 
     
 
-    // GSON FUNCTIONS
-    public static Game fromJson(String string) {
-        return gson.fromJson(string, Game.class);
-    }
-
-    public String toJson() {
-        return gson.toJson(this);
-    }
 
     @Override
     public int hashCode() {
@@ -152,6 +148,10 @@ public class Game {
         } else if (!hostPlayer.equals(other.hostPlayer))
             return false;
         return true;
+    }
+
+    public String toJson(){
+        return GameForJson.gameToJson(this);
     }
 
 

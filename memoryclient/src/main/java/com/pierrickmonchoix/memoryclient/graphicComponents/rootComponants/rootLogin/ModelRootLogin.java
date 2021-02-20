@@ -14,8 +14,6 @@ public class ModelRootLogin {
 
     public ModelRootLogin(PresentationRootLogin presentationRootLogin) {
 
-       
-
         /*
         lancement des modeles filles
         */

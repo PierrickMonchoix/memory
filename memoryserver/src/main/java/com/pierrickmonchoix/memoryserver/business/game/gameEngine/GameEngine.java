@@ -85,7 +85,9 @@ public class GameEngine {
 
     // PUBLIC SEND MESSAGE TO PLAYERS
     public void sendMessageToAllPlayer(EMessageType messageType) {
-        String jsonGame = game.toJson();
+        logger.info("le sever va creer game to json : ");
+        logger.info("la game : " + game.toJson() );      
+        String jsonGame = game.toJson() ;
         for (Player p : getListPlayers()) {
             WebsocketMessage message = new WebsocketMessage();
             message.setPseudo(p.getPseudo());
@@ -97,17 +99,20 @@ public class GameEngine {
 
     //PUBLIC START GAME ENGINE
     public void start(){
+        logger.info("La partie 3 ressemble a ca : \n" + game.toJson());
         logger.info("start game engine");
         this.askDrawFirstCard = new AskDrawFirstCard(this);
         logger.info("finish askDrawFirstCard");
         this.waitDrawFirstCard = new WaitDrawFirstCard(this);
-      /*   this.askDrawSecondCard = new AskDrawSecondCard(this);
+         this.askDrawSecondCard = new AskDrawSecondCard(this);
         this.waitDrawSecondCard = new WaitDrawSecondCard(this);
         this.checkPairOrNot = new CheckPairOrNot(this);
         this.waitCardsSeen = new WaitCardsSeen(this);
         logger.info("quasi finish game engine");
+
+        logger.info("La partie 4 ressemble a ca : \n" + game.toJson());
         changeAndStartEtatJeuTo(askDrawFirstCard);
-        logger.info("finish start game engine"); */
+        logger.info("finish start game engine"); 
     }
 
     //PUBLIC CHANGE ETAT JEU
@@ -208,6 +213,10 @@ public class GameEngine {
     //END GAME
     public void endGame(){
         GamesManager.getInstance().removeGame(this.game);
+    }
+
+    public Game getGame() {
+        return game;
     }
 
 

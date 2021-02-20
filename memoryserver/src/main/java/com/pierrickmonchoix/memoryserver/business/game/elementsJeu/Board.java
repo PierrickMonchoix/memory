@@ -38,6 +38,7 @@ public class Board {
         int idCoordinate = 0;
         for (Card card : listCards) {
             card.setCoordinates(new Coordinates(idCoordinate % tailleX , idCoordinate / tailleX));
+            idCoordinate ++;
         }
         logger.info("nouveau plateau créé : " + listCards);
     }

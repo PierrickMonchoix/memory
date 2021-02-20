@@ -10,9 +10,9 @@ public class VueCard extends VBox implements IVue{
     private final VueImage vueImage;
 
 
-    public VueCard(PresentationCard presentationCarte) {
+    public VueCard(PresentationCard presentationCard) {
         
-        vueImage = (VueImage) presentationCarte.getPresentationImage().getVue();
+        vueImage = (VueImage) presentationCard.getPresentationImage().getVue();
         
         getChildren().addAll(vueImage);
 

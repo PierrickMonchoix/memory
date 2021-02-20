@@ -1,5 +1,7 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.image;
 
+import java.util.logging.Logger;
+
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IVue;
 
 import javafx.scene.image.Image;
@@ -7,6 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class VueImage extends ImageView implements IVue{
+
+    private static Logger logger = Logger.getLogger(ImageView.class.getName());
 
     private PresentationImage presentationImage;
 
@@ -18,7 +22,7 @@ public class VueImage extends ImageView implements IVue{
         super();
         this.presentationImage = presentationImage;
 
-        image = new Image(this.getClass().getResourceAsStream("/vide.png"));
+        image = new Image(this.getClass().getResourceAsStream("/croix.png"));
         
 
         setPickOnBounds(true);
@@ -34,7 +38,8 @@ public class VueImage extends ImageView implements IVue{
 
     @Override
     public void updateFromPresentation() {
-        image = new Image(this.getClass().getResourceAsStream(presentationImage.getPathImage()));
+        logger.info("");
+       // image = new Image(this.getClass().getResourceAsStream(presentationImage.getPathImage()));
         setImage(image);
     }
     

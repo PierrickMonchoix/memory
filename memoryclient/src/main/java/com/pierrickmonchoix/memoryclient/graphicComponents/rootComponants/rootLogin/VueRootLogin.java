@@ -15,11 +15,9 @@ public class VueRootLogin extends VBox implements IVue {
 
     public VueRootLogin(PresentationRootLogin presentationRootLogin) {
 
-        vueLogin = new VueLogin(presentationRootLogin.getPresentationLogin());
-        presentationRootLogin.getPresentationLogin().setVue(vueLogin);
+        vueLogin = (VueLogin) presentationRootLogin.getPresentationLogin().getVue();
 
-        vueLoginTextResult = new VueLoginResult(presentationRootLogin.getPresentationLoginTextResult());
-        presentationRootLogin.getPresentationLoginTextResult().setVue(vueLoginTextResult);;
+        vueLoginTextResult = (VueLoginResult) presentationRootLogin.getPresentationLoginTextResult().getVue();
 
         setAlignment(Pos.TOP_CENTER);
 
@@ -34,7 +32,7 @@ public class VueRootLogin extends VBox implements IVue {
 
     @Override
     public void updateFromPresentation() {
-        vueLogin.updateFromPresentation();
+        
     }
 
 

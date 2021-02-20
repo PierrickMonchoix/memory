@@ -18,12 +18,12 @@ public class VueRootListGames extends HBox implements IVue {
     public VueRootListGames(PresentationRootListGames presentationRootListGames){
         super(50);
 
-        vueLabelHeroPseudo = new VueLabelHeroPseudo(presentationRootListGames.getPresentationLabelHeroPseudo());
-        presentationRootListGames.getPresentationLabelHeroPseudo().setVue(vueLabelHeroPseudo);
-        vueGamesProposals = new VueGamesProposals(presentationRootListGames.getPresentationGamesProposals());
-        presentationRootListGames.getPresentationGamesProposals().setVue(vueGamesProposals);
-        vueButtonCreateGame = new VueButtonCreateGame(presentationRootListGames.getPresentationButtonCreateGame());
-        presentationRootListGames.getPresentationButtonCreateGame().setVue(vueButtonCreateGame);
+        vueLabelHeroPseudo = (VueLabelHeroPseudo) presentationRootListGames.getPresentationLabelHeroPseudo().getVue();
+
+        vueGamesProposals = (VueGamesProposals) presentationRootListGames.getPresentationGamesProposals().getVue();
+
+        vueButtonCreateGame = (VueButtonCreateGame) presentationRootListGames.getPresentationButtonCreateGame()
+                .getVue();
 
         setAlignment(Pos.CENTER_LEFT);
 

@@ -3,8 +3,11 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootL
 import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.buttonCreateGame.PresentationButtonCreateGame;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.buttonCreateGame.VueButtonCreateGame;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.labelHeroPseudo.PresentationLabelHeroPseudo;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.labelHeroPseudo.VueLabelHeroPseudo;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGamesProposals.PresentationGamesProposals;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGamesProposals.VueGamesProposals;
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
 
@@ -18,10 +21,19 @@ public class PresentationRootListGames extends Presentation{
     private final PresentationButtonCreateGame presentationButtonCreateGame;
 
     public PresentationRootListGames() {
+        logger.info("creation");
 
         presentationLabelHeroPseudo = new PresentationLabelHeroPseudo();
+        VueLabelHeroPseudo vueLabelHeroPseudo = new VueLabelHeroPseudo(presentationLabelHeroPseudo);
+        presentationLabelHeroPseudo.setVue(vueLabelHeroPseudo);
+
         presentationGamesProposals = new PresentationGamesProposals();
+        VueGamesProposals vueGamesProposals = new VueGamesProposals(presentationGamesProposals);
+        presentationGamesProposals.setVue(vueGamesProposals);
+
         presentationButtonCreateGame = new PresentationButtonCreateGame();
+        VueButtonCreateGame vueButtonCreateGame = new VueButtonCreateGame(presentationButtonCreateGame);
+        presentationButtonCreateGame.setVue(vueButtonCreateGame);
 
 
     }

@@ -2,13 +2,13 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.
 
 import java.util.logging.Logger;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.EChildEvent;
-import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IChildenListener;
+import com.pierrickmonchoix.memoryclient.graphicComponents.forJson.GameForJson;
 import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
+import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
-public class ModelBoard implements IWebsocketListener, IChildenListener {
+public class ModelBoard implements IWebsocketListener {
 
     private static Logger logger = Logger.getLogger(ModelBoard.class.getName());
 
@@ -16,56 +16,32 @@ public class ModelBoard implements IWebsocketListener, IChildenListener {
     
     public ModelBoard(PresentationBoard presentationBoard) {
         this.presentationBoard = presentationBoard;
-
-        addCardsListener();  // je m'abonne a toutes mes cartes
-
-        addWebsocketListener();  // jje m'abonne a wsHelper
+        
 
 
-    }
-
-    @Override
-    public void whenNotifiedByChild(EChildEvent typeEvent) {
-        // do nothing pr instant
-
-    }
-
-    @Override
-    public void listenAllChildren() {
-        // TODO Auto-generated method stub
-
-    }
-
-
-
-
-
-/*     @Override
-    public void whenNotifiedByComponant(EChildEvent typeEvent) {
-        // TODO Auto-generated method stub
-
-    } */
-
-    @Override
-    public void whenReceiveWebsocketMessage(WebsocketMessage websocketMessage) {
-        // TODO Auto-generated method stub
-        logger.info("msg recu par ws");
-
-    }
-
-    private void addCardsListener(){
-        presentationBoard.addCardsListener(this);
-    }
-
-    private void addWebsocketListener(){
-        WebsocketClientHelper.addListener(this);
+        listenWebsocketHelper();
     }
 
     @Override
     public void listenWebsocketHelper() {
-        // TODO Auto-generated method stub
+        WebsocketClientHelper.addListener(this);
 
     }
+
+    @Override
+    public void whenReceiveWebsocketMessage(WebsocketMessage websocketMessage) {
+        if( websocketMessage.getType() == EMessageType.DRAW_FIRST_CARD ){
+            GameForJson gameForJson = GameForJson.fromJson( websocketMessage.getContenu() );
+            presentationBoard.setUpAll(gameForJson);
+        }
+    }
+
+
+
+
+
+
+
 
 
 

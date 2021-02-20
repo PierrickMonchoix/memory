@@ -54,7 +54,23 @@ public class PresentationGamesProposals extends Presentation {
         }
         
 
-        updateVue();
+        updateVue();  // car changement de position/ create/delete
+    }
+
+    private boolean imInGame(GameManagerForJson gameManagerForJson){
+        String monPseudo = WebsocketClientHelper.getPseudo();
+        List<ShownGameForJson> listShownGameForJsons = gameManagerForJson.listJsonGames;
+        for (ShownGameForJson shownGameForJson : listShownGameForJsons) {
+            List<String> listJoueursInGame = shownGameForJson.listPlayer;
+            for (String pseudoInGame : listJoueursInGame) {
+                if(pseudoInGame.equals(monPseudo)){
+                    logger.info("je suis en jeu");
+                    return true;
+                }
+            }
+        }
+        logger.info("je ne suis PAS en jeu");
+        return false;
     }
 
 
@@ -73,20 +89,6 @@ public class PresentationGamesProposals extends Presentation {
     }
 
 
-    private boolean imInGame(GameManagerForJson gameManagerForJson){
-        String monPseudo = WebsocketClientHelper.getPseudo();
-        List<ShownGameForJson> listShownGameForJsons = gameManagerForJson.listJsonGames;
-        for (ShownGameForJson shownGameForJson : listShownGameForJsons) {
-            List<String> listJoueursInGame = shownGameForJson.listPlayer;
-            for (String pseudoInGame : listJoueursInGame) {
-                if(pseudoInGame.equals(monPseudo)){
-                    logger.info("je suis en jeu");
-                    return true;
-                }
-            }
-        }
-        logger.info("je ne suis PAS en jeu");
-        return false;
-    }
+
 
 }

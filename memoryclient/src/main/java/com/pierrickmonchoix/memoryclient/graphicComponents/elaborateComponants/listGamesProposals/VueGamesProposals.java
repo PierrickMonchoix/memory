@@ -22,18 +22,6 @@ public class VueGamesProposals extends VBox implements IVue {
 
         this.presentationGamesProposals = presentationGamesProposals;
 
-
-        /*
-         * for (PresentationGameProposal presentationGameProposal :
-         * presentationGamesProposals.getListPresentationsGameProposal()) {
-         * VueGameProposal vueGameProposal = new
-         * VueGameProposal(presentationGameProposal);
-         * presentationGameProposal.setVue(vueGameProposal);
-         * 
-         * getChildren().addAll(vueGameProposal);
-         * 
-         * }
-         */
         updateFromPresentation();
 
     }
@@ -49,7 +37,8 @@ public class VueGamesProposals extends VBox implements IVue {
                 .getListPresentationsGameProposal();
 
         for (PresentationGameProposal presentationGameProposal : listPresentationGameProposal) {
-            getChildren().addAll((VueGameProposal) presentationGameProposal.getVue());
+            VueGameProposal vueGameProposal = (VueGameProposal) presentationGameProposal.getVue();
+            getChildren().addAll(vueGameProposal);
         }
     }
 

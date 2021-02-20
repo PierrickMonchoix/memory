@@ -2,65 +2,106 @@ package com.pierrickmonchoix.memoryclient.graphicComponents;
 
 import java.util.logging.Logger;
 
+import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootGame.ModelRootGame;
+import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootGame.PresentationRootGame;
+import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootGame.VueRootGame;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.ModelRootListGames;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.PresentationRootListGames;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootListGames.VueRootListGames;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.ModelRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.PresentationRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.VueRootLogin;
+import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
+import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
+import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
+import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class RootManager {
-    private static Scene scene;
-    private static Stage stage;
+public class RootManager implements IWebsocketListener {
+    private Scene scene;
+    private Stage stage;
 
-    private static PresentationRootLogin presentationRootLogin;
-    private static VueRootLogin vueRootLogin;
-    private static ModelRootLogin modelRootLogin;
+    private PresentationRootLogin presentationRootLogin;
+    private VueRootLogin vueRootLogin;
+    private ModelRootLogin modelRootLogin;
 
-    private static PresentationRootListGames presentationRootListGames;
-    private static VueRootListGames vueRootListGames;
-    private static ModelRootListGames modelRootListGames;
+    private PresentationRootListGames presentationRootListGames;
+    private VueRootListGames vueRootListGames;
+    private ModelRootListGames modelRootListGames;
 
-    private static Parent actualVueRoot;
+    private PresentationRootGame presentationRootGame;
+    private VueRootGame vueRootGame;
+    private ModelRootGame modelRootGame;
+
+    private Parent actualVueRoot;
 
     private static Logger logger = Logger.getLogger(RootManager.class.getName());
 
-    public static void initialize(Stage _stage){
+    private static RootManager instance;
 
+    public static RootManager getInstance(){
+        if(instance == null){
+            instance = new RootManager();
+        }
+        return instance;
+    }
+
+    private RootManager(){
+        // singleton => private
+    }
+
+    public void initialize(Stage _stage) {
         logger.info("inititalisation de root manager");
-        
+
         stage = _stage;
 
         presentationRootLogin = new PresentationRootLogin("bernard", "first co?", false);
         vueRootLogin = new VueRootLogin(presentationRootLogin);
         presentationRootLogin.setVue(vueRootLogin);
-        
 
         presentationRootListGames = new PresentationRootListGames();
         vueRootListGames = new VueRootListGames(presentationRootListGames);
         presentationRootListGames.setVue(vueRootListGames);
 
+        presentationRootGame = new PresentationRootGame();
+        vueRootGame = new VueRootGame(presentationRootGame);
+        presentationRootGame.setVue(vueRootGame);
 
-        // il faut bien que toutes les vues et presentations soient fiates avant les differents mdoelses
+        // il faut bien que toutes les vues et presentations soient fiates avant les
+        // differents mdoelses
         modelRootLogin = new ModelRootLogin(presentationRootLogin);
         modelRootListGames = new ModelRootListGames(presentationRootListGames);
-
-
-
-   
+        modelRootGame = new ModelRootGame(presentationRootGame);
 
         actualVueRoot = vueRootLogin;
         scene = new Scene(actualVueRoot, 800, 500);
-  
+
+        listenWebsocketHelper();
+
         update();
+
     }
 
-    private static void update(){
+    @Override
+    public void listenWebsocketHelper() {
+        WebsocketClientHelper.addListener(this);
+
+    }
+
+    @Override
+    public void whenReceiveWebsocketMessage(WebsocketMessage websocketMessage) {
+        logger.info("j'ai recu le msg du ws");
+        if(websocketMessage.getType() == EMessageType.DRAW_FIRST_CARD){
+            logger.info("je set la vue rootGame");
+            setVueRoot(vueRootGame);
+        }
+    }
+
+    private void update() {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -72,18 +113,23 @@ public class RootManager {
 
     }
 
-    private static void setVueRoot(Parent vueRoot){
+    private void setVueRoot(Parent vueRoot) {
         actualVueRoot = vueRoot;
         update();
     }
 
-    public static void setVueRootListGames(){
+
+    public void setVueRootListGames() {
         setVueRoot(vueRootListGames);
     }
 
-    public static void setHeroPseudo(String pseudoHero){  // pour le root listes parties
+    public void setHeroPseudo(String pseudoHero) { // pour le root listes parties
         modelRootListGames.setPseudoLabelOfHero(pseudoHero);
     }
+
+
+
+
 
     
 }
