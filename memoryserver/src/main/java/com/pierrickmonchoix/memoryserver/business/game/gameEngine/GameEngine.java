@@ -236,7 +236,9 @@ public class GameEngine {
     private void declareWinner() { // pas d'égalités pour l'instant
         int maxPoint = 0;
         for (Player p : game.getListPlayers()) {
-            maxPoint = p.getPoints();
+            if( p.getPoints() > maxPoint){
+                maxPoint = p.getPoints();
+            }
         }
         for (Player p : game.getListPlayers()) {
             if (p.getPoints() == maxPoint) {
