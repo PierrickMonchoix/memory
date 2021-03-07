@@ -107,9 +107,8 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i("tag","helllooo");
 
-        createWebSocketClient();
-
-        webSocketClient.send("hello from android");
+       // createWebSocketClient();
+       // webSocketClient.send("hello from android");
 
     }
 }
