@@ -2,6 +2,7 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.
 
 import java.util.logging.Logger;
 
+import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.button.EButtonColorForView;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.button.PresentationButton;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.button.VueButton;
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.checkBox.PresentationCheckBox;
@@ -103,7 +104,7 @@ public class PresentationLogin extends PresentationNotifier implements IChildenL
         if (isNewUser()) {
             System.out.println("nouveau");
             getPresentationButton().setUpText("Sign up");
-            getPresentationButton().setUpColor("#3F7"); // #3F7 = #33FF77
+            getPresentationButton().setUpColor(EButtonColorForView.VERT);
         } else {
             System.out.println("ancien");
             getPresentationButton().setUpText("Sign in");

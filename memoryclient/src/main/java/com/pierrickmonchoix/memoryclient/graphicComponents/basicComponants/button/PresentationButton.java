@@ -39,8 +39,14 @@ public class PresentationButton extends PresentationNotifier {
         return color;
     }
 
-    public void setUpColor(String color) {
-        this.color = color;
+    public void setUpColor(EButtonColorForView ecolor) {
+        if(ecolor != null){
+            String color = EButtonColorForView.getString(ecolor);
+            this.color = color;
+        }
+        else{
+            this.color = null;
+        }
         updateVue();
     }
 

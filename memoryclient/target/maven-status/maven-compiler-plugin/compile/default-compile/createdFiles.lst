@@ -6,7 +6,6 @@ com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/labelHer
 com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootLogin/PresentationRootLogin.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/PresentationLogin$1.class
 com/pierrickmonchoix/memoryclient/graphicComponents/forJson/CardForJson.class
-com/pierrickmonchoix/memoryclient/Presentation2.class
 com/pierrickmonchoix/memoryclient/websocket/websocketMessage/WebsocketMessageDecoder.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/ModelLogin.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textOutput/PresentationTextOutput.class
@@ -58,6 +57,7 @@ com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/listGame
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/button/PresentationButton.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/labelHeroPseudo/PresentationLabelHeroPseudo.class
 com/pierrickmonchoix/memoryclient/graphicComponents/forJson/ECardType$1.class
+com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/button/EButtonColorForView.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/checkBox/VueCheckBox.class
 com/pierrickmonchoix/memoryclient/websocket/websocketMessage/WebsocketMessage.class
 com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootLogin/VueRootLogin.class
@@ -65,7 +65,7 @@ com/pierrickmonchoix/memoryclient/websocket/websocketClient/WebsocketClientEndpo
 com/pierrickmonchoix/memoryclient/FxApp.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/loginTextResult/PresentationLoginResult.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/board/ModelBoard.class
-com/pierrickmonchoix/memoryclient/Apptest.class
+com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/button/EButtonColorForView$1.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/board/VueBoard.class
 com/pierrickmonchoix/memoryclient/graphicComponents/superclasses/PresentationNotifier.class
 com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textField/PresentationTextField.class
@@ -79,7 +79,6 @@ com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/image/VueIma
 com/pierrickmonchoix/memoryclient/graphicComponents/RootManager.class
 com/pierrickmonchoix/memoryclient/graphicComponents/forJson/GameForJson.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/gameProposal/ModelGameProposal.class
-com/pierrickmonchoix/memoryclient/Vue2.class
 com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/loginTextResult/ModelLoginResult.class
 com/pierrickmonchoix/memoryclient/graphicComponents/forJson/PlayerForJson.class
 com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootWinner/VueRootWinner.class
