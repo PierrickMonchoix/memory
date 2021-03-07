@@ -26,7 +26,7 @@ public abstract class AbstractPoiDAO<T> implements IDao<T> {
 
     private static Logger logger = Logger.getLogger(AbstractPoiDAO.class.getName());
 
-    private static final String FILE__NAME = "/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/memoryserver/database/BDD.xlsx";// System.getProperty("user.dir") + "/memoryserver/database/BDD.xlsx";
+    private static final String FILE__NAME = System.getProperty("user.dir") + "/database/BDD.xlsx";
 
     protected XSSFWorkbook openBase() {
         try {

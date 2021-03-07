@@ -2,8 +2,8 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootL
 
 import java.util.logging.Logger;
 
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.buttonCreateGame.PresentationButtonCreateGame;
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.buttonCreateGame.VueButtonCreateGame;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.createGame.PresentationCreateGame;
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.createGame.VueCreateGame;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.labelHeroPseudo.PresentationLabelHeroPseudo;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.labelHeroPseudo.VueLabelHeroPseudo;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.listGamesProposals.PresentationGamesProposals;
@@ -18,7 +18,7 @@ public class PresentationRootListGames extends Presentation{
 
     private final PresentationLabelHeroPseudo presentationLabelHeroPseudo;
     private final PresentationGamesProposals presentationGamesProposals;
-    private final PresentationButtonCreateGame presentationButtonCreateGame;
+    private final PresentationCreateGame presentationCreateGame;
 
     public PresentationRootListGames() {
         logger.info("creation");
@@ -31,9 +31,9 @@ public class PresentationRootListGames extends Presentation{
         VueGamesProposals vueGamesProposals = new VueGamesProposals(presentationGamesProposals);
         presentationGamesProposals.setVue(vueGamesProposals);
 
-        presentationButtonCreateGame = new PresentationButtonCreateGame();
-        VueButtonCreateGame vueButtonCreateGame = new VueButtonCreateGame(presentationButtonCreateGame);
-        presentationButtonCreateGame.setVue(vueButtonCreateGame);
+        presentationCreateGame = new PresentationCreateGame();
+        VueCreateGame vueCreateGame = new VueCreateGame(presentationCreateGame);
+        presentationCreateGame.setVue(vueCreateGame);
 
 
     }
@@ -48,8 +48,8 @@ public class PresentationRootListGames extends Presentation{
     }
 
 
-    public PresentationButtonCreateGame getPresentationButtonCreateGame() {
-        return presentationButtonCreateGame;
+    public PresentationCreateGame getPresentationCreateGame() {
+        return presentationCreateGame;
     }
 
 

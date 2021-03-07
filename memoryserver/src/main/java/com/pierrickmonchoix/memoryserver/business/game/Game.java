@@ -17,7 +17,7 @@ public class Game {
 
     private Board board;
     private List<Player> listPlayers;
-    private static final int maxPlayer = 3;
+    private final int maxPlayer;
     private Player actualPlayer;
 
     private Player winner;
@@ -34,10 +34,11 @@ public class Game {
     /**
      * quand on appuie sur le bouton creer partie (pas lancée!)
      */
-    public Game(Player hostPlayer) {
+    public Game(Player hostPlayer , int maxPlayer) {
         started = false;
         listPlayers = new ArrayList<Player>();
         this.hostPlayer = hostPlayer;
+        this.maxPlayer = maxPlayer;
         listPlayers.add(hostPlayer);
     }
 
@@ -50,7 +51,6 @@ public class Game {
         setActualPlayer(listPlayers.get(0));
         logger.info("La partie de " + hostPlayer.getPseudo() + " ressemble a ca : \n" + toJson());
         gameEngine = new GameEngine(this);
-        logger.info("La partie 2 ressemble a ca : \n" + toJson());
         gameEngine.start();  
     }
 

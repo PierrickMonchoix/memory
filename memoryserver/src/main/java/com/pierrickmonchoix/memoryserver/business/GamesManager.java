@@ -63,7 +63,8 @@ public class GamesManager implements IWebsocketListener {
     private void treatCreateGameMessage(WebsocketMessage message) {
         logger.info("le client : " + message.getPseudo() + " me demande de creer une partie");
         if (!isThereGameOf(message.getPseudo())) {
-            createGameOfHostPlayerPseudo(message.getPseudo());
+            int maxPlayer = Integer.parseInt(message.getContenu());
+            createGameOfHostPlayerPseudoAndMaxPlayer(message.getPseudo(),maxPlayer);
             sendMessgeToUpdateListGamesToEveryPlayer();
         }
     }
@@ -75,10 +76,10 @@ public class GamesManager implements IWebsocketListener {
         WebsocketServerHelper.sendMessageToEveryPlayer(messageUpdateListGames);
     }
 
-    private void createGameOfHostPlayerPseudo(String pseudo) {
+    private void createGameOfHostPlayerPseudoAndMaxPlayer(String pseudo , int maxPlayer) {
         if (!isThereGameOf(pseudo)) {
             Player hostPlayer = PlayersManager.getInstance().getPlayerFromPseudo(pseudo);
-            Game newGame = new Game(hostPlayer);
+            Game newGame = new Game(hostPlayer , maxPlayer);
             listGames.add(newGame);
         } else { // on est pas sensé arriveer la, la secu s'est deja faite avant
             logger.warning("une partie avec cet host existe deja : " + pseudo);

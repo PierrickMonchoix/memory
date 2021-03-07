@@ -16,7 +16,7 @@ public class VueLabelHeroPseudo extends VBox implements IVue {
 
         getChildren().addAll(vueTextOutput);
 
-        setPadding(new Insets(0,200,0,0));
+        setPadding(new Insets(0,0,0,0));
 
         updateFromPresentation();
     }

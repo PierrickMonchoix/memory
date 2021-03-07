@@ -91,7 +91,7 @@ public class RootManager implements IWebsocketListener {
         modeleRootWinner = new ModeleRootWinner(presentationRootWinner);
 
         actualVueRoot = vueRootLogin;
-        scene = new Scene(actualVueRoot, 800, 800);
+        scene = new Scene(actualVueRoot, 1200, 800);
 
         listenWebsocketHelper();
 

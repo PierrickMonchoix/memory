@@ -1,4 +1,4 @@
-package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.buttonCreateGame;
+package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.createGame;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -12,14 +12,14 @@ import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
-public class ModeleButtonCreateGame implements IChildenListener, IWebsocketListener {
+public class ModelCreateGame implements IChildenListener, IWebsocketListener {
 
-    private final PresentationButtonCreateGame presentationButtonCreateGame;
+    private final PresentationCreateGame presentationCreateGame;
 
-    private static Logger logger = Logger.getLogger(ModeleButtonCreateGame.class.getName());
+    private static Logger logger = Logger.getLogger(ModelCreateGame.class.getName());
 
-    public ModeleButtonCreateGame(PresentationButtonCreateGame presentationButtonCreateGame) {
-        this.presentationButtonCreateGame = presentationButtonCreateGame;
+    public ModelCreateGame(PresentationCreateGame presentationCreateGame) {
+        this.presentationCreateGame = presentationCreateGame;
 
         
         
@@ -34,14 +34,15 @@ public class ModeleButtonCreateGame implements IChildenListener, IWebsocketListe
 
     @Override
     public void listenAllChildren() {
-        presentationButtonCreateGame.attributeParentListener(this);
+        presentationCreateGame.attributeParentListener(this);
 
     }
 
     @Override
     public void whenNotifiedByChild(EChildEvent typeEvent) {
         if (typeEvent == EChildEvent.ASK_FOR_CREATE_GAME) {
-            WebsocketClientHelper.sendMessageToServer(EMessageType.CREATE_GAME, "");
+            String howManyPlayers = presentationCreateGame.getNumberPlayer();
+            WebsocketClientHelper.sendMessageToServer(EMessageType.CREATE_GAME, howManyPlayers);
         }
         else{
             logger.warning("mon chiled ne m'as pas bien notifié");
@@ -59,7 +60,7 @@ public class ModeleButtonCreateGame implements IChildenListener, IWebsocketListe
             boolean imInGame = imInGame(gameManagerForJson);
 
             // le bouton doit etre enable ou non selon si je suis inscrit dans une partie ou non
-            presentationButtonCreateGame.setEnable( ! imInGame);
+            presentationCreateGame.setEnable( ! imInGame);
 
         }
     }
