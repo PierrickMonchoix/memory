@@ -20,9 +20,9 @@ import org.glassfish.tyrus.client.ClientManager;
  * Client web socket muni d'un pattern singleton. Ce client est UNIQUEMENT
  * utilisé par 'WebsocketHelper'
  */
-public class WebsocketClient {
+public class MyWebsocketClient {
 
-    private static WebsocketClient instance;
+    private static MyWebsocketClient instance;
 
     private Session currentSession;
 
@@ -30,7 +30,7 @@ public class WebsocketClient {
 
     private WebsocketClientEndpoint websocketClientEndpoint;
 
-    private WebsocketClient() {
+    private MyWebsocketClient() {
         ClientManager client = ClientManager.createClient();
 
         websocketClientEndpoint = new WebsocketClientEndpoint();
@@ -56,10 +56,9 @@ public class WebsocketClient {
         websocketClientEndpoint.setClient(this);
     }
 
-    public static WebsocketClient getInstance() {
-        System.out.println("cappelléééééé");
+    public static MyWebsocketClient getInstance() {
         if (instance == null) {
-            instance = new WebsocketClient();
+            instance = new MyWebsocketClient();
             instance.connectToEndpoint();
         }
         return instance;
@@ -78,11 +77,11 @@ public class WebsocketClient {
         listListeners.add(listener);
     }
 
-    public void notifyListenersOfMessage(WebsocketMessage websocketMessage) {
+/*     public void notifyListenersOfMessage(WebsocketMessage websocketMessage) {
         for (IWebsocketListener listener : listListeners) {
             System.out.println("le clientWS a bien notifié qqun");
             listener.whenReceiveWebsocketMessage(websocketMessage);
         }
-    }
+    } */
 
 }

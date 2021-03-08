@@ -3,14 +3,18 @@ package com.pierrickmonchoix.memoryclient;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 
+import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
+import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.ModelRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.PresentationRootLogin;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.VueRootLogin;
+import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -19,6 +23,8 @@ import tech.gusavila92.websocketclient.WebSocketClient;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    /*
     private WebSocketClient webSocketClient;
 
 
@@ -87,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
         webSocketClient.connect();
     }
 
+    */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
         ContextHelper.setContext(this);
 
         setContentView(R.layout.activity_main);
+
+        WebsocketClientHelper.initialize();
 
 
 
@@ -107,9 +117,13 @@ public class MainActivity extends AppCompatActivity {
         VueRootLogin vueRootLogin = new VueRootLogin(presentationRootLogin);
         presentationRootLogin.setVue(vueRootLogin);
 
+        new ModelRootLogin(presentationRootLogin);
+
+
 
         linearLayout.addView(vueRootLogin);
-
+       // linearLayout.removeView(vueRootLogin);   on poura faire ca pour rootmanager
+       // linearLayout.addView(button);
 
 
         Log.i("tag","helllooo");

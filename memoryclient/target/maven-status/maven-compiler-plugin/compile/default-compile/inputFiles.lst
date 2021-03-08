@@ -12,12 +12,12 @@
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocket/websocketMessage/EMessageType.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/comboBox/PresentationComboBox.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocket/IWebsocketListener.java
-/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocket/websocketClient/WebsocketClient.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootWinner/PresentationRootWinner.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/VueLogin.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootWinner/ModeleRootWinner.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/board/ModelBoard.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/basicComponants/textField/PresentationTextField.java
+/home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/websocket/websocketClient/MyWebsocketClient.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/rootComponants/rootGame/VueRootGame.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/card/ModelCard.java
 /home/pierrick/Documents/STOCKAGE/ENSMA/INFO/projet_memory/projet_memory_git/memoryclient/src/main/java/com/pierrickmonchoix/memoryclient/graphicComponents/elaborateComponants/login/ModelLogin.java

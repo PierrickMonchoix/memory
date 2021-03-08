@@ -4,6 +4,8 @@ import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.EChildEvent;
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IChildenListener;
+import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
+import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 
 /**
  * Ce login enoie un msg au serveur lors de l'appui sur le bouton de connexion.
@@ -31,20 +33,14 @@ public class ModelLogin implements IChildenListener {
     public void whenNotifiedByChild(EChildEvent typeEvent) {
         if (typeEvent == EChildEvent.ASK_FOR_LOGIN) {
             if (!getUsername().equals("")) { // si le nom d'utilisateur est bien remplit!
-                // WebsocketHelper.setPseudo(getUsername());
-                /*
-                 * LOGS:
-                 */
                 if (isNewUser()) { // se connecrte a WS et envoie reponse a textResult
                     System.out.println("Tentative de premiere connexion en tant que : " + getUsername());
-                    //WebsocketClientHelper.sendMessageToServer(EMessageType.SIGN_UP, getUsername());
+                    WebsocketClientHelper.sendMessageToServer(EMessageType.SIGN_UP, getUsername());
                 } else {
                     System.out.println("Tentative de connexion habituelle en tant que : " + getUsername());
-                    //WebsocketClientHelper.sendMessageToServer(EMessageType.SIGN_IN, getUsername());
+                    WebsocketClientHelper.sendMessageToServer(EMessageType.SIGN_IN, getUsername());
                 }
-
             }
-
         }
         else{
             logger.warning("mes enfants ne m'as pas bien notifié");

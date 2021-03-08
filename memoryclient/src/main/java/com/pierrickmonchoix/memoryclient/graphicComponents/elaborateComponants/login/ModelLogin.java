@@ -33,10 +33,7 @@ public class ModelLogin implements IChildenListener {
     public void whenNotifiedByChild(EChildEvent typeEvent) {
         if (typeEvent == EChildEvent.ASK_FOR_LOGIN) {
             if (!getUsername().equals("")) { // si le nom d'utilisateur est bien remplit!
-                // WebsocketHelper.setPseudo(getUsername());
-                /*
-                 * LOGS:
-                 */
+            
                 if (isNewUser()) { // se connecrte a WS et envoie reponse a textResult
                     System.out.println("Tentative de premiere connexion en tant que : " + getUsername());
                     WebsocketClientHelper.sendMessageToServer(EMessageType.SIGN_UP, getUsername());

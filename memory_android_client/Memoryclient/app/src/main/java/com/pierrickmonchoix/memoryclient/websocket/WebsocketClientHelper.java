@@ -34,7 +34,6 @@ public class WebsocketClientHelper {
      */
     public static void initialize() {
         websocketClient = MyWebsocketClient.getInstance();
-       // websocketClient.connectToEndpoint();  // on vient de le changer
         pseudo = "unknown";
         listListeners = new ArrayList<IWebsocketListener>();
     }
@@ -48,7 +47,7 @@ public class WebsocketClientHelper {
     }
 
     public static void sendMessageToServer(EMessageType type, String contenu) {
-        
+
         WebsocketMessage websocketMessage = new WebsocketMessage(pseudo, type, contenu);
         logger.info("envoie d'un msg au server : " + websocketMessage);
         websocketClient.sendMessage(websocketMessage);
@@ -66,6 +65,6 @@ public class WebsocketClientHelper {
         listListeners.add(listener);
     }
 
- 
+
 
 }

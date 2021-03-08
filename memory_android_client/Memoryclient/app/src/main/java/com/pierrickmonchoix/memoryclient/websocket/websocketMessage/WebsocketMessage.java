@@ -1,5 +1,4 @@
-package com.pierrickmonchoix.memoryclient;
-
+package com.pierrickmonchoix.memoryclient.websocket.websocketMessage;
 
 import com.google.gson.Gson;
 
@@ -9,11 +8,13 @@ import com.google.gson.Gson;
  */
 public class WebsocketMessage {
 
+    private static Gson gson = new Gson();
+
     private String pseudo;
     private String contenu;
-    private int type;
+    private EMessageType type;
 
-    private static Gson gson = new Gson();
+
 
     public String getPseudo() {
         return pseudo;
@@ -31,13 +32,8 @@ public class WebsocketMessage {
         this.contenu = contenu;
     }
 
-    public int getType() {
-        return type;
-    }
 
-    public void setType(int type) {
-        this.type = type;
-    }
+
 
     @Override
     public String toString() {
@@ -50,6 +46,23 @@ public class WebsocketMessage {
 
     public static WebsocketMessage toObject(String string){
         return gson.fromJson(string, WebsocketMessage.class);
+    }
+
+    public WebsocketMessage(){}
+
+
+    public WebsocketMessage(String pseudo, EMessageType type, String contenu) {
+        this.pseudo = pseudo;
+        this.contenu = contenu;
+        this.type = type;
+    }
+
+    public EMessageType getType() {
+        return type;
+    }
+
+    public void setType(EMessageType type) {
+        this.type = type;
     }
 
 

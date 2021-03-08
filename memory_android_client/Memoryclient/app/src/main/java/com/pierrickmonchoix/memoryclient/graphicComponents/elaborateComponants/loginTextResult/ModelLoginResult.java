@@ -3,13 +3,17 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.
 import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
+import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
+import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
+import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
+import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
 /**
  * Recoit le resultat du serveur : si la connexion est accépté ou non. i.e si le
  * signIn marche car il y avais bien ce pseudo en stock ou inversement pour le
  * signUp Il affiche ce resultat par le bais d'un TextviewOutput
  */
-public class ModelLoginResult  { // implements IWebsocketListener
+public class ModelLoginResult implements IWebsocketListener {
 
     private PresentationLoginResult presentationLoginTextResult;
 
@@ -20,11 +24,11 @@ public class ModelLoginResult  { // implements IWebsocketListener
     public ModelLoginResult(PresentationLoginResult presentationLoginTextResult, ModelLogin modelLogin) {
         this.presentationLoginTextResult = presentationLoginTextResult;
 
-        //listenWebsocketHelper();
+        listenWebsocketHelper();
     }
 
 
-    /*
+
     @Override
     public void listenWebsocketHelper() {
         WebsocketClientHelper.addListener(this);
@@ -35,12 +39,11 @@ public class ModelLoginResult  { // implements IWebsocketListener
         if ((message.getType() == EMessageType.SIGN_IN) || (message.getType() == EMessageType.SIGN_UP)) {
             logger.info("msg recu par ws");
             text = message.getContenu();
-            // Platform.runLater(new Runnable() {
 
             if (message.getContenu().substring(0, 2).equals("ok")) {
                 WebsocketClientHelper.setPseudo(message.getPseudo());
-                RootManager.getInstance().setHeroPseudo(message.getPseudo()); // TOCHANGE
-                RootManager.getInstance().setVueRootListGames();
+               // RootManager.getInstance().setHeroPseudo(message.getPseudo()); // TOCHANGE
+               // RootManager.getInstance().setVueRootListGames();
             }
             presentationLoginTextResult.setText(text); // on a ajouté la reponse WS
 
@@ -49,7 +52,7 @@ public class ModelLoginResult  { // implements IWebsocketListener
     }
 
 
-     */
+
 
 
 }

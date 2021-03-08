@@ -18,7 +18,7 @@ import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMes
 @ClientEndpoint(encoders = WebsocketMessageEncoder.class, decoders = WebsocketMessageDecoder.class)
 public class WebsocketClientEndpoint {
 
-    private WebsocketClient client;
+    private MyWebsocketClient client;
 
     @OnOpen
     public void onOpen(Session session) throws IOException {
@@ -36,11 +36,11 @@ public class WebsocketClientEndpoint {
 
     }
 
-    public WebsocketClient getClient() {
+    public MyWebsocketClient getClient() {
         return client;
     }
 
-    public void setClient(WebsocketClient client) {
+    public void setClient(MyWebsocketClient client) {
         this.client = client;
     }
 
