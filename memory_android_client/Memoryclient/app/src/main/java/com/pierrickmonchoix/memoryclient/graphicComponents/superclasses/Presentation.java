@@ -1,5 +1,9 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.superclasses;
 
+import android.os.Handler;
+
+import com.pierrickmonchoix.memoryclient.ContextHelper;
+
 import java.util.logging.Logger;
 
 
@@ -31,7 +35,16 @@ public abstract class Presentation {
         if (vue == null) {
             logger.warning("cette presentation a aune vue null : " + this.toString() + " : " + this.getClass().getName());
         }
-        vue.updateFromPresentation();
+        //vue.updateFromPresentation();
+        Handler mainHandler = new Handler(ContextHelper.getContext().getMainLooper());
+
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                vue.updateFromPresentation();
+            } // This is your code
+        };
+        mainHandler.post(myRunnable);
     /*
     Platform.runLater(new Runnable() {
             @Override

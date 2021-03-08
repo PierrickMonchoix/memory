@@ -1,7 +1,12 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents;
 
+import android.os.Handler;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
 import java.util.logging.Logger;
 
+import com.pierrickmonchoix.memoryclient.ContextHelper;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootGame.ModelRootGame;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootGame.PresentationRootGame;
 import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootGame.VueRootGame;
@@ -19,14 +24,11 @@ import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
-import javafx.application.Platform;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 public class RootManager implements IWebsocketListener {
-    private Scene scene;
-    private Stage stage;
+
+    private LinearLayout appLayout;
+
 
     private PresentationRootLogin presentationRootLogin;
     private VueRootLogin vueRootLogin;
@@ -44,7 +46,7 @@ public class RootManager implements IWebsocketListener {
     private VueRootWinner vueRootWinner;
     private ModeleRootWinner modeleRootWinner;
 
-    private Parent actualVueRoot;
+    private ViewGroup actualVueRoot;
 
     private static Logger logger = Logger.getLogger(RootManager.class.getName());
 
@@ -61,10 +63,12 @@ public class RootManager implements IWebsocketListener {
         // singleton => private
     }
 
-    public void initialize(Stage _stage) {
+    public void initialize(LinearLayout appLayout) {
         logger.info("inititalisation de root manager");
 
-        stage = _stage;
+        this.appLayout = appLayout;
+
+
 
         presentationRootLogin = new PresentationRootLogin("bernard", "first co?", false);
         vueRootLogin = new VueRootLogin(presentationRootLogin);
@@ -89,8 +93,13 @@ public class RootManager implements IWebsocketListener {
         modelRootGame = new ModelRootGame(presentationRootGame);
         modeleRootWinner = new ModeleRootWinner(presentationRootWinner);
 
+
+        // il faut bien que toutes les vues et presentations soient fiates avant les
+        // differents mdoelses
+        modelRootLogin = new ModelRootLogin(presentationRootLogin);
+
+
         actualVueRoot = vueRootLogin;
-        scene = new Scene(actualVueRoot, 1200, 800);
 
         listenWebsocketHelper();
 
@@ -106,7 +115,7 @@ public class RootManager implements IWebsocketListener {
 
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage websocketMessage) {
-        logger.info("j'ai recu le msg du ws");
+
         if(websocketMessage.getType() == EMessageType.DRAW_FIRST_CARD){
             logger.info("je set la vue rootGame");
             setVueRoot(vueRootGame);
@@ -115,21 +124,24 @@ public class RootManager implements IWebsocketListener {
             logger.info("je set la vue rootWinner");
             setVueRoot(vueRootWinner);
         }
+
     }
 
     private void update() {
-        Platform.runLater(new Runnable() {
+        Handler mainHandler = new Handler(ContextHelper.getContext().getMainLooper());
+
+        Runnable myRunnable = new Runnable() {
             @Override
             public void run() {
-                scene.setRoot(actualVueRoot);
-                stage.setScene(scene);
-                stage.show();
+                appLayout.removeAllViews();
+                appLayout.addView(actualVueRoot);
             }
-        });
+        };
+        mainHandler.post(myRunnable);
 
     }
 
-    private void setVueRoot(Parent vueRoot) {
+    private void setVueRoot(ViewGroup vueRoot) {
         actualVueRoot = vueRoot;
         update();
     }
@@ -147,5 +159,5 @@ public class RootManager implements IWebsocketListener {
 
 
 
-    
+
 }

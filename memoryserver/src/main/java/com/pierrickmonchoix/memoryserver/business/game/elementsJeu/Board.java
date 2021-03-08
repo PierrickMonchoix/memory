@@ -14,7 +14,7 @@ public class Board {
 
     private List<Card> listCards;
     private int tailleX = 4;
-    //private int tailleY = 4;
+    //private int tailleY = 3; //useless
 
 
     //CONSTRUCTOR

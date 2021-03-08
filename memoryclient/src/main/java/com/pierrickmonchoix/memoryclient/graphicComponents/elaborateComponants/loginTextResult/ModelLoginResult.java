@@ -42,7 +42,7 @@ public class ModelLoginResult implements IWebsocketListener { // implements IWeb
 
             if (message.getContenu().substring(0, 2).equals("ok")) {
                 WebsocketClientHelper.setPseudo(message.getPseudo());
-                RootManager.getInstance().setHeroPseudo(message.getPseudo()); // TOCHANGE
+                RootManager.getInstance().setHeroPseudoOnListGames(message.getPseudo()); // TOCHANGE
                 RootManager.getInstance().setVueRootListGames();
             }
             presentationLoginTextResult.setText(text); // on a ajouté la reponse WS

@@ -2,6 +2,7 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.
 
 import java.util.logging.Logger;
 
+import com.pierrickmonchoix.memoryclient.graphicComponents.RootManager;
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
 import com.pierrickmonchoix.memoryclient.websocket.IWebsocketListener;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
@@ -42,8 +43,8 @@ public class ModelLoginResult implements IWebsocketListener {
 
             if (message.getContenu().substring(0, 2).equals("ok")) {
                 WebsocketClientHelper.setPseudo(message.getPseudo());
-               // RootManager.getInstance().setHeroPseudo(message.getPseudo()); // TOCHANGE
-               // RootManager.getInstance().setVueRootListGames();
+                RootManager.getInstance().setHeroPseudoOnListGames(message.getPseudo()); // TOCHANGE
+                RootManager.getInstance().setVueRootListGames();
             }
             presentationLoginTextResult.setText(text); // on a ajouté la reponse WS
 

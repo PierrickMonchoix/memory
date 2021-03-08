@@ -1,3 +1,5 @@
 creer le root manager pour android
 creer le ws manager
 rajouter ce qu'il manque dans les classes deja créées (ws, game manager ..?)
+
+resoudre singletons et static classes mal foutus

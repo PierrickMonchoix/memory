@@ -43,9 +43,15 @@ public class VueImage extends AppCompatImageView implements IVue{
 
     @Override
     public void updateFromPresentation() {
-        String pathImage = presentationImage.getPathImage();
+        String pathImageWithSlashAndExtention = presentationImage.getPathImage();
+        String pathImage = getNetPathImageFromBrut(pathImageWithSlashAndExtention);
         int drawableId = this.getResources().getIdentifier(pathImage, "drawable", context.getPackageName());
         setImageResource(drawableId);
+    }
+
+    private String getNetPathImageFromBrut(String pathImageWithSlashAndExtention){
+        String netPath = pathImageWithSlashAndExtention.substring(1,pathImageWithSlashAndExtention.length()-4);
+        return netPath;
     }
     
     

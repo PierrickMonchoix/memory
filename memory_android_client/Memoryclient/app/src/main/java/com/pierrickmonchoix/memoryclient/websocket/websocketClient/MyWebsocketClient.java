@@ -75,9 +75,9 @@ public class MyWebsocketClient {
                 System.out.println("onCloseReceived");
             }
         };
-        realClientInstance.setConnectTimeout(10000);
-        realClientInstance.setReadTimeout(60000);
-        realClientInstance.enableAutomaticReconnection(5000);
+        //realClientInstance.setConnectTimeout(10000);
+        //realClientInstance.setReadTimeout(60000);
+        //realClientInstance.enableAutomaticReconnection(5000);
         realClientInstance.connect();
     }
 

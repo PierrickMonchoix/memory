@@ -31,6 +31,8 @@ public class VueLogin extends LinearLayout implements IVue {
 
         setOrientation(VERTICAL);
 
+
+
         addView(vueTextField);
         addView(vueCheckBox);
         addView(vueButton);
