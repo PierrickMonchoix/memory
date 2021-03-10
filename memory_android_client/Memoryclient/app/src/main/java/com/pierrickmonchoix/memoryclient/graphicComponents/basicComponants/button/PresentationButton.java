@@ -58,18 +58,5 @@ public class PresentationButton extends PresentationNotifier {
         this.enable = enable;
         updateVue();
     }
-
-
-
-
-
-
-
-
     
-
-
-
-
-
 }

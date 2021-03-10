@@ -8,6 +8,7 @@ import com.pierrickmonchoix.memoryclient.websocket.websocketClient.MyWebsocketCl
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMessage;
 
+
 /**
  * La classe "statique" qui fait le lien entre le business et le serveur. On
  * peut grace a cette classe envoyer des messages au serveur et en rececoir.
@@ -16,45 +17,49 @@ public class WebsocketClientHelper {
 
     private static Logger logger = Logger.getLogger(WebsocketClientHelper.class.getName());
 
+    private static WebsocketClientHelper instance;
+
     /**
      * le pseudo du joueur est mémorisé ici
      */
-    private static String pseudo;
+    private String pseudo;
 
-    private static MyWebsocketClient websocketClient;
+    private MyWebsocketClient websocketClient;
 
-    private static List<IWebsocketListener> listListeners;
+    private List<IWebsocketListener> listListeners;
 
     private WebsocketClientHelper() {
-        // static class
-    }
-
-    /**
-     * inititialise la classe
-     */
-    public static void initialize() {
         websocketClient = MyWebsocketClient.getInstance();
-       // websocketClient.connectToEndpoint();  // on vient de le changer
-        pseudo = "unknown";
-        listListeners = new ArrayList<IWebsocketListener>();
+        // websocketClient.connectToEndpoint();  // on vient de le changer
+         pseudo = "unknown";
+         listListeners = new ArrayList<IWebsocketListener>();
     }
 
-    public static void setPseudo(String pseudo) {
-        WebsocketClientHelper.pseudo = pseudo;
+    public static WebsocketClientHelper getInstance(){
+        if(instance == null){
+            instance = new WebsocketClientHelper();
+        }
+        return instance;
     }
 
-    public static String getPseudo() {
+
+
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
+
+    public String getPseudo() {
         return pseudo;
     }
 
-    public static void sendMessageToServer(EMessageType type, String contenu) {
+    public void sendMessageToServer(EMessageType type, String contenu) {
         
         WebsocketMessage websocketMessage = new WebsocketMessage(pseudo, type, contenu);
         logger.info("envoie d'un msg au server : " + websocketMessage);
         websocketClient.sendMessage(websocketMessage);
     }
 
-    public static void notifyListenersOfMessage(WebsocketMessage message) {
+    public void notifyListenersOfMessage(WebsocketMessage message) {
         logger.info("reception ws et notifcation des ws listeners du msg : " + message);
         for (IWebsocketListener listener : listListeners) {
             logger.info("on a notifié un ws listeners");
@@ -62,7 +67,7 @@ public class WebsocketClientHelper {
         }
     }
 
-    public static void addListener(IWebsocketListener listener) {
+    public void addListener(IWebsocketListener listener) {
         listListeners.add(listener);
     }
 

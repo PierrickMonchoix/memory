@@ -23,7 +23,7 @@ public class ModelGamesProposals implements IWebsocketListener {
 
     @Override
     public void listenWebsocketHelper() {
-        WebsocketClientHelper.addListener(this);
+        WebsocketClientHelper.getInstance().addListener(this);
     }
 
     @Override

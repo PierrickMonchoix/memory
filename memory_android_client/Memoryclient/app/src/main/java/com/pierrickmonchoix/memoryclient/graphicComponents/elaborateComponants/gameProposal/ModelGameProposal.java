@@ -30,7 +30,7 @@ public class ModelGameProposal implements IChildenListener {
     public void whenNotifiedByChild(EChildEvent typeEvent) {
         if (typeEvent == EChildEvent.ASK_FOR_JOIN_GAME) {
 
-            WebsocketClientHelper.sendMessageToServer(EMessageType.JOIN_GAME,
+            WebsocketClientHelper.getInstance().sendMessageToServer(EMessageType.JOIN_GAME,
                     presentationGameProposal.getPseudoPlayer());
         }
         else{

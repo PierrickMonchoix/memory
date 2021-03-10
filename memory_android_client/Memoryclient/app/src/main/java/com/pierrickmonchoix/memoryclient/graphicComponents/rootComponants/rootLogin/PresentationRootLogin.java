@@ -18,7 +18,7 @@ public class PresentationRootLogin extends Presentation{
         VueLogin vueLogin = new VueLogin(presentationLogin);
         presentationLogin.setVue(vueLogin);
 
-        presentationLoginTextResult = new PresentationLoginResult("hellooo");
+        presentationLoginTextResult = new PresentationLoginResult("Bienvenue sur ce memory tout mignon tout plein");
         VueLoginResult vueLoginResult = new VueLoginResult(presentationLoginTextResult);
         presentationLoginTextResult.setVue(vueLoginResult);
 

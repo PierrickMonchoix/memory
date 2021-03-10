@@ -36,10 +36,10 @@ public class ModelLogin implements IChildenListener {
             
                 if (isNewUser()) { // se connecrte a WS et envoie reponse a textResult
                     System.out.println("Tentative de premiere connexion en tant que : " + getUsername());
-                    WebsocketClientHelper.sendMessageToServer(EMessageType.SIGN_UP, getUsername());
+                    WebsocketClientHelper.getInstance().sendMessageToServer(EMessageType.SIGN_UP, getUsername());
                 } else {
                     System.out.println("Tentative de connexion habituelle en tant que : " + getUsername());
-                    WebsocketClientHelper.sendMessageToServer(EMessageType.SIGN_IN, getUsername());
+                    WebsocketClientHelper.getInstance().sendMessageToServer(EMessageType.SIGN_IN, getUsername());
                 }
 
             }

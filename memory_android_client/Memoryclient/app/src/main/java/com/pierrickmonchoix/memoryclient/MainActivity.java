@@ -1,38 +1,14 @@
 package com.pierrickmonchoix.memoryclient;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageView;
 
-import android.content.Context;
-import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 
 
-import com.pierrickmonchoix.memoryclient.graphicComponent2.Presentation;
 import com.pierrickmonchoix.memoryclient.graphicComponents.RootManager;
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.image.PresentationImage;
-import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.image.VueImage;
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.board.PresentationBoard;
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.board.VueBoard;
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.card.PresentationCard;
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.card.VueCard;
-import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.login.ModelLogin;
-import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.ModelRootLogin;
-import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.PresentationRootLogin;
-import com.pierrickmonchoix.memoryclient.graphicComponents.rootComponants.rootLogin.VueRootLogin;
-import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import tech.gusavila92.websocketclient.WebSocketClient;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,18 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        WebsocketClientHelper.initialize();
-
-
-
-
-
-
         Button button = new Button(this);
 
         LinearLayout linearLayout = findViewById(R.id.monlinear);
 
-        RootManager.getInstance().initialize(linearLayout);
+        RootManager.getInstance().launchOn(linearLayout);
 /*
 
         PresentationCard presentationCard = new PresentationCard("/cinq.png",0,0,true);

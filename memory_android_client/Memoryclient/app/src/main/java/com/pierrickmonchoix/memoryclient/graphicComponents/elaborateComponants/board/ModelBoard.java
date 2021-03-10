@@ -23,7 +23,7 @@ public class ModelBoard implements IWebsocketListener {
 
     @Override
     public void listenWebsocketHelper() {
-        WebsocketClientHelper.addListener(this);
+        WebsocketClientHelper.getInstance().addListener(this);
 
     }
 
@@ -37,7 +37,7 @@ public class ModelBoard implements IWebsocketListener {
             presentationBoard.setUpAll(gameForJson);
 
             String actualPlayerPseudo = gameForJson.actualPlayer.pseudo;
-            String monPseudo = WebsocketClientHelper.getPseudo();
+            String monPseudo = WebsocketClientHelper.getInstance().getPseudo();
 
             if ((websocketMessage.getType() == EMessageType.SHOW_CARD) && actualPlayerPseudo.equals(monPseudo)) {
                 waitAndSendToServerCardsSeen();
@@ -52,7 +52,7 @@ public class ModelBoard implements IWebsocketListener {
             // gestion de l'erreur
         }
 
-        WebsocketClientHelper.sendMessageToServer(EMessageType.SHOW_CARD, "");
+        WebsocketClientHelper.getInstance().sendMessageToServer(EMessageType.SHOW_CARD, "");
     }
 
 }

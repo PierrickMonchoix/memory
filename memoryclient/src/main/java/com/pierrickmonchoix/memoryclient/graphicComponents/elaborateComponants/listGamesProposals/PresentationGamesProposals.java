@@ -58,7 +58,7 @@ public class PresentationGamesProposals extends Presentation {
     }
 
     private boolean imInGame(GameManagerForJson gameManagerForJson){
-        String monPseudo = WebsocketClientHelper.getPseudo();
+        String monPseudo = WebsocketClientHelper.getInstance().getPseudo();
         List<ShownGameForJson> listShownGameForJsons = gameManagerForJson.listJsonGames;
         for (ShownGameForJson shownGameForJson : listShownGameForJsons) {
             List<String> listJoueursInGame = shownGameForJson.listPlayer;

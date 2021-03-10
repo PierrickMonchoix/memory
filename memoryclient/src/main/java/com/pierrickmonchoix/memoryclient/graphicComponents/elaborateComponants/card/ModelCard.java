@@ -32,7 +32,7 @@ public class ModelCard implements IChildenListener {
             coordinatesForJson.x = presentationCard.getX();
             coordinatesForJson.y = presentationCard.getY();
             String jsonCoordinates = coordinatesForJson.toJson();
-            WebsocketClientHelper.sendMessageToServer(EMessageType.DRAW_CARD, jsonCoordinates);
+            WebsocketClientHelper.getInstance().sendMessageToServer(EMessageType.DRAW_CARD, jsonCoordinates);
         }
         else{
             logger.info("jai ete mal notifie par mes mon enfant");

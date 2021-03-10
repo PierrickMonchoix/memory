@@ -1,7 +1,6 @@
 package com.pierrickmonchoix.memoryclient;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.RootManager;
-import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -26,9 +25,7 @@ public class FxApp extends Application {
 
         primaryStage.setTitle("Memory");
 
-        WebsocketClientHelper.initialize();
-
-        RootManager.getInstance().initialize(primaryStage);
+        RootManager.getInstance().launchOn(primaryStage);
 
     }
 

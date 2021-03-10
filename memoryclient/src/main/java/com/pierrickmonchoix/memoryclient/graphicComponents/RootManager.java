@@ -61,12 +61,12 @@ public class RootManager implements IWebsocketListener {
         // singleton => private
     }
 
-    public void initialize(Stage _stage) {
+    public void launchOn(Stage _stage) {
         logger.info("inititalisation de root manager");
 
         stage = _stage;
 
-        presentationRootLogin = new PresentationRootLogin("bernard", "first co?", false);
+        presentationRootLogin = new PresentationRootLogin("@mickaelbaron", "first co?", false);
         vueRootLogin = new VueRootLogin(presentationRootLogin);
         presentationRootLogin.setVue(vueRootLogin);
 
@@ -100,7 +100,7 @@ public class RootManager implements IWebsocketListener {
 
     @Override
     public void listenWebsocketHelper() {
-        WebsocketClientHelper.addListener(this);
+        WebsocketClientHelper.getInstance().addListener(this);
 
     }
 

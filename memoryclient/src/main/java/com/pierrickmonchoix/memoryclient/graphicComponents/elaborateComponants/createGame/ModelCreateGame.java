@@ -29,7 +29,7 @@ public class ModelCreateGame implements IChildenListener, IWebsocketListener {
 
     @Override
     public void listenWebsocketHelper() {
-        WebsocketClientHelper.addListener(this);
+        WebsocketClientHelper.getInstance().addListener(this);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class ModelCreateGame implements IChildenListener, IWebsocketListener {
     public void whenNotifiedByChild(EChildEvent typeEvent) {
         if (typeEvent == EChildEvent.ASK_FOR_CREATE_GAME) {
             String howManyPlayers = presentationCreateGame.getNumberPlayer();
-            WebsocketClientHelper.sendMessageToServer(EMessageType.CREATE_GAME, howManyPlayers);
+            WebsocketClientHelper.getInstance().sendMessageToServer(EMessageType.CREATE_GAME, howManyPlayers);
         }
         else{
             logger.warning("mon chiled ne m'as pas bien notifié");
@@ -67,7 +67,7 @@ public class ModelCreateGame implements IChildenListener, IWebsocketListener {
 
 
     private boolean imInGame(GameManagerForJson gameManagerForJson){
-        String monPseudo = WebsocketClientHelper.getPseudo();
+        String monPseudo = WebsocketClientHelper.getInstance().getPseudo();
         List<ShownGameForJson> listShownGameForJsons = gameManagerForJson.listJsonGames;
         for (ShownGameForJson shownGameForJson : listShownGameForJsons) {
             List<String> listJoueursInGame = shownGameForJson.listPlayer;

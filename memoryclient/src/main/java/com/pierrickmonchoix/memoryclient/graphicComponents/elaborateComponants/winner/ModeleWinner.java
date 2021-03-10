@@ -22,7 +22,7 @@ public class ModeleWinner implements IWebsocketListener {
 
     @Override
     public void listenWebsocketHelper() {
-        WebsocketClientHelper.addListener(this);
+        WebsocketClientHelper.getInstance().addListener(this);
 
     }
 

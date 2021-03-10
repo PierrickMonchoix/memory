@@ -32,7 +32,7 @@ public class WebsocketClientEndpoint {
 
         System.out.println("Received by client : " + message);
 
-        WebsocketClientHelper.notifyListenersOfMessage(message);
+        WebsocketClientHelper.getInstance().notifyListenersOfMessage(message);
 
     }
 

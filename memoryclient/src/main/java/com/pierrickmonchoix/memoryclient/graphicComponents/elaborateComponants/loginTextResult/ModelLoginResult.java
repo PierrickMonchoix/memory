@@ -20,7 +20,6 @@ public class ModelLoginResult implements IWebsocketListener { // implements IWeb
 
     private static Logger logger = Logger.getLogger(ModelLoginResult.class.getName());
 
-    private String text = "coucou";
 
     public ModelLoginResult(PresentationLoginResult presentationLoginTextResult, ModelLogin modelLogin) {
         this.presentationLoginTextResult = presentationLoginTextResult;
@@ -30,18 +29,18 @@ public class ModelLoginResult implements IWebsocketListener { // implements IWeb
 
     @Override
     public void listenWebsocketHelper() {
-        WebsocketClientHelper.addListener(this);
+        WebsocketClientHelper.getInstance().addListener(this);
     }
 
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage message) {
         if ((message.getType() == EMessageType.SIGN_IN) || (message.getType() == EMessageType.SIGN_UP)) {
             logger.info("msg recu par ws");
-            text = message.getContenu();
+            String text = message.getContenu();
             // Platform.runLater(new Runnable() {
 
             if (message.getContenu().substring(0, 2).equals("ok")) {
-                WebsocketClientHelper.setPseudo(message.getPseudo());
+                WebsocketClientHelper.getInstance().setPseudo(message.getPseudo());
                 RootManager.getInstance().setHeroPseudoOnListGames(message.getPseudo()); // TOCHANGE
                 RootManager.getInstance().setVueRootListGames();
             }

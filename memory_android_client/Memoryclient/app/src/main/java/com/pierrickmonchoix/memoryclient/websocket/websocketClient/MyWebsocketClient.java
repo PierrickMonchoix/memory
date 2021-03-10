@@ -50,7 +50,7 @@ public class MyWebsocketClient {
 
                 WebsocketMessage message = WebsocketMessage.toObject(stringMessage);
 
-                WebsocketClientHelper.notifyListenersOfMessage(message);
+                WebsocketClientHelper.getInstance().notifyListenersOfMessage(message);
 
             }
 

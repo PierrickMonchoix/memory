@@ -1,5 +1,7 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult;
 
+import android.util.Log;
+
 import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryclient.graphicComponents.RootManager;
@@ -20,7 +22,6 @@ public class ModelLoginResult implements IWebsocketListener {
 
     private static Logger logger = Logger.getLogger(ModelLoginResult.class.getName());
 
-    private String text = "coucou";
 
     public ModelLoginResult(PresentationLoginResult presentationLoginTextResult, ModelLogin modelLogin) {
         this.presentationLoginTextResult = presentationLoginTextResult;
@@ -32,17 +33,18 @@ public class ModelLoginResult implements IWebsocketListener {
 
     @Override
     public void listenWebsocketHelper() {
-        WebsocketClientHelper.addListener(this);
+        WebsocketClientHelper.getInstance().addListener(this);
     }
 
     @Override
     public void whenReceiveWebsocketMessage(WebsocketMessage message) {
         if ((message.getType() == EMessageType.SIGN_IN) || (message.getType() == EMessageType.SIGN_UP)) {
             logger.info("msg recu par ws");
-            text = message.getContenu();
+            String text = message.getContenu();
 
             if (message.getContenu().substring(0, 2).equals("ok")) {
-                WebsocketClientHelper.setPseudo(message.getPseudo());
+                WebsocketClientHelper.getInstance().setPseudo(message.getPseudo());
+                Log.i("ModelLoginResult","mon pseudo attribué est: " + WebsocketClientHelper.getInstance().getPseudo());
                 RootManager.getInstance().setHeroPseudoOnListGames(message.getPseudo()); // TOCHANGE
                 RootManager.getInstance().setVueRootListGames();
             }
