@@ -2,7 +2,7 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.superclasses;
 
 /**
  * Des présentation qui peuvent alerter des listeners d'un event particulier
- * (appui sur un bouton)
+ * (appui sur un bouton par exemple)
  */
 public abstract class PresentationNotifier extends Presentation {
 

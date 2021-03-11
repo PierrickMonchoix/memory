@@ -4,6 +4,13 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textO
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textOutput.VueTextOutput;
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
+
+/**
+ * Affiche le pseudo du joueur en cours
+ * 
+ * Architecture:
+ * rootListGames > labelHeroPseudo
+ */
 public class PresentationLabelHeroPseudo extends Presentation {
 
     private final PresentationTextOutput presentationTextOutput;
@@ -21,6 +28,6 @@ public class PresentationLabelHeroPseudo extends Presentation {
     }
 
     public void setText(String text) {  
-        presentationTextOutput.setUpText(text);  // utilise upgradeFromPresentation ne bout de chaine (basic compo)
+        presentationTextOutput.setUpText(text);
     }
 }

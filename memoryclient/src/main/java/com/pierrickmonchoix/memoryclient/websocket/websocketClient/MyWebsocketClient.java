@@ -39,13 +39,10 @@ public class MyWebsocketClient {
             currentSession = client.connectToServer(websocketClientEndpoint,
                     new URI("ws://localhost:8026/memory/websocket"));
         } catch (DeploymentException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (URISyntaxException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -76,12 +73,5 @@ public class MyWebsocketClient {
     public void addListener(IWebsocketListener listener) {
         listListeners.add(listener);
     }
-
-/*     public void notifyListenersOfMessage(WebsocketMessage websocketMessage) {
-        for (IWebsocketListener listener : listListeners) {
-            System.out.println("le clientWS a bien notifié qqun");
-            listener.whenReceiveWebsocketMessage(websocketMessage);
-        }
-    } */
 
 }

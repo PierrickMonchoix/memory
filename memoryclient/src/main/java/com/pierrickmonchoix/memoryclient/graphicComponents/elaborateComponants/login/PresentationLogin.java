@@ -14,10 +14,13 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IChilden
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.PresentationNotifier;
 
 /**
+ * Login de connexion.
  * Le login doit avoir un bouton vert si son checkbox est coché ("je suis
  * nouveau") : SignUp et blanc sinon : SignIn Pour l'instant, aucun mot de passe
  * n'est demandé
  * 
+ * Architecture:
+ * rootLogin > login
  */
 public class PresentationLogin extends PresentationNotifier implements IChildenListener {
 
@@ -42,14 +45,10 @@ public class PresentationLogin extends PresentationNotifier implements IChildenL
         VueButton vueButton = new VueButton(presentationButton);
         presentationButton.setVue(vueButton);
 
-        // OBLIGATOIRE apres deblaration des enfants ssi IChildenListener
         listenAllChildren();
 
-        //rare
         updateFromChildren();
     }
-
-    // OVERIDES
 
     @Override
     public void listenAllChildren() {
@@ -73,8 +72,6 @@ public class PresentationLogin extends PresentationNotifier implements IChildenL
 
     }
 
-    // GETTERS des presentations for vue
-
     public PresentationCheckBox getPresentationCheckBox() {
         return presentationCheckBox;
     }
@@ -87,8 +84,6 @@ public class PresentationLogin extends PresentationNotifier implements IChildenL
         return presentationButton;
     }
 
-    // GETTER SETTER from childrens
-
     public String getUsername() {
         return presentationTextField.getText();
     }
@@ -97,9 +92,6 @@ public class PresentationLogin extends PresentationNotifier implements IChildenL
         return presentationCheckBox.isChecked();
     }
 
-    // FROM CHILDREN
-    // ASSEZ RARE: ici le bouton doit changer de couleur si checkbox est checked
-    // i.e les enfants dépendent des enfants
     public void updateFromChildren() {
         if (isNewUser()) {
             System.out.println("nouveau");

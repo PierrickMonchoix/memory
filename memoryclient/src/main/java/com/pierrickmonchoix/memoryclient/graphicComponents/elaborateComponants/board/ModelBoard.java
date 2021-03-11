@@ -48,7 +48,7 @@ public class ModelBoard implements IWebsocketListener {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
-            // gestion de l'erreur
+            
         }
 
         WebsocketClientHelper.getInstance().sendMessageToServer(EMessageType.SHOW_CARD, "");

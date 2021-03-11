@@ -6,6 +6,9 @@ import com.pierrickmonchoix.memoryserver.business.game.gameEngine.GameEngine;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
 
+/**
+ * attend que les joueurs aient bien vu les cartes retournées
+ */
 public class WaitCardsSeen extends EtatJeuWaiting {
 
     private boolean waiting = false;

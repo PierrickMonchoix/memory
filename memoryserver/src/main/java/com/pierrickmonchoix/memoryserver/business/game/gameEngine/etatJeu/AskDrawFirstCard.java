@@ -6,6 +6,9 @@ import java.util.logging.Logger;
 import com.pierrickmonchoix.memoryserver.business.game.gameEngine.GameEngine;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 
+/**
+ * Demande que le joueur tire sa première carte
+ */
 public class AskDrawFirstCard extends EtatJeu {
     private static Logger logger = Logger.getLogger(AskDrawFirstCard.class.getName());
 

@@ -1,9 +1,11 @@
-package com.pierrickmonchoix.memoryserver.business;
+package com.pierrickmonchoix.memoryserver.forJson;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.pierrickmonchoix.memoryserver.business.GamesManager;
+import com.pierrickmonchoix.memoryserver.business.Player;
 import com.pierrickmonchoix.memoryserver.business.game.Game;
 
 /**

@@ -14,7 +14,7 @@ import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMes
  * signIn marche car il y avais bien ce pseudo en stock ou inversement pour le
  * signUp Il affiche ce resultat par le bais d'un TextviewOutput
  */
-public class ModelLoginResult implements IWebsocketListener { // implements IWebsocketListener
+public class ModelLoginResult implements IWebsocketListener {
 
     private PresentationLoginResult presentationLoginTextResult;
 
@@ -37,19 +37,15 @@ public class ModelLoginResult implements IWebsocketListener { // implements IWeb
         if ((message.getType() == EMessageType.SIGN_IN) || (message.getType() == EMessageType.SIGN_UP)) {
             logger.info("msg recu par ws");
             String text = message.getContenu();
-            // Platform.runLater(new Runnable() {
 
             if (message.getContenu().substring(0, 2).equals("ok")) {
                 WebsocketClientHelper.getInstance().setPseudo(message.getPseudo());
-                RootManager.getInstance().setHeroPseudoOnListGames(message.getPseudo()); // TOCHANGE
+                RootManager.getInstance().setHeroPseudoOnListGames(message.getPseudo()); 
                 RootManager.getInstance().setVueRootListGames();
             }
-            presentationLoginTextResult.setText(text); // on a ajouté la reponse WS
+            presentationLoginTextResult.setText(text);
 
         }
 
     }
-
-    // when notify by ws
-
 }

@@ -6,7 +6,5 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.superclasses;
  */
 public interface IVue {
 
-
-
     public void updateFromPresentation();
 }

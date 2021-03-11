@@ -4,6 +4,9 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.w
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.winner.VueWinner;
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
+/**
+ * Ecran affichant le vainqueur
+ */
 public class PresentationRootWinner extends Presentation {
 
     private PresentationWinner presentationWinner;

@@ -10,16 +10,20 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.EChildEv
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IChildenListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.PresentationNotifier;
 
+/**
+ * Ensemble d'éléments affichant une partie à laquelle on peut s'inscrire:
+ * - Un texte affichant le joueur qui a créé la partie, le nombre de joueurs actuel, le nombre de joueurs max
+ * - Un bouton pour joindre la partie
+ * 
+ * Architecture:
+ * rootListGames > listGamesProposals > gameProposal
+ */
 public class PresentationGameProposal extends PresentationNotifier implements IChildenListener {
 
     private static Logger logger = Logger.getLogger(PresentationGameProposal.class.getName());
 
     private final PresentationTextOutput presentationTextOutput;
     private final PresentationButton presentationButton;
-
-    /**
-     * unusable for updates
-     */
     private String pseudoPlayer; 
 
     public PresentationGameProposal(String pseudo, String numberPlayer) {
@@ -39,8 +43,6 @@ public class PresentationGameProposal extends PresentationNotifier implements IC
         listenAllChildren();
     }
 
-    // OVERIDE METHODS
-
     @Override
     public void listenAllChildren() {
         presentationButton.attributeParentListener(this);
@@ -57,10 +59,6 @@ public class PresentationGameProposal extends PresentationNotifier implements IC
 
     }
 
-    // GETTERS des presentations for vue
-
-
-
     public PresentationTextOutput getPresentationTextOutput() {
         return presentationTextOutput;
     }
@@ -68,8 +66,6 @@ public class PresentationGameProposal extends PresentationNotifier implements IC
     public PresentationButton getPresentationButton() {
         return presentationButton;
     }
-
-    // GETTER values from childrens
 
     public String getPseudoPlayer(){
         return pseudoPlayer;

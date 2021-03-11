@@ -6,6 +6,9 @@ import com.pierrickmonchoix.memoryserver.business.game.gameEngine.GameEngine;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
 
+/**
+ * Attend que le joueur tire sa première carte
+ */
 public class WaitDrawSecondCard extends EtatJeuWaiting {
 
     private static Logger logger = Logger.getLogger(WaitDrawSecondCard.class.getName());

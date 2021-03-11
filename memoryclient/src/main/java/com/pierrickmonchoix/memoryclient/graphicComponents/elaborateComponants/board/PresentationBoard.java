@@ -12,6 +12,12 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.forJson.ECardType;
 import com.pierrickmonchoix.memoryclient.graphicComponents.forJson.GameForJson;
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
+/**
+ * Plateau de jeu contenant 12 cartes (soit 6 paires)
+ * 
+ * Architecture:
+ * rootGame > board
+ */
 public class PresentationBoard extends Presentation {
 
     private static Logger logger = Logger.getLogger(PresentationBoard.class.getName());
@@ -56,11 +62,5 @@ public class PresentationBoard extends Presentation {
     public List<PresentationCard> getListPresentationCards() {
         return this.listPresentationCards;
     }
-
-    /*
-     * public void addCardsListener(IChildenListener listener){ for
-     * (PresentationCard presentationCard : listPresentationCards) {
-     * addCardsListener(listener); } }
-     */
 
 }

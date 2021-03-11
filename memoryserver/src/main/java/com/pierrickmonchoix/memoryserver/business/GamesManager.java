@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.pierrickmonchoix.memoryserver.business.game.Game;
+import com.pierrickmonchoix.memoryserver.forJson.GameManagerForJson;
 import com.pierrickmonchoix.memoryserver.websocket.IWebsocketListener;
 import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;

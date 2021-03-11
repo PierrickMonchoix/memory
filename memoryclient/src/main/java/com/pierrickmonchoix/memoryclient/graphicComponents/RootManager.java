@@ -24,6 +24,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Singleton qui l'affichage global de l'application
+ * Affiches les composants "root"
+ */
 public class RootManager implements IWebsocketListener {
     private Scene scene;
     private Stage stage;
@@ -82,8 +86,6 @@ public class RootManager implements IWebsocketListener {
         vueRootWinner = new VueRootWinner(presentationRootWinner);
         presentationRootWinner.setVue(vueRootGame);
 
-        // il faut bien que toutes les vues et presentations soient fiates avant les
-        // differents mdoelses
         modelRootLogin = new ModelRootLogin(presentationRootLogin);
         modelRootListGames = new ModelRootListGames(presentationRootListGames);
         modelRootGame = new ModelRootGame(presentationRootGame);
@@ -139,7 +141,7 @@ public class RootManager implements IWebsocketListener {
         setVueRoot(vueRootListGames);
     }
 
-    public void setHeroPseudoOnListGames(String pseudoHero) { // pour le root listes parties
+    public void setHeroPseudoOnListGames(String pseudoHero) {
         modelRootListGames.setPseudoLabelOfHero(pseudoHero);
     }
 

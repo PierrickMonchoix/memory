@@ -4,11 +4,18 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textO
 import com.pierrickmonchoix.memoryclient.graphicComponents.basicComponants.textOutput.VueTextOutput;
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
+
+/**
+ * Affiche le vaiqueur de la partie
+ * 
+ * Architecture:
+ * rootWinner > winner
+ */
 public class PresentationWinner extends Presentation {
 
     private final PresentationTextOutput presentationTextOutput;
 
-    public PresentationWinner() {
+    public PresentationWinner(){
 
         presentationTextOutput = new PresentationTextOutput("default false winner");
         VueTextOutput vueTextOutput = new VueTextOutput(presentationTextOutput);
@@ -21,7 +28,7 @@ public class PresentationWinner extends Presentation {
     }
 
     public void setText(String text) {
-        presentationTextOutput.setUpText(text); // utilise upgradeFromPresentation ne bout de chaine (basic compo)
+        presentationTextOutput.setUpText(text);
     }
 
 }

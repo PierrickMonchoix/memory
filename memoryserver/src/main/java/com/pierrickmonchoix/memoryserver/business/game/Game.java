@@ -10,6 +10,9 @@ import com.pierrickmonchoix.memoryserver.business.game.elementsJeu.Board;
 import com.pierrickmonchoix.memoryserver.business.game.gameEngine.GameEngine;
 import com.pierrickmonchoix.memoryserver.forJson.GameForJson;
 
+/**
+ * Une partie
+ */
 public class Game {
     private static Logger logger = Logger.getLogger(Game.class.getName());
 

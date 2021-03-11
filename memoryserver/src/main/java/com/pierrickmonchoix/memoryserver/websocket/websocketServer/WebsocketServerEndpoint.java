@@ -39,13 +39,6 @@ public class WebsocketServerEndpoint {
         logger.info("le server recoit : " + message);
 
         WebsocketServerHelper.receiveMessage( message, session );
-
-/*         WebsocketServerHelper.updateListSessions(message.getPseudo(), session);
-
-        message.setContenu("mess envoye par server");
-
-        WebsocketServerHelper.sendMessageToClient("jack", message); */
-
     }
 
     @OnClose

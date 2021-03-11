@@ -10,7 +10,7 @@ import com.pierrickmonchoix.memoryclient.websocket.websocketMessage.WebsocketMes
 
 
 /**
- * La classe "statique" qui fait le lien entre le business et le serveur. On
+ * La classe singleton qui fait le lien entre le business et le serveur. On
  * peut grace a cette classe envoyer des messages au serveur et en rececoir.
  */
 public class WebsocketClientHelper {

@@ -11,7 +11,9 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.l
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
 
-
+/**
+ * Ecran affichant la liste de parties proposées
+ */
 public class PresentationRootListGames extends Presentation{
 
     private static Logger logger = Logger.getLogger(PresentationRootListGames.class.getName());

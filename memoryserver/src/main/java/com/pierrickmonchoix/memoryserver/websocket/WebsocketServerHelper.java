@@ -137,7 +137,7 @@ public class WebsocketServerHelper {
         logger.info("notification des ws listeners du msg : " + message);
         List<IWebsocketFinishNotifyListener> copyListFinishListeners = new ArrayList<IWebsocketFinishNotifyListener>(listFinishNotifyListener);
         /*
-        on doit paasser par une copie car il arrive
+        on doit passer par une copie car il arrive
         que l'on modifie la liste alors que l'on itére celle ci
         */
         for (IWebsocketFinishNotifyListener finishListener : copyListFinishListeners) {

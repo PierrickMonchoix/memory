@@ -21,8 +21,7 @@ public class VueRootGame  extends VBox implements IVue {
 
     @Override
     public void updateFromPresentation() {
-        // TODO Auto-generated method stub
-
+        
     }
 
 

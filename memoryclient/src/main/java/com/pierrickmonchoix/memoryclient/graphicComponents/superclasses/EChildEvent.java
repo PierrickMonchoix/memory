@@ -1,7 +1,7 @@
 package com.pierrickmonchoix.memoryclient.graphicComponents.superclasses;
 
 /**
- * Les differentes alertes de base (utilisées par 'PresentationNotifier')
+ * Les differentes alertes des composants graphiques (enfants)
  */
 public enum EChildEvent {
 

@@ -8,6 +8,12 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.EChildEv
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IChildenListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.PresentationNotifier;
 
+/**
+ * Carte de jeu
+ * 
+ * Architecture:
+ * rootGame > board > card(liste)
+ */
 public class PresentationCard extends PresentationNotifier implements IChildenListener {
 
     private final PresentationImage presentationImage;
@@ -55,13 +61,9 @@ public class PresentationCard extends PresentationNotifier implements IChildenLi
     }
 
 
-    // GETTERS des presentations for vue
-
     public PresentationImage getPresentationImage() {
         return this.presentationImage;
     }
-
-    // SETTER
 
     public void setPathImage(String pathImage) {
         presentationImage.setUpPath(pathImage);

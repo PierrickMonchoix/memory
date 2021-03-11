@@ -21,6 +21,10 @@ import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
 
+/**
+ * Moteur de jeu
+ * Gére l'état de la partie et les tours 
+ */
 public class GameEngine {
     private static Logger logger = Logger.getLogger(GameEngine.class.getName());
 

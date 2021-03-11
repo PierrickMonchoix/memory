@@ -6,7 +6,7 @@ package com.pierrickmonchoix.memoryclient.graphicComponents.superclasses;
  */
 public interface IChildenListener {
 
-        /**
+    /**
      * fonction a mettre a la fin du constructeur !!!
      */
     public void listenAllChildren();

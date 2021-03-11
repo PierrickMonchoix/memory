@@ -43,11 +43,3 @@ public class VueGamesProposals extends VBox implements IVue {
     }
 
 }
-
-// DELEED TO REPLACE:
-/*
- * VueGameProposal vueGameProposal = new
- * VueGameProposal(presentationGameProposal); logger.info("vueGameProposal : " +
- * vueGameProposal); presentationGameProposal.setVue(vueGameProposal); //update
- * auto a la construction getChildren().addAll(vueGameProposal);
- */

@@ -5,6 +5,9 @@ import java.util.logging.Logger;
 import com.pierrickmonchoix.memoryserver.business.game.gameEngine.GameEngine;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 
+/**
+ * demande que les joueurs aient bien vu les cartes retournées
+ */
 public class AskCardsSeen extends EtatJeu {
     private static Logger logger = Logger.getLogger(AskDrawSecondCard.class.getName());
 

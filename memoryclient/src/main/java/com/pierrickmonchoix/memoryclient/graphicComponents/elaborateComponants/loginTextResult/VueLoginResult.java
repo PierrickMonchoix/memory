@@ -22,7 +22,4 @@ public class VueLoginResult extends VBox implements IVue {
     public void updateFromPresentation() {
         // nothing to MOVE
     }
-
-    
-    
 }

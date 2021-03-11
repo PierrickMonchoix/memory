@@ -6,6 +6,9 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.l
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.loginTextResult.VueLoginResult;
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
+/**
+ * Ecran affichant login
+ */
 public class PresentationRootLogin extends Presentation{
 
     private final PresentationLogin presentationLogin;

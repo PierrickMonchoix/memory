@@ -1,6 +1,8 @@
 package com.pierrickmonchoix.memoryserver.business.game.elementsJeu.carte;
 
-
+/**
+ * carte de jeu
+ */
 public class Card {
     private Coordinates coordinates;
     private ECardType typeCarte;

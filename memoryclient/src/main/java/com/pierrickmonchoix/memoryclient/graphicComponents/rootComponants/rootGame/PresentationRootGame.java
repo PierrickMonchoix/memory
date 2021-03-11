@@ -4,6 +4,10 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.b
 import com.pierrickmonchoix.memoryclient.graphicComponents.elaborateComponants.board.VueBoard;
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 
+/**
+ * Ecran affichant la partie
+ * 
+*/
 public class PresentationRootGame extends Presentation {
 
     private final PresentationBoard presentationBoard;

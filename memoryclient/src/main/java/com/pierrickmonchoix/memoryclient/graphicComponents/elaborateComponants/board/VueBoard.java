@@ -42,7 +42,6 @@ public class VueBoard extends GridPane implements IVue {
             
             int x = presentationCard.getX();
             int y = presentationCard.getY();
-            // on ne met pas reavlead ni pathCard car ne concernet pas palcement / delete /create
 
             logger.info("ajout image coord : " + x +" , "+ y);
             

@@ -12,6 +12,15 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.EChildEv
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IChildenListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.PresentationNotifier;
 
+
+/**
+ * Ensemble d'éléments necessaires à la création d'une partie:
+ * - Un combobox pour choisir le nombre de joueurs
+ * - Un bouton pour créer la partie
+ * 
+ * Architecture:
+ * rootCreateGame > createGame
+ */
 public class PresentationCreateGame extends PresentationNotifier implements IChildenListener {
 
     private static Logger logger = Logger.getLogger(PresentationCreateGame.class.getName());

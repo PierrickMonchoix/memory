@@ -12,12 +12,12 @@ public class WebsocketMessageEncoder implements Encoder.Text<WebsocketMessage>{
 	
 	@Override
 	public void init(EndpointConfig config) {
-		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	/**

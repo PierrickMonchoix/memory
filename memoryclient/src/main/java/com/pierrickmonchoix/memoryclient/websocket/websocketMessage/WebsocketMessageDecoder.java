@@ -12,12 +12,12 @@ public class WebsocketMessageDecoder implements Decoder.Text<WebsocketMessage> {
 	
 	@Override
 	public void init(EndpointConfig config) {
-		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class WebsocketMessageDecoder implements Decoder.Text<WebsocketMessage> {
 
 	@Override
 	public boolean willDecode(String mess) {
-		// TODO Auto-generated method stub
+		
 		return true;
 	}
 

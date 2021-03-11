@@ -39,7 +39,6 @@ public class VueRootListGames extends HBox implements IVue {
 
     @Override
     public void updateFromPresentation() {
-        // TODO Auto-generated method stub
-
+        
     }
 }

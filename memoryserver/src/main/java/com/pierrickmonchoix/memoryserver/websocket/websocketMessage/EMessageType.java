@@ -1,8 +1,8 @@
 package com.pierrickmonchoix.memoryserver.websocket.websocketMessage;
 
 /**
- * les types de messages que peucent s'echanger le serveur et les clients cette
- * classe est aussi connue par les clients
+ * les types de messages que peucent s'echanger le serveur et les clients 
+ * cette classe est aussi connue par les clients
  */
 public enum EMessageType {
     /**

@@ -14,15 +14,8 @@ public class ModelRootLogin {
 
     public ModelRootLogin(PresentationRootLogin presentationRootLogin) {
 
-        /*
-        lancement des modeles filles
-        */
         ModelLogin modelLogin = new ModelLogin(presentationRootLogin.getPresentationLogin());
 
-        /*
-        ici, un warning justifié car l'objet ne paret pas utilisé,
-        mais c'est lui, à la construction, qui lance une partie du business.
-        */
         ModelLoginResult modelLoginTextResult = new ModelLoginResult( presentationRootLogin.getPresentationLoginTextResult() , modelLogin);
 
     }

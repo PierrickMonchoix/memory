@@ -5,6 +5,9 @@ import java.util.logging.Logger;
 import com.pierrickmonchoix.memoryserver.business.game.gameEngine.GameEngine;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 
+/**
+ * Vérifie si une paire à été tirée
+ */
 public class CheckPairOrNot extends EtatJeu {
     private static Logger logger = Logger.getLogger(CheckPairOrNot.class.getName());
 

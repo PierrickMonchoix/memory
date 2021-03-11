@@ -2,6 +2,10 @@ package com.pierrickmonchoix.memoryserver.business.game.elementsJeu.carte;
 
 import com.google.gson.Gson;
 
+
+/** 
+ * Coordonnées d'une carte
+*/
 public class Coordinates {
 
     private static Gson gson = new Gson();

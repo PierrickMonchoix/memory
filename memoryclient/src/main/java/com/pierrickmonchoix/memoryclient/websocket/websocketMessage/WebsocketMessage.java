@@ -3,8 +3,7 @@ package com.pierrickmonchoix.memoryclient.websocket.websocketMessage;
 import com.google.gson.Gson;
 
 /**
- * Message envoyé par les clients
- * @author michaelrichard
+ * Message échangés entre client et serveur
  */
 public class WebsocketMessage {
 

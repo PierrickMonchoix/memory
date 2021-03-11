@@ -12,6 +12,12 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.forJson.ShownGameForJ
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.Presentation;
 import com.pierrickmonchoix.memoryclient.websocket.WebsocketClientHelper;
 
+/**
+ * Liste des parties proposées
+ * 
+ * Architecture:
+ * rootListGames > listGamesProposals
+ */
 public class PresentationGamesProposals extends Presentation {
 
     private static Logger logger = Logger.getLogger(PresentationGamesProposals.class.getName());
@@ -34,18 +40,13 @@ public class PresentationGamesProposals extends Presentation {
                 String numberPlayer = shownGameForJson.numberPlayer + "/" + shownGameForJson.maxPlayer;
                 String pseudoHost = shownGameForJson.pseudoHost;
 
-                // creation d'une presentation
                 PresentationGameProposal presentationGameProposal = new PresentationGameProposal( pseudoHost, numberPlayer);    
                 VueGameProposal vueGameProposal = new VueGameProposal(presentationGameProposal);
                 presentationGameProposal.setVue(vueGameProposal);
 
-                // ajout de la presentation a la liste
                 listPresentationsGameProposal.add(presentationGameProposal);
 
-                // ajout d'un modele a cette presentation
-                //il y a un warning car il suffit de creer le model pour qu'il se lance
                 new ModelGameProposal(presentationGameProposal);
-                //TODO: essayer de juste mettre new pour elever le zrning
 
                 // si on est dans une partie (en train de jouer OU NON (inscrit) )
                 boolean imInGame = imInGame(gameManagerForJson);
@@ -73,22 +74,8 @@ public class PresentationGamesProposals extends Presentation {
         return false;
     }
 
-
-
-    /*
-     * public void addGameOfPseudo(String pseudo) { PresentationGameProposal
-     * presentationGameProposal = new PresentationGameProposal(pseudo , "1/?");
-     * listPresentationsGameProposal.add(presentationGameProposal); // updateVue();
-     * }
-     */
-
-    // GETTERS des presentations for vue
-
     public List<PresentationGameProposal> getListPresentationsGameProposal() {
         return listPresentationsGameProposal;
     }
-
-
-
 
 }

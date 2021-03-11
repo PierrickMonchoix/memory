@@ -32,7 +32,7 @@ public class VueImage extends ImageView implements IVue{
 			System.out.println("Clicked!"); // change functionality
 			presentationImage.onClick();
 		});
-
+        
         updateFromPresentation();
     }
 

@@ -7,8 +7,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * C'est la classe qui lance le client JavaFX. mvn clean javafx:run pour run
- * cette classe
+ * C'est la classe qui lance le client JavaFX
  */
 public class FxApp extends Application {
 

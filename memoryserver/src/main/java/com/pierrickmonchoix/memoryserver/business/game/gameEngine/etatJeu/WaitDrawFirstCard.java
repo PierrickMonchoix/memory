@@ -8,6 +8,9 @@ import com.pierrickmonchoix.memoryserver.websocket.WebsocketServerHelper;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.EMessageType;
 import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMessage;
 
+/**
+ * Demande que le joueur tire sa première carte
+ */
 public class WaitDrawFirstCard extends EtatJeuWaiting implements IWebsocketFinishNotifyListener {
 
     private boolean waiting = false;

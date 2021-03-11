@@ -41,7 +41,7 @@ public class VueLogin extends VBox implements IVue {
     }
 
     @Override
-    public void updateFromPresentation() {  // only upgrade position
+    public void updateFromPresentation() { 
             //nothing to MOVE
     }
 

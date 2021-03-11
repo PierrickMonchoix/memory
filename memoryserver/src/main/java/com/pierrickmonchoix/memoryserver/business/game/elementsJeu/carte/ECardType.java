@@ -2,6 +2,9 @@ package com.pierrickmonchoix.memoryserver.business.game.elementsJeu.carte;
 
 import java.util.logging.Logger;
 
+/**
+ * Valeur d'une carte
+ */
 public enum ECardType {
 
     UN, DEUX, TROIS, QUATRE, CINQ, SIX;

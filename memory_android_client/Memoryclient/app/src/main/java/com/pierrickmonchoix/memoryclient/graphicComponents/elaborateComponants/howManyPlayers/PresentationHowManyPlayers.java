@@ -17,6 +17,10 @@ public class PresentationHowManyPlayers extends Presentation {
         presentationComboBox.addUpProposal("2");
         presentationComboBox.addUpProposal("3");
         presentationComboBox.addUpProposal("4");
+        presentationComboBox.addUpProposal("5");
+        presentationComboBox.addUpProposal("6");
+        presentationComboBox.addUpProposal("7");
+        presentationComboBox.addUpProposal("8");
         
     }
 

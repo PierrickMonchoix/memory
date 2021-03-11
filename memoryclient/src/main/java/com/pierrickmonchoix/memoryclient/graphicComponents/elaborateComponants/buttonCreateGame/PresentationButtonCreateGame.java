@@ -8,6 +8,13 @@ import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.EChildEv
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.IChildenListener;
 import com.pierrickmonchoix.memoryclient.graphicComponents.superclasses.PresentationNotifier;
 
+/**
+ * Bouton pour créer une partie
+ * Le nombre de joueurs de la partie sera définit par le combobox 'howManyPlayers'
+ * 
+ * Architecture:
+ * rootListGames > createGame > buttonCreateGame
+ */
 public class PresentationButtonCreateGame extends PresentationNotifier implements IChildenListener {
 
     private static Logger logger = Logger.getLogger(PresentationButtonCreateGame.class.getName());
@@ -24,8 +31,6 @@ public class PresentationButtonCreateGame extends PresentationNotifier implement
         listenAllChildren();
     }
 
-    // OVERIDES
-
     @Override
     public void listenAllChildren() {
         presentationButton.attributeParentListener(this);
@@ -41,13 +46,9 @@ public class PresentationButtonCreateGame extends PresentationNotifier implement
         }
     }
 
-    // GETTERS des presentations for vue
-
     public PresentationButton getPresentationButton() {
         return presentationButton;
     }
-
-    // GETTER SETTER from childrens
 
     public void setEnable(boolean enable) {
         presentationButton.setUpEnable(enable);

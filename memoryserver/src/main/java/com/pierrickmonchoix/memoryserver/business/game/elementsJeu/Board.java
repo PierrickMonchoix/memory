@@ -9,6 +9,9 @@ import com.pierrickmonchoix.memoryserver.business.game.elementsJeu.carte.Card;
 import com.pierrickmonchoix.memoryserver.business.game.elementsJeu.carte.Coordinates;
 import com.pierrickmonchoix.memoryserver.business.game.elementsJeu.carte.ECardType;
 
+/**
+ * Plateau de cartes
+ */
 public class Board {
     private static Logger logger = Logger.getLogger(Board.class.getName());
 

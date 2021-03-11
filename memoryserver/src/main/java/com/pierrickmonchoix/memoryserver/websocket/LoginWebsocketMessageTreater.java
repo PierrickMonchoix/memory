@@ -89,7 +89,6 @@ public class LoginWebsocketMessageTreater {
             sendMessgeToUpdateListGamesTo(pseudo,session);
         }
         WebsocketServerHelper.sendMessageToClient(session, response);
-        //WebsocketServerHelper.sendMessageToClient(session, )
     }
 
 
