@@ -22,6 +22,8 @@ import org.glassfish.tyrus.client.ClientManager;
  */
 public class MyWebsocketClient {
 
+    private String ipServer = "localhost";
+
     private static MyWebsocketClient instance;
 
     private Session currentSession;
@@ -35,9 +37,11 @@ public class MyWebsocketClient {
 
         websocketClientEndpoint = new WebsocketClientEndpoint();
 
+        String serverUri = "ws://" + ipServer + ":8026/memory/websocket";
+
         try {
             currentSession = client.connectToServer(websocketClientEndpoint,
-                    new URI("ws://localhost:8026/memory/websocket"));
+                    new URI(serverUri));
         } catch (DeploymentException e) {
             e.printStackTrace();
         } catch (IOException e) {

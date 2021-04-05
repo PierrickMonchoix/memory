@@ -1,4 +1,12 @@
+Le code est disponible sur GitHub: https://github.com/PierrickMonchoix/memory.git
+
 # Lancer le projet:
+
+## Adresse IP du serveur:
+
+Ce jeu ce joue en local, il faut d'abord lancer le serveur puis les clients.
+Mais tout d'abord, il faut rentrer dans le code l'adresse IP du serveur,
+c'est à dire modifier la variable 'ipServer' dans 'memoryclient.websocket.websocketClient.MyWebsocketClient'.
 
 ## Lancer le seveur:
 
@@ -21,22 +29,21 @@ Utiliser AndroidStudio pour lancer le projet dans 'memory_android_client'.
 # Remarques préliminaires: 
 
 Grâce au pattern MVP uilisé pour les clients, il a été plutôt rapide 
-de créer le client Android à partir du client JavaFX.
-En effet, il n'y avait que les 'vues' à changer, et pas les présentations ni les modèles.
+de créer le client Android à partir du client JavaFX (les deux utilisant le langage Java).
+En effet, il n'y avait que les vues à changer, et pas les présentations ni les modèles.
 
 Le code est mieux commenté sur le client JavaFX que sur le client Android.
 
 # Communications entre présentations parents/enfants (clients)
 
-Un  enfant ne peux envoyer une information qu'à un unique composant: 
-Sa présentation mère OU son modèle.
+Un élément (vue ou présentation) "enfant" ne peux envoyer une information qu'à un unique composant: Sa présentation mère OU son modèle.
 Par exemple, si on veut lancer une partie (appel serveur) en appuyant sur un bouton,
 l'information doit remonter la chaîne hierarchique (de présentations filles en présentation mères)
-pour remonter jusqu'a modèle qui envera l'info au serveur.
+pour remonter jusqu'au modèle qui envera l'info au serveur.
 
-Pour modifier un composant graphiques, l'informtion doit descendre le chaîne hierarchique (de présentations mères en présentation filles) pour remonter jusqu'à la vue des composants de base (package basicComponant).
-Dans une présentation, une fonction qui modifie sa vue si et seulement si il y a 'Up' dans la fonction.
-Exemple: pour la classe 'PresentationImage', 'setUpPath' est une fonction qui modifie la vue.
+Pour modifier un composant graphique, l'informtion doit descendre le chaîne hierarchique (de présentations mères en présentation filles) pour dessendre jusqu'à la vue du composant de base (package basicComponant).
+Dans une présentation, une fonction modifie sa vue si et seulement si il y a 'Up' dans le nom de la fonction.
+Exemple: pour la classe 'PresentationImage', 'setUpPath' est une fonction qui modifie sa vue.
 
 
 
@@ -61,7 +68,8 @@ d'ecrire/lire la base de données des personnes.
 
 But: Permet de gerer des antitées.
 Par exemple, le 'RootManager' qui gére tous les composants graphiques 'root'.
-Ou encore, 'GameManager' qui gére toutes les parties
+Ou encore, 'GameManager' qui gére toutes les parties.
+
 
 
 

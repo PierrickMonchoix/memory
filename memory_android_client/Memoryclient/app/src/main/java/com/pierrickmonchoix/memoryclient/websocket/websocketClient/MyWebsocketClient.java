@@ -16,6 +16,7 @@ public class MyWebsocketClient {
 
     private static WebSocketClient realClientInstance;
 
+    private String ipServer  = "192.168.0.104";
 
 
     public static MyWebsocketClient getInstance() {
@@ -31,10 +32,11 @@ public class MyWebsocketClient {
 
 
     private void createWebSocketClient() {
+        String serverUri = "ws://" + ipServer + ":8026/memory/websocket";
         URI uri;
         try {
             // Connect to local host
-            uri = new URI("ws://192.168.0.104:8026/memory/websocket");
+            uri = new URI(serverUri);
         }
         catch (URISyntaxException e) {
             e.printStackTrace();

@@ -14,7 +14,7 @@ import com.pierrickmonchoix.memoryserver.websocket.websocketMessage.WebsocketMes
 import com.pierrickmonchoix.memoryserver.websocket.websocketServer.WebsocketServerLauncher;
 
 /**
- * set d'intermediaire entre le serveur websocket etla partie business.
+ * sert d'intermediaire entre le serveur websocket etla partie business.
  * permet d'envoyer des msg a des client, en recevoir et de lancer le serveur.
  */
 public class WebsocketServerHelper {
